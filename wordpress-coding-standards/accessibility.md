@@ -1,4 +1,7 @@
+<!-- 
 # Accessibility Coding Standards
+ -->
+# アクセシビリティコーディング規約
 
 Code integrated into the WordPress ecosystem - including WordPress core, WordPress.org websites, and official plugins, is expected to conform to the Web Content Accessibility Guidelines (WCAG), version 2.1, at level AA. 
 
@@ -127,3 +130,5 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [Brief history of browser accessibility support](https://www.paciellogroup.com/blog/2011/10/brief-history-of-browser-accessibility-support/) (by Steve Faulkner) 
 - [ARIA Landmarks Example: General Principles](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/)
 - [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html) 
+
+[原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md)
