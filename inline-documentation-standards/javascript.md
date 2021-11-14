@@ -1,10 +1,29 @@
+<!-- 
 # JavaScript Documentation Standards
+ -->
+# JavaScript インラインドキュメント規約
 
+<!-- 
 WordPress follows the <a href="http://usejsdoc.org/" target="_blank" rel="noopener">JSDoc 3 standard</a> for inline JavaScript documentation.
-<h2>What Should Be Documented</h2>
-JavaScript documentation in WordPress takes the form of either formatted blocks of documentation or inline comments.
+ -->
+WordPress は、インラインの JavaScript ドキュメント規約として「[JSDoc 3 Standard](http://usejsdoc.org/)」に遵守します。
 
+<!-- 
+<h2>What Should Be Documented</h2>
+ -->
+## 何をドキュメントするか
+
+<!-- 
+JavaScript documentation in WordPress takes the form of either formatted blocks of documentation or inline comments.
+ -->
+WordPress での JavaScript ドキュメント形式は、フォーマットされたドキュメントブロックかインラインコメントになります。
+
+<!-- 
 The following is a list of what should be documented in WordPress JavaScript files:
+ -->
+以下のリストは WordPress JavaScript ファイル内でドキュメントする項目の例です。
+
+<!-- 
 <ul>
 	<li>Functions and class methods</li>
 	<li>Objects</li>
@@ -14,53 +33,149 @@ The following is a list of what should be documented in WordPress JavaScript fil
 	<li>Events</li>
 	<li>File headers</li>
 </ul>
+ -->
+- 関数、およびクラスのメソッド
+- オブジェクト
+- クロージャ
+- オブジェクトプロパティ
+- require
+- イベント
+- ファイルヘッダー
+
+<!-- 
 <h2>Documenting Tips</h2>
+ -->
+## ドキュメントのヒント
+
+<!-- 
 <h3>Language</h3>
+ -->
+### 文体
+
+<!-- 
 Short descriptions should be clear, simple, and brief. Document "what" and "when" – "why" should rarely need to be included. The "why" can go in the long description if needed. For example:
 
 Functions and closures are <em>third-person singular</em> elements, meaning <em>third-person singular verbs</em> should be used to describe what each does.
+ -->
+短い説明を書く場合には、明確でシンプルな、短い文を心がけてください。「いつ」「何を」実行するのかをドキュメントしてください。「なぜ」を含める必要性はほとんどないはずです。 どうしても「なぜ」が必要であれば長い説明に記述してください。
 
+関数やクロージャは「三人称単数」の要素です。説明を記述する場合も「三人称単数の動詞」を使用してください。
+
+<!-- 
 [tip]Need help remembering how to conjugate for third-person singular verbs? Imagine prefixing the function, hook, class, or method summary with "It":
 <ul>
 	<li><em>Good:</em> "(It) Does something."</li>
 	<li><em>Bad:</em> "(It) Do something."</li>
 </ul>
 [/tip]
+ -->
+ヒント: 三人称単数の動詞の活用に悩む場合は、関数やクロージャの説明を書く場合、先頭に「It」をつけて考えてください。
+- 正: “(It) Does something.”
+- 誤: “(It) Do something.”
 
+<!-- 
 <strong>Functions:</strong> What does the function do?
+ -->
+関数: この関数は「何を」するのか?
+<!-- 
 <ul>
 	<li>Good: Handles a click on X element.</li>
 	<li>Bad: Included for back-compat for X element.</li>
 </ul>
+ -->
+- 正: Handles a click on X element. (要素「X」のクリックを処理する)
+- 誤: Included for back-compat for X element. (要素「X」の後方互換性のために追加された)
+
+<!-- 
 <strong>@since</strong>: The recommended tool to use when searching for the version something was added to WordPress is <a href="https://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate">svn blame</a>.
 
 If, after using these tools, the version number cannot be determined, use <code>@since Unknown</code>.
 
 <strong>Code Refactoring:</strong> Do not refactor code in the file when changes to the documentation.
+ -->
+@since: WordPress に追加されたバージョン番号等を調べる場合は、ツール「[svn blame](https://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate)」の使用を推奨します。
+
+ツールを使用してもバージョン番号を特定できない場合は、「@since Unknown」を使用してください。
+
+**コードリファクタリング**: ドキュメントを編集する際に、ファイル内のコードはリファクタリングしないでください。
+
+<!-- 
 <h3>Grammar</h3>
+ -->
+### 文法
+
+<!-- 
 Descriptive elements should be written as complete sentences. The one exception to this standard is file header summaries, which are intended as file "titles" more than sentences.
 
 The serial (Oxford) comma should be used when listing elements in summaries, descriptions, and parameter or return descriptions.
+ -->
+説明文の要素は完全な文として記述してください。例外はファイルヘッダーの Summary です。この Summary は文章ではなく「タイトル」を意図しているためです。
+
+Summary、Description、Parameter や Return の Description 内で要素を並べる際には serial comma (Oxford comma) を使用してください。(例: A, B and C)
+
+<!-- 
 <h2>Formatting Guidelines</h2>
+ -->
+## フォーマットガイドライン
+
+<!-- 
 The following guidelines should be followed to ensure that the content of the doc blocks can be parsed properly for inclusion in the code reference.
+ -->
+次のガイドラインに従うことで DocBlock の内容が、コードリファレンス用に正しくパースされます。
 
+<!-- 
 <strong>Short descriptions:</strong>
+ -->
+**短い説明:**
 
+<!-- 
 Short descriptions should be a single sentence and contain no markup of any kind. If the description refers to an HTML element or tag, then it should be written as "link tag", not "&lt;a&gt;". For example: "Fires when printing the link tag in the header".
+ -->
+短い説明は単一の文で書き、マークアップしないでください。説明が HTML 要素やタグを参照する場合は、「&lt;a&gt;」ではなく、「link タグ」のように記述してください。例: “Fires when printing the link tag in the header”。
 
+<!-- 
 <strong>Long descriptions:</strong>
+ -->
+**長い説明:**
 
+<!-- 
 Markdown can be used, if needed, in a long description.
+ -->
+長い説明では必要であればマークダウンを使用できます。
 
+<!-- 
 <strong>@param and @return tags:</strong>
+ -->
+**@param および @return タグ:**
 
+<!-- 
 No HTML or markdown is permitted in the descriptions for these tags. HTML elements and tags should be written as "audio element" or "link tag".
+ -->
+これらのタグの説明では HTML もマークダウンも許されません。HTML 要素やタグは「audio 要素」や「link タグ」のように記述してください。
+
+<!-- 
 <h3>Line wrapping</h3>
+ -->
+### 行の折り返し
+
+<!-- 
 DocBlock text should wrap to the next line after 80 characters of text. If the DocBlock itself is indented on the left 20 character positions, the wrap could occur at position 100, but should not extend beyond a total of 120 characters wide.
+ -->
+DocBlock のテキストは80文字分で次の行に折り返してください。例えば DocBlock が20文字分インデントしている場合には、100文字目の位置で折り返します。ただし120文字目以上は超えないでください。
+
+<!-- 
 <h3>Aligning comments</h3>
+ -->
+### コメントの行揃え
+
+<!-- 
 Related comments should be spaced so that they align to make them more easily readable.
 
 For example:
+ -->
+関連するコメントは、スペースを使用して位置を揃え、可読性を上げてください。
+
+例:
 
 ```javascript
 /**
@@ -69,8 +184,17 @@ For example:
  */
 ```
 
+<!-- 
 <h2>Functions</h2>
+ -->
+## 関数
+
+<!-- 
 Functions should be formatted as follows:
+ -->
+関数は次のようにフォーマットしてください。
+
+<!-- 
 <ul>
 	<li><strong>Summary:</strong> A brief, one line explanation of the purpose of the function. Use a period at the end.</li>
 	<li><strong>Description:</strong> A supplement to the summary, providing a more detailed description. Use a period at the end.</li>
@@ -92,6 +216,26 @@ Functions should be formatted as follows:
 	<li><strong>@yield:</strong> For <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*">generator functions</a>, a description of the values expected to be yielded from this function. As with other descriptions, include a period at the end.</li>
 	<li><strong>@return:</strong> Note the period after the description.</li>
 </ul>
+ -->
+- **Summary:** 関数の目的を説明する簡潔な単一の文。最後はピリオド。
+- **Description:** Summary を補足する詳細な説明。文の最後はピリオド。
+- **@deprecated x.x.x:** 非推奨になった関数のみに使用する。どの WordPress バージョンで非推奨になったかを示す常に3組の数字 (例 @deprecated 3.6.0) と代替の関数。
+- **@since x.x.x:** 最初に導入されたバージョンを表す3組の数字 (例: @since 3.6.0)。大きな変更が合った場合は、履歴の目的で、追加の @since タグ、バージョン、説明を追加する。 
+- **@access:** 関数が private の場合のみ使用。関数が private なら、内部使用専用であり、コードリファレンスにドキュメントされない。
+- **@class:** クラスのコンストラクタに使用
+- **@augments:** クラスのコンストラクタで、クラスの直接の親をリストする。
+- **@mixes:** オブジェクトにミックスされる mixin をリストする。
+- **@alias:** 最初にこの関数が一時変数に割り当てられた場合、名前を変更することができる。
+- **@memberof:** JSDoc が自動的に解決できない場合、この関数が含まれる名前空間
+- **@static:** クラスに対し、クラスコンストラクタで関数が static メソッドであることを示す。
+- **@see:** 依存する関数やクラス
+- **@link:** 詳細情報への URL
+- **@fires:** 関数から発火されるイベント。特定のクラスに紐付けられたイベントはクラス名をリストしなければならない。
+- **@listens:** この関数が期待するイベント。イベントはイベント名前空間の接頭辞を付ける必要がある。特定のクラスに紐付けられたイベントはクラス名をリストしなければならない。
+- **@global:** この関数をグローバル名前空間に含まれるグローバル関数としてマークする。
+- **@param:** 変数の簡単な説明。[JSDoc @param 構文](http://usejsdoc.org/tags-param.html)を使用して、例えば、変数がオプションなら、そのデフォルト値などの事項を記述する。最後はピリオド。
+- **@yield:** [ジェネレータ関数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) に関して、この関数から yield されると期待する値の説明。他の説明同様、最後はピリオドで終える。
+- **@return:** 注意: 説明の最後はピリオド
 
 ```javascript
 /**
@@ -130,13 +274,29 @@ Functions should be formatted as follows:
  * @return {type} Return value description.
  */
 ```
-
+<!-- 
 <h2>Backbone classes</h2>
+ -->
+## Backbone クラス
+
+<!-- 
 Backbone's <code>extend</code> calls should be formatted as follows:
+ -->
+Backbone の `extend` 呼び出しは次のようにフォーマットしてください。
+
+<!-- 
 <ul>
 	<li><strong>@lends</strong> This tag will allow JSDoc to recognize the <code>extend</code> function from Backbone as a class definition. This should be placed right before the Object that contains the class definition.</li>
 </ul>
+ -->
+- **@lends** このタグは JSDoc に Backbone からの `extend` 関数をクラス定義として認識させます。クラス定義を含む Object の直前に置いてください。
+
+<!-- 
 Backbone's <code>initialize</code> functions should be formatted as follows:
+ -->
+Backbone の `initialize` 関数は次のようにフォーマットしてください。
+
+<!-- 
 <ul>
 	<li><strong>Summary:</strong> A brief, one line explanation of the purpose of the function. Use a period at the end.</li>
 	<li><strong>Description:</strong> A supplement to the summary, providing a more detailed description. Use a period at the end.</li>
@@ -159,6 +319,24 @@ Backbone's <code>initialize</code> functions should be formatted as follows:
 </ul>
 </li>
 </ul>
+ -->
+- **Summary:** 関数の目的を説明する簡潔な単一の文。最後はピリオド。
+- **Description:** Summary を補足する詳細な説明。文の最後はピリオド。
+- **@deprecated x.x.x:** 非推奨になったクラスのみに使用する。どの WordPress バージョンで非推奨になったかを示す常に3組の数字 (例 @deprecated 3.6.0) と代替のクラス。
+- **@since x.x.x:** 最初に導入されたバージョンを表す3組の数字 (例: @since 3.6.0)。大きな変更が合った場合は、履歴の目的で、追加の @since タグ、バージョン、説明を追加する。 
+- **@constructs:** この関数をクラスのコンストラクタとしてマークする。
+- **@augments:** 直接の親をリストする。
+- **@mixes:** クラスにミックスされる mixin をリストする。
+- **@requires:** このクラスが必要とするモジュールをリストする。複数の @requires タグを使用可能。
+- **@alias:** 最初にこのクラスが一時変数に割り当てられた場合、名前を変更することができる。
+- **@memberof:** JSDoc が自動的に解決できない場合、このクラスが含まれる名前空間
+- **@static:** クラスに対し、クラスコンストラクタで関数が static メソッドであることを示す。
+- **@see:** 依存する関数やクラス
+- **@link:** 詳細情報への URL
+- **@fires:** コンストラクターから発火されるイベント。クラス名をリストする。
+- **@param:** initializeに明示的にリストしていないものも含め、コンストラクターに渡す引数をドキュメントする。最後はピリオド。
+  - Backbone Models は attributes と options パラメータに渡される。
+  - Backbone Views は options パラメータに渡される。
 
 ```javascript
 Class = Parent.extend( /** @lends namespace.Class.prototype */{
@@ -193,7 +371,10 @@ Class = Parent.extend( /** @lends namespace.Class.prototype */{
 } );
 ```
 
+<!-- 
 If a Backbone class does not have an initialize function it should be documented by using @inheritDoc as follows:
+ -->
+Backbone クラスに initialize 関数がない場合、次のように @inheritDoc を使用してドキュメントしてください。
 
 ```javascript
 /**
@@ -223,7 +404,14 @@ Class = Parent.extend( /** @lends namespace.Class.prototype */{
 ```
 
 <blockquote>Note: This currently doesn't provide the expected functionality due to a bug with JSDoc's inheritDoc tag. See the issue <a href="https://github.com/jsdoc3/jsdoc/issues/1012">here</a></blockquote>
+
+> 注意: 現在、JSDoc の inheritDoc タグのバグのため、期待どおりに機能しません。こちらの [issue](https://github.com/jsdoc3/jsdoc/issues/1012) を参照してください。
+
+<!-- 
 <h2>Local functions</h2>
+ -->
+## ローカル関数
+
 At times functions will be assigned to a local variable before being assigned as a class member.
 Such functions should be marked as inner functions of the namespace that uses them using <code>~</code>.
 The functions should be formatted as follows:
