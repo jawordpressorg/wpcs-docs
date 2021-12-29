@@ -1,7 +1,7 @@
 <!-- 
 # JavaScript Documentation Standards
  -->
-# JavaScript インラインドキュメント規約
+# JavaScript ドキュメント規約
 
 <!-- 
 WordPress follows the <a href="http://usejsdoc.org/" target="_blank" rel="noopener">JSDoc 3 standard</a> for inline JavaScript documentation.
