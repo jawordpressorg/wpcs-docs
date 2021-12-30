@@ -232,7 +232,7 @@ Closures must not be passed as filter or action callbacks, as they cannot be rem
 ### 複数行での関数呼び出し
 
 <!-- 
-When splitting a function call over multiple lines, each parameter must be on a seperate line. Single line inline comments can take up their own line.
+When splitting a function call over multiple lines, each parameter must be on a separate line. Single line inline comments can take up their own line.
 
 Each parameter must take up no more than a single line. Multi-line parameter values must be assigned to a variable and then that variable should be passed to the function call.
  -->
@@ -970,12 +970,12 @@ While this operator does exist in Core, it is often used lazily instead of doing
 Per <a title="Remove all, or at least most, uses of extract() within WordPress" href="https://core.trac.wordpress.org/ticket/22400">#22400</a>:
 <blockquote><code>extract()</code> is a terrible function that makes code harder to debug and harder to understand. We should discourage it's [sic] use and remove all of our uses of it.
 
-Joseph Scott has <a class="ext-link" href="https://blog.josephscott.org/archives/2009/02/i-dont-like-phps-extract-function/">a good write-up of why it's bad</a>.</blockquote>
+Joseph Scott has <a class="ext-link" href="https://blog.josephscott.org/2009/02/05/i-dont-like-phps-extract-function/">a good write-up of why it's bad</a>.</blockquote>
  -->
 [#22400: Remove all, or at least most, uses of extract() within WordPress](https://core.trac.wordpress.org/ticket/22400) によれば、
 
 > `extract()` はデバッグしにくいし、コードも読みにくい、ひどい関数。使うのは禁止、中で使ってるのも全部削除しよう。
-> Joseph Scott が [何がそんなにひどいか書いてる](http://josephscott.org/archives/2009/02/i-dont-like-phps-extract-function/)。
+> Joseph Scott が [何がそんなにひどいか書いてる](https://blog.josephscott.org/2009/02/05/i-dont-like-phps-extract-function/)。
 
 <!-- 
 <h2>Credits</h2>
