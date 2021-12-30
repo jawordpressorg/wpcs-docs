@@ -1,7 +1,7 @@
 <!-- 
 # WordPress Coding Standards Docs
  -->
-WordPress コーディング規約ハンドブック翻訳作業用リポジトリ
+# WordPress コーディング規約ハンドブック翻訳作業用リポジトリ
 
 <!-- 
 This repo contains the source for the [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/) on https://developer.wordpress.org

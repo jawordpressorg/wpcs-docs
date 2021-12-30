@@ -538,16 +538,9 @@ For inline:
 
 <!-- 
 Stylesheets tend to grow in length and complexity, and as they grow the chance of redundancy increases. By following some best practices we can help our CSS maintain focus and flexibility as it evolves:
-<ul>
- 	<li>If you are attempting to fix an issue, attempt to remove code before adding more.</li>
- 	<li>Magic Numbers are unlucky. These are numbers that are used as quick fixes on a one-off basis. Example: <code>.box { margin-top: 37px }</code>.</li>
- 	<li>DOM will change over time, target the element you want to use as opposed to "finding it" through its parents. Example: Use <code>.highlight</code> on the element as opposed to <code>.highlight a</code> (where the selector is on the parent)</li>
- 	<li>Know when to use the height property. It should be used when you are including outside elements (such as images). Otherwise use line-height for more flexibility.</li>
- 	<li>Do not restate default property &amp; value combinations (for instance <code>display: block;</code> on block-level elements).</li>
-</ul>
  -->
+スタイルシートは長く、複雑になりがちで、長くなればなるほど、冗長になる可能性が高くなります。以下のベストプラクティスに従うことで、本質を外さず、柔軟に CSS を管理できます。
 
-スタイルシートは長くなりがちです。フォーカスは次第にずれていき、目標のゴールが繰り返されたり、上書きされます。始めからスマートなコードを書くことで、大きな流れを維持したままフレキシブルに変化に対応できます。
 <!-- 
 <ul>
  	<li>If you are attempting to fix an issue, attempt to remove code before adding more.</li>

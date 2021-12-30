@@ -57,5 +57,10 @@ WordPress is committed to meeting the <a href="https://www.w3.org/TR/WCAG20/">We
  -->
 WordPress はすべての新規コード、修正コードにおいて「[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG20/)」の level AA 達成をコミットしています。パッチやプラグインの作成時に注意すべき一般的なアクセシビリティの問題について[簡単なガイド](https://ja.wordpress.org/team/handbook/coding-standards/wordpress-coding-standards/accessibility/)を作成しましたので参照してください。
 
+## 主な変更履歴
+
+- 2021/05/26 [アクセシビリティコーディング規約](https://ja.wordpress.org/team/handbook/coding-standards/wordpress-coding-standards/accessibility/) - 全面改定 [#PR 64](https://github.com/WordPress/wpcs-docs/pull/54)
+- 2021/04/09 [PHPコーディング規約](https://ja.wordpress.org/team/handbook/coding-standards/wordpress-coding-standards/accessibility/) - 「1つのファイルでは、1つのオブジェクト構造 (クラス、インターフェース、トレイト) のみを宣言する」追加 [#PR 52](https://github.com/WordPress/wpcs-docs/pull/52)
+
 [原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards.md)
 
