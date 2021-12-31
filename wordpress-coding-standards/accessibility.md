@@ -32,6 +32,8 @@ Normative Documents:
 - [W3C ATAG 2.0](https://www.w3.org/TR/ATAG20/) / [日本語訳](https://waic.jp/docs/ATAG20/)
 - [W3C WAI ARIA 1.1](https://www.w3.org/TR/wai-aria/) / [日本語訳](https://momdo.github.io/wai-aria-1.1/) 
 
+訳注: この文書の翻訳では、[ウェブアクセシビリティ基盤委員会](https://waic.jp/)の翻訳を基にしています。
+
 <!--
 Informative Documents:
 -->
