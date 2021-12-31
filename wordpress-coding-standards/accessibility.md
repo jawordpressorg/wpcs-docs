@@ -6,17 +6,17 @@
 <!--
 Code integrated into the WordPress ecosystem - including WordPress core, WordPress.org websites, and official plugins, is expected to conform to the Web Content Accessibility Guidelines (WCAG), version 2.1, at level AA. 
 -->
-WordPressのエコシステム、すなわち、WordPressコア、WordPress.org サイト、公式プラグインなどに統合されるコードは、Web Content Accessibility Guidelines (WCAG) version 2.1 レベル AAに適合することが期待されます。
+WordPressのエコシステム (WordPressコア、WordPress.org サイト、公式プラグインを含む) に統合されるコードは、Web Content Accessibility Guidelines (WCAG) version 2.1 レベル AA に適合することが求められます。
 
 <!--
-New or updated interfaces are encouraged to incorporate the Authoring Tool Accessibility Guidelines (ATAG) 2.0. The most significant way that ATAG 2.0 guidelines can be incorporated is by emphasizing choices that help people make more accessible content: encouraging alternative text, captions, and semantic structures, for example. 
+New or updated interfaces are encouraged to incorporate the Authoring Tool Accessibility Guidelines (ATAG) 2.0. The most significant way that ATAG 2.0 guidelines can be incorporated is by emphasizing choices that help people make more accessible content: encouraging alternative text, captions, and semantic structures, for example.
 -->
-新規または更新するインターフェースは、Authoring Tool Accessibility Guidelines (ATAG) 2.0を取り入れることが推奨されます。ATAG 2.0ガイドラインを取り入れる最も重要な意味は、よりアクセシブルなコンテンツ作成を支援する選択肢の強調です。例えば代替テキスト、キャプション、セマンティクス構造の推奨など。
+新規または更新するインターフェースは、Authoring Tool Accessibility Guidelines (ATAG) 2.0を組み込むことが推奨されます。ATAG 2.0ガイドラインを組み込む最も重要な意味は、よりアクセシブルなコンテンツ作成を支援するオプションを強調することです。例えば代替テキスト、キャプション、セマンティクス構造の推奨などです。
 
 <!--
 Official information about web accessibility standards can be divided into two groups: "normative" and "informative" documents. Only the guidelines themselves are normative, and establish the actual requirements for conforming to WCAG 2.1. Other documents should be considered to be informational, and offer help in interpreting the guidelines, but are not definitive.
 -->
-ウェブアクセシビリティ規格に関する公式情報は、2つのグループに分けられます。「規範的 (normative)」な文書と「情報的 (informative)」な文書です。ガイドライン自体は規範的であり、WCAG 2.1に準拠するための実際の要件を定めています。その他の文書は情報提供であるとみなせ、ガイドラインの解釈の助けとなりますが、決定的ではありません。
+ウェブアクセシビリティ規格に関する公式情報は、2つのグループに分けられます。「規範的 (normative)」な文書と「情報的 (informative)」な文書です。ガイドライン自体は規範的であり、WCAG 2.1に準拠するための実際の要件を定めています。その他の文書は情報提供であり、ガイドラインの解釈の助けとなりますが、決定的ではありません。
 
 <!--
 The WordPress A11y team is in the process of developing a library of recommended accessibility patterns to help describe the WordPress recommended way to accomplish a variety of interfaces. These may not be the only reasonable way to create an accessible example of the pattern, but are preferred for the sake of consistency across WordPress.
@@ -68,7 +68,7 @@ WordPress のコミットメントは、すべての WCAG 2.1レベル A およ�
 <!--
 [W3C Quick Reference to WCAG 2.1 Level A and Level AA Requirements](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&currentsidebar=%23col_overview&levels=aaa)
 -->
-[W3C Quick Reference to WCAG 2.1 Level A and Level AA Requirements](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&currentsidebar=%23col_overview&levels=aaa)
+[W3C Quick Reference to WCAG 2.1 Level A and Level AA Requirements](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&currentsidebar=%23col_overview&levels=aaa) / [WCAG 2.0 版の日本語訳](https://waic.jp/docs/WCAG20/quickref/)
 
 <!--
 ## Applying WCAG Conformance Levels 
@@ -97,7 +97,7 @@ When applying WCAG 2.1, the guidance and success criteria are organized around 4
 ### 原則
 WCAG2.1を適用する場合、ガイダンスと達成基準は4つの原則を中心に構成されます。これらの原則は、人々がコンテンツとどのように相互作用するかに重点を置いています。以下でなければなりません。
 
-- **知覚可能 (Perceivable)** - 親しんだメディアを使ったコンテンツと対話できること。例えば、目の不自由な人のために代替テキストを提供する。
+- **知覚可能 (Perceivable)** - 親しんだメディアを使ったコンテンツと対話できること。例えば、目の不自由な人のために代替テキストを提供すること。
 
 - **操作可能 (Operable)** - コンテンツの検索、使用がアクセシブルであること。例えば、キーボードやスクリーンリーダーを使用できること。
 
@@ -128,7 +128,7 @@ Provide text alternatives for any non-text content so that it can be changed int
 Provide alternatives for time-based media. For example, include captions and transcripts for audio or video clips.
 -->
 **ガイドライン 1.2 時間依存メディア**
-時間依存メディアには代替を提供すること。例えば、音声や映像にはキャプンションやトランスクリプトを含めること
+時間依存メディアには代替を提供すること。例えば、音声や映像にはキャプンションやトランスクリプトを含めること。
 
 <!--
 **Guideline 1.3 Adaptable**
@@ -219,7 +219,7 @@ Each guidance has a [specific list requirements that must be met for your conten
 -->
 ### 達成基準
 
-各ガイダンスには、[コンテンツがアクセス可能であるために満たさなければならない具体的な要求リスト](https://www.w3.org/WAI/WCAG21/quickref/)があります。これらのテストは、自動化されたソフトウェアや人間のテスタを使って実施できます。達成基準を満たす方法の詳細については、「[Understanding Levels of Conformance](https://www.w3.org/WAI/WCAG21/Understanding/conformance#levels)」 / [日本語訳](https://waic.jp/docs/UNDERSTANDING-WCAG20/conformance.html#uc-levels-head) を参照してください。これらの基準は重要ですが、ユーザビリティテストも依然として重要であり、アクセシビリティテストと並行して実施する必要があります。
+各ガイダンスには、[コンテンツがアクセス可能であるために満たさなければならない具体的な要求リスト](https://www.w3.org/WAI/WCAG21/quickref/) / [WCAG 2.0 版の日本語訳](https://waic.jp/docs/WCAG20/quickref/) があります。これらのテストは、自動化されたソフトウェアや人間のテスタを使って実施できます。達成基準を満たす方法の詳細については、「[Understanding Levels of Conformance](https://www.w3.org/WAI/WCAG21/Understanding/conformance#levels)」 / [日本語訳](https://waic.jp/docs/UNDERSTANDING-WCAG20/conformance.html#uc-levels-head) を参照してください。これらの基準は重要ですが、ユーザビリティテストも依然として重要であり、アクセシビリティテストと並行して実施する必要があります。
 
 
 <!--
@@ -232,11 +232,11 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 -->
 ### 達成方法集: 十分な達成方法、参考達成方法、失敗例
 
-コンテンツをよりアクセシブルにするためのガイダンスと達成基準のための技術 (コード例、リソース、テスト) は、3つのカテゴリーに分けられます。
+コンテンツをよりアクセシブルにするためのガイダンスと達成基準のための達成方法集 (Techniques) (コード例、リソース、テスト) は、3つのカテゴリーに分けられます。
 
-- 十分な達成方法 - 達成基準を満たすために必要であり、これを支援する
-- 参考達成方法 - 提案であり、必要以上を求める
-- 失敗例 - 問題を引き起こし、達成基準の実現に失敗する
+- 十分な達成方法 (Sufficient) - 達成基準を満たすために必要であり、これを支援する
+- 参考達成方法 (Advisory) - 提案であり、必要以上を求める
+- 失敗例 (Failures) - 問題を引き起こし、達成基準の実現に失敗する
 
 達成方法集の詳細については、[Understanding Techniques for WCAG Success Criteria](https://www.w3.org/WAI/WCAG21/Understanding/understanding-techniques) / [日本語](https://waic.jp/docs/WCAG21/Techniques/
 ) にアクセスしてください。
@@ -260,7 +260,7 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [24 Accessibility](https://www.24a11y.com/)
 - [Mozilla Accessibility - Users first, no matter their abilities](https://blog.mozilla.org/accessibility/)
 -->
-## 権威あるリソース
+## 信頼できるリソース
 
 - [WebAIM: Web Accessibility In Mind](https://webaim.org/) (Articles と Resources を参照)
 - [Government Digital Service](https://gds.blog.gov.uk)
@@ -278,6 +278,7 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [Accessibility London (London, United Kingdom)](https://www.meetup.com/London-Accessibility-Meetup/) (London accessibility meetup: YouTube でライブストリームミートアップを実施している)
 - [24 Accessibility](https://www.24a11y.com/)
 - [Mozilla Accessibility - Users first, no matter their abilities](https://blog.mozilla.org/accessibility/)
+- [ウェブアクセシビリティ基盤委員会](https://waic.jp/) ... 「ウェブアクセシビリティ基盤委員会（Web Accessibility Infrastructure Committee）は、日本におけるウェブアクセシビリティの公的規格であるJIS X 8341-3の理解と普及を促進するとともに、JIS X 8341-3を利用してウェブアクセシビリティを高めていくために必要な基盤を構築するために、さまざまな活動を行っています。」
 
 <!--
 ### Technical and / or specific topics:
@@ -291,6 +292,7 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html) 
 -->
 ### 技術や特定のトピック:
+
 - [Accessibility Support](https://a11ysupport.io/) (コードが支援技術で動作するか?)
 - [Accessibility APIs: A Key To Web Accessibility](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) (by Léonie Watson)  
 - [How accessibility trees inform assistive tech](https://hacks.mozilla.org/2019/06/how-accessibility-trees-inform-assistive-tech/) (by Hidde de Vries) 
