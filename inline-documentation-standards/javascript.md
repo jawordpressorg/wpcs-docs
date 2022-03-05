@@ -5,8 +5,9 @@
 
 <!-- 
 WordPress follows the <a href="http://usejsdoc.org/" target="_blank" rel="noopener">JSDoc 3 standard</a> for inline JavaScript documentation.
+WordPress follows the <a href="http://jsdoc.app/" target="_blank" rel="noopener">JSDoc 3 standard</a> for inline JavaScript documentation.
  -->
-WordPress は、インラインの JavaScript ドキュメント規約として「[JSDoc 3 Standard](http://usejsdoc.org/)」に遵守します。
+WordPress は、インラインの JavaScript ドキュメント規約として「[JSDoc 3 Standard](http://jsdoc.app/)」に遵守します。
 
 <!-- 
 <h2>What Should Be Documented</h2>
@@ -57,7 +58,7 @@ Short descriptions should be clear, simple, and brief. Document "what" and "when
 
 Functions and closures are <em>third-person singular</em> elements, meaning <em>third-person singular verbs</em> should be used to describe what each does.
  -->
-短い説明を書く場合には、明確でシンプルな、短い文を心がけてください。「いつ」「何を」実行するのかをドキュメントしてください。「なぜ」を含める必要性はほとんどないはずです。 どうしても「なぜ」が必要であれば長い説明に記述してください。
+「短い説明 (short description)」を書く場合には、明確でシンプルな、短い文を心がけてください。「いつ」「何を」実行するのかをドキュメントしてください。「なぜ」を含める必要性はほとんどないはずです。 どうしても「なぜ」が必要であれば「長い説明 (long description)」に記述してください。
 
 関数やクロージャは「三人称単数」の要素です。説明を記述する場合も「三人称単数の動詞」を使用してください。
 
@@ -69,7 +70,7 @@ Functions and closures are <em>third-person singular</em> elements, meaning <em>
 </ul>
 [/tip]
  -->
-ヒント: 三人称単数の動詞の活用に悩む場合は、関数やクロージャの説明を書く場合、先頭に「It」をつけて考えてください。
+ヒント: 三人称単数の動詞の活用に悩む場合は、関数、フック、クラス、メソッドの説明を書く場合、先頭に「It」をつけて考えてください。
 - 正: “(It) Does something.”
 - 誤: “(It) Do something.”
 
@@ -109,9 +110,9 @@ Descriptive elements should be written as complete sentences. The one exception 
 
 The serial (Oxford) comma should be used when listing elements in summaries, descriptions, and parameter or return descriptions.
  -->
-説明文の要素は完全な文として記述してください。例外はファイルヘッダーの Summary です。この Summary は文章ではなく「タイトル」を意図しているためです。
+説明文の要素は完全な文として記述してください。例外はファイルヘッダーの 要約 (summary) です。この要約は文章ではなく「タイトル」を意図しているためです。
 
-Summary、Description、Parameter や Return の Description 内で要素を並べる際には serial comma (Oxford comma) を使用してください。(例: A, B and C)
+要約、説明 (description)、Parameter や Return の説明内で要素を並べる際には serial comma (Oxford comma) を使用してください。(例: A, B and C)
 
 <!-- 
 <h2>Formatting Guidelines</h2>
@@ -126,22 +127,22 @@ The following guidelines should be followed to ensure that the content of the do
 <!-- 
 <strong>Short descriptions:</strong>
  -->
-**短い説明:**
+**短い説明 (Short description):**
 
 <!-- 
 Short descriptions should be a single sentence and contain no markup of any kind. If the description refers to an HTML element or tag, then it should be written as "link tag", not "&lt;a&gt;". For example: "Fires when printing the link tag in the header".
  -->
-短い説明は単一の文で書き、マークアップしないでください。説明が HTML 要素やタグを参照する場合は、「&lt;a&gt;」ではなく、「link タグ」のように記述してください。例: “Fires when printing the link tag in the header”。
+「短い説明」は単一の文で書き、マークアップしないでください。説明が HTML 要素やタグを参照する場合は、「&lt;a&gt;」ではなく、「link タグ」のように記述してください。例: “Fires when printing the link tag in the header”。
 
 <!-- 
 <strong>Long descriptions:</strong>
  -->
-**長い説明:**
+**長い説明 (Long description):**
 
 <!-- 
 Markdown can be used, if needed, in a long description.
  -->
-長い説明では必要であればマークダウンを使用できます。
+「長い説明」では、必要であればマークダウンを使用できます。
 
 <!-- 
 <strong>@param and @return tags:</strong>
@@ -212,13 +213,13 @@ Functions should be formatted as follows:
 	<li><strong>@fires:</strong> Event fired by the function. Events tied to a specific class should list the class name.</li>
 	<li><strong>@listens:</strong> Events this function listens for. An event must be prefixed with the event namespace. Events tied to a specific class should list the class name.</li>
 	<li><strong>@global:</strong> Marks this function as a global function to be included in the global namespace.</li>
-	<li><strong>@param:</strong> Give a brief description of the variable; denote particulars (e.g. if the variable is optional, its default) with <a href="http://usejsdoc.org/tags-param.html">JSDoc @param syntax</a>. Use a period at the end.</li>
+	<li><strong>@param:</strong> Give a brief description of the variable; denote particulars (e.g. if the variable is optional, its default) with <a href="http://jsdoc.app/tags-param.html">JSDoc @param syntax</a>. Use a period at the end.</li>
 	<li><strong>@yield:</strong> For <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*">generator functions</a>, a description of the values expected to be yielded from this function. As with other descriptions, include a period at the end.</li>
 	<li><strong>@return:</strong> Note the period after the description.</li>
 </ul>
  -->
 - **要約:** 関数の目的を説明する簡潔な単一の文。末尾はピリオド。
-- **説明:** Summary を補足する詳細な説明。文の末尾はピリオド。
+- **説明:** 要約を補足する詳細な説明。文の末尾はピリオド。
 - **@deprecated x.x.x:** 非推奨になった関数のみに使用する。どの WordPress バージョンで非推奨になったかを示す常に3組の数字 (例 @deprecated 3.6.0) と代替の関数。
 - **@since x.x.x:** 最初に導入されたバージョンを表す3組の数字 (例: @since 3.6.0)。大きな変更が合った場合は、履歴の目的で、追加の @since タグ、バージョン、説明を追加する。 
 - **@access:** 関数が private の場合のみ使用。関数が private なら、内部使用専用であり、コードリファレンスにドキュメントされない。
@@ -233,7 +234,7 @@ Functions should be formatted as follows:
 - **@fires:** 関数から発火されるイベント。特定のクラスに紐付けられたイベントはクラス名をリストしなければならない。
 - **@listens:** この関数が期待するイベント。イベントはイベント名前空間の接頭辞を付ける必要がある。特定のクラスに紐付けられたイベントはクラス名をリストしなければならない。
 - **@global:** この関数をグローバル名前空間に含まれるグローバル関数としてマークする。
-- **@param:** 変数の簡単な説明。[JSDoc @param 構文](http://usejsdoc.org/tags-param.html)を使用して、例えば、変数がオプションなら、そのデフォルト値などの事項を記述する。最後はピリオド。
+- **@param:** 変数の簡単な説明。[JSDoc @param 構文](http://jsdoc.app/tags-param.html)を使用して、例えば、変数がオプションなら、そのデフォルト値などの事項を記述する。最後はピリオド。
 - **@yield:** [ジェネレータ関数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) に関して、この関数から yield されると期待する値の説明。他の説明同様、最後はピリオドで終える。
 - **@return:** 注意: 説明の末尾はピリオド
 
@@ -361,7 +362,7 @@ Backbone の `initialize` 関数は次のようにフォーマットしてくだ
 </ul>
  -->
 - **要約:** 関数の目的を説明する簡潔な単一の文。末尾はピリオド。
-- **説明:** Summary を補足する詳細な説明。文の末尾はピリオド。
+- **説明:** 要約を補足する詳細な説明。文の末尾はピリオド。
 - **@deprecated x.x.x:** 非推奨になったクラスのみに使用する。どの WordPress バージョンで非推奨になったかを示す常に3組の数字 (例 @deprecated 3.6.0) と代替のクラス。
 - **@since x.x.x:** 最初に導入されたバージョンを表す3組の数字 (例: @since 3.6.0)。大きな変更が合った場合は、履歴の目的で、追加の @since タグ、バージョン、説明を追加する。 
 - **@constructs:** この関数をクラスのコンストラクタとしてマークする。
