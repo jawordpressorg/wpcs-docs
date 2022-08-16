@@ -4,17 +4,17 @@
 # PHP ドキュメント規約
 
 <!-- 
-WordPress uses a customized documentation schema that draws inspiration from PHPDoc, an evolving standard for providing documentation to PHP code, which is maintained by <a href="http://phpdoc.org/">phpDocumentor</a>.
+WordPress uses a customized documentation schema that draws inspiration from PHPDoc, an evolving standard for providing documentation to PHP code, which is maintained by [phpDocumentor](http://phpdoc.org/).
  -->
 WordPress では PHPDoc をベースにしたカスタムのドキュメントスキーマを使用しています。PHPDoc は現在、[phpDocumentor](http://phpdoc.org/) によって管理されている、策定中の PHP プログラム用のドキュメント標準です。
 
 <!-- 
-In some special cases – such as WordPress' implementation of hash notations – standards are derived from the <a href="https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md">draft PSR-5 recommendations</a>. This does not mean we are attempting to be "PSR-5 compliant" at this time, it simply means that we've adopted PSR-5 recommendations <em>in part</em>.
+In some special cases - such as WordPress' implementation of hash notations - standards are derived from the [draft PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md). This does not mean we are attempting to be "PSR-5 compliant" at this time, it simply means that we've adopted PSR-5 recommendations _in part_.
  -->
 一部の規則、たとえば WordPress のハッシュ記法の実装などでは [ドラフト版 PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md) から規約を採用していますが、現時点で WordPress が 「PSR-5 互換」を目指しているわけではありません。単に「ある部分」で PSR-5 recommendations を採用したに過ぎません。
 
 <!-- 
-<h2>What Should Be Documented</h2>
+## What Should Be Documented
  -->
 ## 何をドキュメントすべきか
 
@@ -29,16 +29,14 @@ The following is a list of what should be documented in WordPress files:
 以下のリストは WordPress ファイルでドキュメントする項目の例です。
 
 <!-- 
-<ul>
- 	<li>Functions and class methods</li>
- 	<li>Classes</li>
- 	<li>Class members (including properties and constants)</li>
- 	<li>Requires and includes</li>
- 	<li>Hooks (actions and filters)</li>
- 	<li>Inline comments</li>
- 	<li>File headers</li>
- 	<li>Constants</li>
-</ul>
+- Functions and class methods
+- Classes
+- Class members (including properties and constants)
+- Requires and includes
+- Hooks (actions and filters)
+- Inline comments
+- File headers
+- Constants
  -->
 - 関数、およびクラスのメソッド
 - クラス
@@ -50,12 +48,12 @@ The following is a list of what should be documented in WordPress files:
 - 定数
 
 <!-- 
-<h3>Documenting Tips</h3> 
+### Documenting Tips
  -->
 ### ドキュメントのヒント 
 
 <!-- 
-<h4>Language</h4>
+#### Language
  -->
 #### 文体
 
@@ -65,16 +63,17 @@ Summaries (formerly Short Descriptions) should be clear, simple, and brief. Avoi
 「Summary」(概要。以前の Short Description) を書く場合には、明確でシンプルな、短い文を心がけてください。ドキュメントする要素が「なぜ」存在するのかではなく、「いつ」「何を」実行するのかを記述してください。
 
 <!-- 
-A function, hook, class, or method is a <em>third-person singular</em> element, meaning that <em>third-person singular verbs</em> should be used to describe what each does.
+A function, hook, class, or method is a _third-person singular_ element, meaning that _third-person singular verbs_ should be used to describe what each does.
  -->
 関数、フック、クラス、メソッドは「三人称単数」の要素です。説明を記述する場合も「三人称単数の動詞」を使用してください。
 
 <!-- 
-[tip]Need help remembering how to conjugate for third-person singular verbs? Imagine prefixing the function, hook, class, or method summary with "It":
-<ul>
- 	<li><em>Good:</em> "(It) Does something."</li>
- 	<li><em>Bad:</em> "(It) Do something."</li>
-</ul>
+[tip]
+Need help remembering how to conjugate for third-person singular verbs? Imagine prefixing the function, hook, class, or method summary with "It":
+
+- _Good_: "(It) Does something."
+- _Bad_: "(It) Do something."
+
 [/tip]
 -->
 ヒント: 三人称単数の動詞の活用に悩む場合は、関数、フック、クラス、メソッドの Summary を書く際、先頭に「It」をつけて考えてください。
@@ -87,26 +86,15 @@ Summary examples:
 Summary の例:
 
 <!-- 
-<ul>
- 	<li><strong>Functions:</strong> <u>What</u> does the function do?
-<ul>
- 	<li>Good: <em>Displays the last modified date for a post.</em></li>
- 	<li>Bad: <em>Display the date on which the post was last modified.</em></li>
-</ul>
-</li>
- 	<li><strong>Filters:</strong> <u>What</u> is being filtered?
-<ul>
- 	<li>Good: <em>Filters the post content.</em></li>
- 	<li>Bad: <em>Lets you edit the post content that is output in the post template.</em></li>
-</ul>
-</li>
- 	<li><strong>Actions:</strong> <u>When</u> does an action fire?
-<ul>
- 	<li>Good: <em>Fires after most of core is loaded, and the user is authenticated.</em></li>
- 	<li>Bad: <em>Allows you to register custom post types, custom taxonomies, and other general housekeeping tasks after a lot of WordPress core has loaded.</em></li>
-</ul>
-</li>
-</ul>
+- **Functions**: _What_ does the function do?
+    - Good: _Displays the last modified date for a post._
+    - Bad: _Display the date on which the post was last modified._
+- **Filters**: _What_ is being filtered?
+    - Good: _Filters the post content._
+    - Bad: _Lets you edit the post content that is output in the post template._
+- **Actions:** _When_ does an action fire?
+    - Good: _Fires after most of core is loaded, and the user is authenticated.
+    - Bad: _Allows you to register custom post types, custom taxonomies, and other general housekeeping tasks after a lot of WordPress core has loaded.
  -->
 - **関数:** 「何を」するのか?
   - 正: Displays the last modified date for a post. (投稿の最終更新日を表示する)
@@ -119,7 +107,7 @@ Summary の例:
   - 誤: Allows you to register custom post types, custom taxonomies, and other general housekeeping tasks after a lot of WordPress core has loaded. (大部分の WordPress コアがロードされた後で、カスタム投稿タイプ、カスタムタクソノミー、その他の汎用の整理用タスクを登録できます)
 
 <!-- 
-<h4>Grammar</h4>
+#### Grammar
  -->
 #### 文法
 
@@ -134,55 +122,57 @@ The serial (Oxford) comma should be used when listing elements in summaries, des
 概要、説明、パラメータや戻り値の説明内で複数の要素を書く際には serial comma (Oxford comma) を使用してください。(例: A, B and C)
 
 <!-- 
-<h4>Miscellaneous</h4>
+#### Miscellaneous
  -->
 #### その他
 
 <!-- 
-<strong>@since:</strong> The recommended tool to use when searching for the version something was added to WordPress is <a href="http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate">svn blame</a>. An additional resource for older hooks is the <a href="http://adambrown.info/p/wp_hooks">WordPress Hooks Database</a>.
+**`@since`**: The recommended tool to use when searching for the version something was added to WordPress is [`svn blame`](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate). An additional resource for older hooks is the [WordPress Hooks Database](http://adambrown.info/p/wp_hooks).
  -->
 **@since**: WordPress に追加されたバージョン番号等を調べるには「[svn blame](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate)」の使用を推奨します。補完するツールとして古いフックの場合には「[WordPress Hooks Database](http://adambrown.info/p/wp_hooks)」も使用してください。
 
 <!-- 
-If the version number cannot be determined after using these tools, use <code>@since Unknown</code>.
+If the version number cannot be determined after using these tools, use `@since Unknown`.
  -->
 バージョン番号を特定できない場合は、「`@since Unknown`」を使用してください。
 
 <!-- 
-Anything ported over from WPMU should use <code>@since MU (3.0.0)</code>. Existing <code>@since MU (3.0.0)</code> tags should not be changed.
+Anything ported over from WPMU should use `@since MU (3.0.0)`. Existing `@since MU (3.0.0)` tags should not be changed.
  -->
 WPMU からの移植は「`@since MU (3.0.0)`」を使用してください。既存の「`@since MU (3.0.0)`」タグは変更しないでください。
 
 <!-- 
-<strong>Code Refactoring:</strong> It is permissible to space out the specific action or filter lines being documented to meet the coding standards, but do not refactor other code in the file.
+**Code Refactoring**: It is permissible to space out the specific action or filter lines being documented to meet the coding standards, but do not refactor other code in the file.
  -->
 **コードのリファクタリング**: コーディング規約に合わせるため特定のアクションやフックの行にスペースを挿入、削除しても構いませんが、ファイルの他の部分はリファクタリングしないでください。
 
 <!-- 
-<h3>Formatting Guidelines</h3>
+### Formatting Guidelines
  -->
 ### フォーマットガイドライン
 
 <!-- 
 [info]
-WordPress' inline documentation standards for PHP are specifically tailored for optimum output on the <a href="https://developer.wordpress.org/reference/">official Code Reference</a>. As such, following the standards in core and formatting as described below are <em>extremely</em> important to ensure expected output.
+WordPress' inline documentation standards for PHP are specifically tailored for optimum output on the [official Code Reference](https://developer.wordpress.org/reference/). As such, following the standards in core and formatting as described below are _extremely_ important to ensure expected output.
 [/info]
  -->
 **重要**: WordPress の「PHP インラインドキュメント規約」は最適な「[公式コードリファレンス](https://developer.wordpress.org/reference/)」が出力されるよう調整されています。そのため、コア内で規約に準拠し、以下の説明どおりにドキュメントをフォーマットすることは正しい出力のために**極めて**重要です。
 
 <!-- 
-<h4>General</h4>
+#### General
  -->
 #### 全般
 
 <!--
 DocBlocks should directly precede the hook, action, function, method, or class line. There should not be any opening/closing tags or other things between the DocBlock and the declarations to prevent the parser becoming confused.
-<h4>Summary (formerly Short Description)</h4>
-No HTML markup or Markdown of any kind should be used in the summary. If the text refers to an HTML element or tag, then it should be written as "image tag" or "img" element, not "&lt;img&gt;". For example:
-<ul>
- 	<li>Good: <em>Fires when printing the link tag in the header.</em></li>
- 	<li>Bad: <em>Fires when printing the &lt;link&gt; tag in the header.</em></li>
-</ul>
+
+#### Summary (formerly Short Description)
+
+No HTML markup or Markdown of any kind should be used in the summary. If the text refers to an HTML element or tag, then it should be written as "image tag" or "img" element, not "`<img>`". For example:
+
+- Good: _Fires when printing the link tag in the header._
+- Bad: _Fires when printing the `<link>` tag in the header._
+
 Inline PHPDoc tags may be used.
 -->
 DocBlock はフック、アクション、関数、メソッド、クラスの行の直前に記述してください。DocBlock とこれらの定義との間には開始タグ、終了タグを含め何も書かないでください。パーサーが混乱します。
@@ -197,7 +187,8 @@ Summary では HTML、Markdown、その他のマークアップを使用しな�
 インライン PHPDoc タグは使用できます。
 
 <!--
-<h4>Description (formerly Long Description)</h4>
+#### Description (formerly Long Description)
+
 HTML markup should never be used outside of code examples, though Markdown can be used, as needed, in the description.
 -->
 #### Description (旧称 Long Description)
@@ -210,79 +201,79 @@ HTML markup should never be used outside of code examples, though Markdown can b
 1. リスト
 
 <!--
-Use a hyphen (-) to create an unordered list, with a blank line before and after.
+    Use a hyphen (-) to create an unordered list, with a blank line before and after.
 -->
-順序のないリストの場合はハイフン「-」を使用してください。リストの前後には空白行を置いてください。
+    順序のないリストの場合はハイフン「-」を使用してください。リストの前後には空白行を置いてください。
 
-```php
- * Description which includes an unordered list:
- *
- * - This is item 1.
- * - This is item 2.
- * - This is item 3.
- *
- * The description continues on ...
-```
+    ```php
+     * Description which includes an unordered list:
+     *
+     * - This is item 1.
+     * - This is item 2.
+     * - This is item 3.
+     *
+     * The description continues on ...
+    ```
+<!-- 
+    Use numbers to create an ordered list, with a blank line before and after.
+ -->
+    順序付きのリストの場合は数字を使用してください。リストの前後には空白行を置いてください。
+
+    ```php
+     * Description which includes an ordered list:
+     *
+     * 1. This is item 1.
+     * 2. This is item 2.
+     * 3. This is item 3.
+     *
+     * The description continues on ...
+    ```
 
 <!--
-Use numbers to create an ordered list, with a blank line before and after.
--->
-順序付きのリストの場合は数字を使用してください。リストの前後には空白行を置いてください。
-
-```php
- * Description which includes an ordered list:
- *
- * 1. This is item 1.
- * 2. This is item 2.
- * 3. This is item 3.
- *
- * The description continues on ...
-```
-
-<!--
-2. Code samples would be created by indenting every line of the code by 4 spaces, with a blank line before and after. Blank lines in code samples also need to be indented by four spaces. Note that examples added in this way will be output in &lt;pre&gt; tags and <em>not</em> syntax-highlighted.
+2. Code samples would be created by indenting every line of the code by 4 spaces, with a blank line before and after. Blank lines in code samples also need to be indented by four spaces. Note that examples added in this way will be output in `<pre>` tags and _not_ syntax-highlighted.
 -->
 2. コードの例では、すべての行を4個のスペースでインデントし、コード全体の前後には空白行を置いてください。コードの途中の空白行も、4個のスペースでインデントしてください。なおこの方法で追加された例は `<pre>` タグで出力され、シンタックスハイライトは**適用されません**。
 
-```php
- * Description including a code sample:
- *
- *    $status = array(
- *        'draft'   => __( 'Draft' ),
- *        'pending' => __( 'Pending Review' ),
- *        'private' => __( 'Private' ),
- *        'publish' => __( 'Published' )
- *    );
- *
- * The description continues on ...
-```
+    ```php
+     * Description including a code sample:
+     *
+     *    $status = array(
+     *        'draft'   => __( 'Draft' ),
+     *        'pending' => __( 'Pending Review' ),
+     *        'private' => __( 'Private' ),
+     *        'publish' => __( 'Published' )
+     *    );
+     *
+     * The description continues on ...
+    ```
 
 <!--
-3. Links in the form of URLs, such as related Trac tickets or other documentation, should be added in the appropriate place in the DocBlock using the <code>@link</code> tag:
+3. Links in the form of URLs, such as related Trac tickets or other documentation, should be added in the appropriate place in the DocBlock using the `@link` tag:
 -->
 3. 関連する Trac チケットや他のドキュメントへの URL 形式のリンクは DocBlock 内の適切な場所に `@link` タグを使用して追加してください。
 
-```php
- * Description text.
- *
- * @link https://core.trac.wordpress.org/ticket/20000
-```
+    ```php
+     * Description text.
+     *
+     * @link https://core.trac.wordpress.org/ticket/20000
+    ```
 
 <!--
-<h4><code>@since</code> Section (Changelogs)</h4>
-Every function, hook, class, and method should have a corresponding <code>@since</code> version associated with it (more on that below).
+#### `@since` Section (Changelogs)
+
+Every function, hook, class, and method should have a corresponding `@since` version associated with it (more on that below).
 -->
 #### @since セクション (変更履歴)
 
 すべての関数、フック、クラス、メソッドには関連する `@since` バージョンを記述してください。詳細は後述します。
 
 <!--
-No HTML should be used in the descriptions for <code>@since</code> tags, though limited Markdown can be used as necessary, such as for adding backticks around variables, arguments, or parameter names, e.g. <code>`$variable`</code>
+No HTML should be used in the descriptions for `@since` tags, though limited Markdown can be used as necessary, such as for adding backticks around variables, arguments, or parameter names, e.g. `$variable`.
 -->
 `@since` タグの説明で HTML は使えません。いくつかの Markdown は必要に応じて使用できます。たとえば変数名、引数名、パラメータ名をバッククォートで囲むことができます。例: `$variable`
 
 <!--
-Versions should be expressed in the 3-digit <code>x.x.x</code> style:
+Versions should be expressed in the 3-digit `x.x.x` style:
 -->
 バージョンは 3組の数字「x.x.x」 で記述してください。
 
@@ -291,19 +282,19 @@ Versions should be expressed in the 3-digit <code>x.x.x</code> style:
 ```
 
 <!--
-If significant changes have been made to a function, hook, class, or method, additional <code>@since</code> tags, versions, and descriptions should be added to provide a changelog for that function.
+If significant changes have been made to a function, hook, class, or method, additional `@since` tags, versions, and descriptions should be added to provide a changelog for that function.
 -->
-関数、フック、クラス、メソッドに重大な変更がある場合には、機能の変更履歴を残す意味で追加の @since タグ、バージョン、説明を加えてください。
+関数、フック、クラス、メソッドに重大な変更がある場合には、機能の変更履歴を残す意味で追加の `@since` タグ、バージョン、説明を加えてください。
 
 <!--
 "Significant changes" include but are not limited to:
-<ul>
- 	<li>Adding new arguments or parameters</li>
- 	<li>Required arguments becoming optional</li>
- 	<li>Changing default/expected behaviors</li>
- 	<li>Functions or methods becoming wrappers for new APIs</li>
-</ul>
-PHPDoc supports multiple <code>@since</code> versions in DocBlocks for this explicit reason. When adding changelog entries to the <code>@since</code> block, a version should be cited, and a description should be added in sentence case and form and end with a period:
+
+- Adding new arguments or parameters.
+- Required arguments becoming optional.
+- Changing default/expected behaviors.
+- Functions or methods becoming wrappers for new APIs.
+
+PHPDoc supports multiple `@since` versions in DocBlocks for this explicit reason. When adding changelog entries to the `@since` block, a version should be cited, and a description should be added in sentence case and form and end with a period:
 -->
 たとえば「重大な変更」には以下のような項目が含まれますが、これに限りません。
 
@@ -321,37 +312,16 @@ PHPDoc supports multiple <code>@since</code> versions in DocBlocks for this expl
 ```
 
 <!--
-<h4>Other Descriptions</h4>
-<code>@param</code>, <code>@type</code>, <code>@return</code>: No HTML should be used in the descriptions for these tags, though limited Markdown can be used as necessary, such as for adding backticks around variables, e.g. <code>`$variable`</code>.
-<ul>
- 	<li>Inline <code>@see</code> tags can also be used to auto-link hooks in core:
-<ul>
- 	<li>Hooks, e.g. <code>{@see 'save_post'}</code></li>
- 	<li>Dynamic hooks, e.g. <code>{@see '$old_status_to_$new_status'}</code> (Note that any extra curly braces have been removed inside the quotes)</li>
-</ul>
-</li>
- 	<li>Default or available values should use single quotes, e.g. 'draft'. Translatable strings should be identified as such in the description.</li>
- 	<li>HTML elements and tags should be written as "audio element" or "link tag".</li>
-</ul>
-<h4>Line wrapping</h4>
-DocBlock text should wrap to the next line after 80 characters of text. If the DocBlock itself is indented on the left 20 character positions, the wrap could occur at position 100, but should not extend beyond a total of 120 characters wide.
-<h2>DocBlock Formatting</h2>
-The examples provided in each section below show the expected DocBlock content and tags, as well as the exact formatting. Use spaces inside the DocBlock, not tabs, and ensure that items in each tag group are aligned according to the examples.
-<h3>1. Functions &amp; Class Methods</h3>
-Functions and class methods should be formatted as follows:
-<ul>
- 	<li><strong>Summary:</strong> A brief, one sentence explanation of the purpose of the function spanning a maximum of two lines. Use a period at the end.</li>
- 	<li><strong>Description:</strong> A supplement to the summary, providing a more detailed description. Use a period at the end of sentences.</li>
- 	<li><strong>@ignore</strong> Used when an element is meant only for internal use and should be skipped from parsing.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
- 	<li><strong>@access:</strong> Only used for core-only functions or classes implementing "private" core APIs. If the element is private it will be output with a message stating its intention for internal use.</li>
- 	<li><strong>@see:</strong> Reference to a function, method, or class that is heavily-relied on within. See the note above about inline <code>@see</code> tags for expected formatting.</li>
- 	<li><strong>@link:</strong> URL that provides more information. This should never been used to reference another function, hook, class, or method, see <code>@see</code>.</li>
- 	<li><strong>@global:</strong> List PHP globals that are used within the function or method, with an optional description of the global. If multiple globals are listed, they should be aligned by type, variable, and description, with each other as a group.</li>
- 	<li><strong>@param:</strong> Note if the parameter is <em>Optional</em> before the description, and include a period at the end. The description should mention accepted values as well as the default. For example: <em>Optional. This value does something. Accepts 'post', 'term', or empty. Default empty.</em></li>
- 	<li><strong>@return:</strong> Should contain all possible return types, and a description for each. Use a period at the end. Note: <code>@return</code> void should not be used outside of the default bundled themes.</li>
-</ul>
--->
+#### Other Descriptions
+
+`@param`, `@type`, `@return`: No HTML should be used in the descriptions for these tags, though limited Markdown can be used as necessary, such as for adding backticks around variables, e.g. `$variable`.
+
+- Inline `@see` tags can also be used to auto-link hooks in core:
+    - Hooks, e.g. `{@see 'save_post'}`
+    - Dynamic hooks, e.g. `{@see '$old_status_to_$new_status'}` (Note that any extra curly braces have been removed inside the quotes)
+- Default or available values should use single quotes, e.g. 'draft'. Translatable strings should be identified as such in the description.
+- HTML elements and tags should be written as "audio element" or "link tag".
+ -->
 #### その他の説明
 
 `@param`、`@type`、`@return`: タグの説明で HTML は使えません。いくつかの Markdown は必要に応じて使用できます。たとえばバッククォートで変数名を囲むことができます。例: `$variable`
@@ -362,14 +332,40 @@ Functions and class methods should be formatted as follows:
 - デフォルト値や指定可能な値にはシングルクォートを使用してください。例:「’draft’」。翻訳対象の文字列は説明内で明示してください。
 - HTML 要素やタグは「audio element」や「link tag」のように記述してください。
 
+<!-- 
+#### Line wrapping
+
+DocBlock text should wrap to the next line after 80 characters of text. If the DocBlock itself is indented on the left 20 character positions, the wrap could occur at position 100, but should not extend beyond a total of 120 characters wide.
+ -->
 #### 行の折り返し
 
 DocBlock のテキストは80文字分で次の行に折り返してください。例えば DocBlock が20文字分インデントしている場合には、100文字目の位置で折り返します。120文字目以上は超えないでください。
 
+<!-- 
+## DocBlock Formatting
+
+The examples provided in each section below show the expected DocBlock content and tags, as well as the exact formatting. Use spaces inside the DocBlock, not tabs, and ensure that items in each tag group are aligned according to the examples.
+ -->
 ## DocBlock フォーマット
 
 以下の各セクションの例では、期待する DocBlock の内容とタグを正しいフォーマットで記述しています。DocBlock の中ではタブでなく、スペースを使用してください。各タググループの内容は例と同様に並べてください。
 
+<!--
+### 1. Functions &amp; Class Methods
+
+Functions and class methods should be formatted as follows:
+
+- **Summary**: A brief, one sentence explanation of the purpose of the function spanning a maximum of two lines. Use a period at the end.
+- **Description**: A supplement to the summary, providing a more detailed description. Use a period at the end of sentences.
+- **`@ignore`**: Used when an element is meant only for internal use and should be skipped from parsing.
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
+- **`@access`**: Only used for core-only functions or classes implementing "private" core APIs. If the element is private it will be output with a message stating its intention for internal use.
+- **`@see`**: Reference to a function, method, or class that is heavily-relied on within. See the note above about inline `@see` tags for expected formatting.
+- **`@link`**: URL that provides more information. This should never been used to reference another function, hook, class, or method, see `@see`.
+- **`@global`**: List PHP globals that are used within the function or method, with an optional description of the global. If multiple globals are listed, they should be aligned by type, variable, and description, with each other as a group.
+- **`@param`**: Note if the parameter is _Optional_ before the description, and include a period at the end. The description should mention accepted values as well as the default. For example: _Optional. This value does something. Accepts 'post', 'term', or empty. Default empty._
+- **`@return`**: Should contain all possible return types, and a description for each. Use a period at the end. Note: `@return void` should not be used outside of the default bundled themes.
+-->
 ### 1. 関数およびクラスのメソッド #1. 関数およびクラスのメソッド
 
 関数およびクラスのメソッドは次のようにフォーマットしてください。
@@ -405,8 +401,11 @@ DocBlock のテキストは80文字分で次の行に折り返してください
 ```
 
 <!--
-<h4>1.1 Parameters That Are Arrays</h4>
-Parameters that are an array of arguments should be documented in the "originating" function only, and cross-referenced via an <code>@see</code> tag in corresponding DocBlocks.
+#### 1.1 Parameters That Are Arrays
+
+Parameters that are an array of arguments should be documented in the "originating" function only, and cross-referenced via an `@see` tag in corresponding DocBlocks.
+
+Array values should be documented using WordPress' flavor of hash notation style similar to how [Hooks](http://make.wordpress.org/core/handbook/inline-documentation-standards/php-documentation-standards/#4-hooks-actions-and-filters) can be documented, each array value beginning with the `@type` tag, and taking the form of:
 -->
 #### 1.1 配列パラメータ
 
@@ -426,7 +425,7 @@ Parameters that are an array of arguments should be documented in the "originati
 ```
 
 <!--
-An example of an "originating" function and re-use of an argument array is <a href="https://core.trac.wordpress.org/browser/branches/4.0/src/wp-includes/http.php#L115"><code>wp_remote_request|post|get|head()</code></a>.
+An example of an "originating" function and re-use of an argument array is [`wp_remote_request|post|get|head()`](https://core.trac.wordpress.org/browser/tags/6.0/src/wp-includes/http.php/#L114).
 -->
 最初の送信を行う関数と、配列引数の再利用については [wp_remote_request|post|get|head()](https://core.trac.wordpress.org/browser/branches/4.0/src/wp-includes/http.php#L115) を参照してください。
 
@@ -437,7 +436,7 @@ An example of an "originating" function and re-use of an argument array is <a hr
  *
  * Description.
  *
- * @since x.x.x 
+ * @since x.x.x
  *
  * @param type  $var Description.
  * @param array $args {
@@ -474,9 +473,11 @@ An example of an "originating" function and re-use of an argument array is <a hr
 ```
 
 <!--
-In most cases, there is no need to mark individual arguments in a hash notation as <em>optional</em>, as the entire array is usually optional. Specifying "Optional." in the hash notation description should suffice. In the case where the array is NOT optional, individual key/value pairs may be optional and should be marked as such as necessary.
-<h4>1.2 Deprecated Functions</h4>
-If the function is deprecated and should not be used any longer, the <code>@deprecated</code> tag, along with the version and description of what to use instead, should be added. Note the additional use of an <code>@see</code> tag – the Code Reference uses this information to attempt to link to the replacement function.
+In most cases, there is no need to mark individual arguments in a hash notation as _optional_, as the entire array is usually optional. Specifying "Optional." in the hash notation description should suffice. In the case where the array is NOT optional, individual key/value pairs may be optional and should be marked as such as necessary.
+
+#### 1.2 Deprecated Functions
+
+If the function is deprecated and should not be used any longer, the `@deprecated` tag, along with the version and description of what to use instead, should be added. Note the additional use of an `@see` tag - the Code Reference uses this information to attempt to link to the replacement function.
 -->
 ほとんどの場合、ハッシュ記法内の個々の引数に「optional」を付ける必要はありません。これは配列全体がオプションの場合が多いためです。配列がオプションでなく必須の場合で、個々の key と value のペアがオプションの場合には、必要に応じて「Optional.」を記述してください。
 
@@ -501,13 +502,13 @@ If the function is deprecated and should not be used any longer, the <code>@depr
 ```
 
 <!--
-<h3>2. Classes</h3>
+### 2. Classes
+
 Class DocBlocks should be formatted as follows:
-<ul>
- 	<li><strong>Summary:</strong> A brief, one sentence explanation of the <strong>purpose</strong> of the class spanning a maximum of two lines. Use a period at the end.</li>
- 	<li><strong>Description:</strong> A supplement to the summary, providing a more detailed description. Use a period at the end.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
-</ul>
+
+- **Summary**: A brief, one sentence explanation of the **purpose** of the class spanning a maximum of two lines. Use a period at the end.
+- **Description**: A supplement to the summary, providing a more detailed description. Use a period at the end.
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
 -->
 <h3>2. クラス</h3>
 
@@ -545,14 +546,15 @@ If documenting a sub-class, it's also helpful to include an `@see` tag reference
 ```
 
 <!--
-<h4>2.1 Class Members</h4>
-<h5>2.1.1 Properties</h5>
+#### 2.1 Class Members
+
+##### 2.1.1 Properties
+
 Class properties should be formatted as follows:
-<ul>
- 	<li><strong>Summary:</strong> Use a period at the end.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
- 	<li><strong>@var:</strong> Formatted the same way as <code>@param</code>, though the description may be omitted.</li>
-</ul>
+
+- **Summary**: Use a period at the end.
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
+- **`@var`**: Formatted the same way as `@param`, though the description may be omitted.
 -->
 #### 2.1 クラスのメンバー
 
@@ -574,12 +576,11 @@ Class properties should be formatted as follows:
 ```
 
 <!--
-<h5>2.1.2 Constants</h5>
-<ul>
- 	<li><strong>Summary:</strong> Use a period at the end.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
- 	<li><strong>@var:</strong> Formatted the same way as <code>@param</code>, though the description may be omitted.</li>
-</ul>
+##### 2.1.2 Constants
+
+- **Summary**: Use a period at the end.</li>
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
+- **`@var`**: Formatted the same way as `@param`, though the description may be omitted.
 -->
 ##### 2.1.2 定数
 
@@ -598,8 +599,9 @@ const NAME = value;
 ```
 
 <!--
-<h3>3. Requires and Includes</h3>
-Files required or included should be documented with a summary description DocBlock. Optionally, this may apply to inline <code>get_template_part()</code> calls as needed for clarity.
+### 3. Requires and Includes
+
+Files required or included should be documented with a summary description DocBlock. Optionally, this may apply to inline `get_template_part()` calls as needed for clarity.
 -->
 ### 3. require と include 
 
@@ -613,16 +615,17 @@ require_once( ABSPATH . WPINC . '/filename.php' );
 ```
 
 <!--
-<h3>4. Hooks (Actions and Filters)</h3>
-Both action and filter hooks should be documented on the line immediately preceding the call to <code>do_action()</code> or <code>do_action_ref_array()</code>, or <code>apply_filters()</code> or <code>apply_filters_ref_array()</code>, and formatted as follows:
-<ul>
- 	<li><strong>Summary:</strong> A brief, one line explanation of the purpose of the hook. Use a period at the end.</li>
- 	<li><strong>Description:</strong> A supplemental description to the summary, if warranted.</li>
- 	<li><strong>@ignore</strong> Used when a hook is meant only for internal use and should be skipped from parsing.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
- 	<li><strong>@param:</strong> If the parameter is an array of arguments, document each argument using a hash notation (described above in the <em>Parameters That Are Arrays</em> section), and include a period at the end of each line.</li>
-</ul>
-Note that <code>@return</code> is <em>not</em> used for hook documentation, because action hooks return nothing, and filter hooks always return their first parameter.
+### 4. Hooks (Actions and Filters)
+
+Both action and filter hooks should be documented on the line immediately preceding the call to `do_action()` or `do_action_ref_array()`, or `apply_filters()` or `apply_filters_ref_array()`, and formatted as follows:
+
+- **Summary**: A brief, one line explanation of the purpose of the hook. Use a period at the end.
+- **Description**: A supplemental description to the summary, if warranted.
+- **`@ignore`**: Used when a hook is meant only for internal use and should be skipped from parsing.
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
+- **`@param`**: If the parameter is an array of arguments, document each argument using a hash notation (described above in the _Parameters That Are Arrays_ section), and include a period at the end of each line.
+
+Note that `@return` is _not_ used for hook documentation, because action hooks return nothing, and filter hooks always return their first parameter.
 -->
 ### 4. フック (アクションとフィルター)
 
@@ -661,8 +664,10 @@ If a hook is in the middle of a block of HTML or a long conditional, the DocBloc
 フックが HTML ブロックや長い条件の途中にある場合、DocBlock は HTML ブロックや条件の開始行の直前に置いてください。この結果、連続した HTML 行の途中に改行や PHP タグを含める形になっても構いません。
 
 <!--
-Tools to use when searching for the version a hook was added are <a href="http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate">svn blame</a>, or the <a href="http://adambrown.info/p/wp_hooks">WordPress Hooks Database</a> for older hooks. If, after using these tools, the version number cannot be determined, use <code>@since Unknown</code>.
-<h4>4.1 Duplicate Hooks</h4>
+Tools to use when searching for the version a hook was added are [`svn blame`](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate), or the [WordPress Hooks Database](http://adambrown.info/p/wp_hooks) for older hooks. If, after using these tools, the version number cannot be determined, use `@since Unknown`.
+
+#### 4.1 Duplicate Hooks
+
 Occasionally, hooks will be used multiple times in the same or separate core files. In these cases, rather than list the entire DocBlock every time, only the first-added or most logically-placed version of an action or filter will be fully documented. Subsequent versions should have a single-line comment.
 -->
 フックが追加されたバージョンを調べるには「[svn blame](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate)」、または古いフックの場合には「[WordPress Hooks Database](http://adambrown.info/p/wp_hooks)」を使用してください。ツールを使用してもバージョン番号を特定できない場合は、`@since Unknown` を使用してください。
@@ -677,7 +682,7 @@ For actions:
 アクションの場合
 
 ```php
-/** This action is documented in path/to/filename.php */ 
+/** This action is documented in path/to/filename.php */
 ```
 
 <!--
@@ -690,10 +695,13 @@ For filters:
 ```
 
 <!--
-To determine which instance should be documented, search for multiples of the same hook tag, then use <a href="http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate">svn blame</a> to find the first use of the hook in terms of the earliest revision. If multiple instances of the hook were added in the same release, document the one most logically-placed as the "primary".
-<h3>5. Inline Comments</h3>
+To determine which instance should be documented, search for multiples of the same hook tag, then use [`svn blame`](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate) to find the first use of the hook in terms of the earliest revision. If multiple instances of the hook were added in the same release, document the one most logically-placed as the "primary".
+
+### 5. Inline Comments
+
 Inline comments inside methods and functions should be formatted as follows:
-<h4>5.1 Single line comments</h4>
+
+#### 5.1 Single line comments
 -->
 どのインスタンスをドキュメントすべきかを決めるには、すべてのフックタグの登場を [svn blame](http://make.wordpress.org/core/handbook/svn/code-history/#using-subversion-annotate) で検索し、最初に使用されるリビジョンを見つけてください。複数のインスタンスが同時に同じリリースで登場した場合はもっとも論理的な場所を「代表」としてドキュメントしてください。
 
@@ -708,12 +716,12 @@ Inline comments inside methods and functions should be formatted as follows:
 ```
 
 <!--
-<h4>5.2 Multi-line comments</h4>
+#### 5.2 Multi-line comments
 -->
 #### 5.2 複数行コメント
 
 ```php
-/* 
+/*
  * This is a comment that is long enough to warrant being stretched over
  * the span of multiple lines. You'll notice this follows basically
  * the same format as the PHPDoc wrapping and comment block style.
@@ -721,18 +729,20 @@ Inline comments inside methods and functions should be formatted as follows:
 ```
 
 <!--
-<strong>Important note:</strong> Multi-line comments must not begin with <code>/**</code> (double asterisk) as the parser might mistake it for a DocBlock. Use <code>/*</code> (single asterisk) instead.
-<h3>6. File Headers</h3>
+**Important note**: Multi-line comments must not begin with `/**` (double asterisk) as the parser might mistake it for a DocBlock. Use `/*` (single asterisk) instead.
+
+### 6. File Headers
+
 The file header DocBlock is used to give an overview of what is contained in the file.
 -->
 **重要な注意**: 複数行コメントを「`/**`」(2つのアスタリスク) で始めないでください。パーサーが DocBlock と間違えます。代わりに「`/*`」(1つのアスタリスク) で始めてください。
 
-### ファイルヘッダー
+### 6. ファイルヘッダー
 
 ファイルヘッダー DocBlock にはファイルに含まれる内容の概要を書きます。
 
 <!--
-Whenever possible, <strong>all</strong> WordPress files should contain a header DocBlock, regardless of the file's contents – this includes files containing classes.
+Whenever possible, **all** WordPress files should contain a header DocBlock, regardless of the file's contents - this includes files containing classes.
 -->
 可能であれば常に**すべて**の WordPress ファイルにヘッダー DocBlock を記述してください。ファイルの内容に関わらず、またクラスを定義するファイルも含めすべてのファイルが対象です。
 
@@ -751,17 +761,15 @@ Whenever possible, <strong>all</strong> WordPress files should contain a header 
 ```
 
 <!--
-The <em>Summary</em> section is meant to serve as a succinct description of <strong>what</strong> specific purpose the file serves.
+The _Summary_ section is meant to serve as a succinct description of **what** specific purpose the file serves.
 -->
 *Summary* セクションではファイルが具体的に「**何を**」提供するのかを簡潔に説明してください。
 
 <!--
-Examples:
-<ul>
- 	<li>Good: "Widgets API: WP_Widget class"</li>
- 	<li>Bad: "Core widgets class"</li>
-</ul>
-The <em>Description </em>section can be used to better explain overview information for the file such as how the particular file fits into the overall makeup of an API or component.
+- Good: _"Widgets API: WP_Widget class"_
+- Bad: _"Core widgets class"_
+
+The _Description_ section can be used to better explain overview information for the file such as how the particular file fits into the overall makeup of an API or component.
 -->
 例:
 
@@ -770,12 +778,14 @@ The <em>Description </em>section can be used to better explain overview informa
 
 *Description* セクションではファイルの概要をより詳細に説明します。たとえば API やコンポーネント全体におけるファイルの位置づけなどです。
 
+
 <!--
 Examples:
-<ul>
- 	<li>Good: "The Widgets API is comprised of the WP_Widget and WP_Widget_Factory classes in addition to a variety of top-level functionality that implements the Widgets and related sidebar APIs. WordPress registers a number of common widgets by default."</li>
-</ul>
-<h3>7. Constants</h3>
+
+- Good: _"The Widgets API is comprised of the WP_Widget and WP_Widget_Factory classes in addition to a variety of top-level functionality that implements the Widgets and related sidebar APIs. WordPress registers a number of common widgets by default."_
+
+### 7. Constants
+
 The constant DocBlock is used to give a description of the constant for better use and understanding.
 -->
 例:
@@ -788,11 +798,10 @@ The constant DocBlock is used to give a description of the constant for better u
 
 <!--
 Constants should be formatted as follows:
-<ul>
- 	<li><strong>Summary:</strong> Use a period at the end.</li>
- 	<li><strong>@since x.x.x:</strong> Should always be 3-digit (e.g. <code>@since 3.9.0</code>). Exception is <code>@since MU (3.0.0)</code>.</li>
- 	<li><strong>@var:</strong> Formatted the same way as <code>@param</code>. The description is optional.</li>
-</ul>
+
+- **Summary**: Use a period at the end.
+- **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
+- **`@var`**: Formatted the same way as `@param`. The description is optional.
 -->
 定数は次のようにフォーマットしてください。
 
@@ -820,9 +829,11 @@ Constants should be formatted as follows:
 ```
 
 <!--
-<h2>PHPDoc Tags</h2>
-Common PHPDoc tags used in WordPress include <code>@since</code>, <code>@see</code>, <code>@global</code> <code>@param</code>, and <code>@return</code> (see table below for full list).
-For the most part, tags are used correctly, but not all the time. For instance, sometimes you'll see an <code>@link</code> tag inline, linking to a separate function or method. "Linking" to known classes, methods, or functions is not necessary, as the Code Reference automatically links these elements. For "linking" hooks inline, the proper tag to use is <code>@see</code> – see the <em>Other Descriptions</em> section.
+## PHPDoc Tags
+
+Common PHPDoc tags used in WordPress include `@since`, `@see`, `@global` `@param`, and `@return` (see table below for full list).
+
+For the most part, tags are used correctly, but not all the time. For instance, sometimes you'll see an `@link` tag inline, linking to a separate function or method. "Linking" to known classes, methods, or functions is not necessary, as the Code Reference automatically links these elements. For "linking" hooks inline, the proper tag to use is `@see` - see the _Other Descriptions_ section.
 -->
 ## PHPDoc タグ
 
@@ -830,124 +841,28 @@ WordPress で使用される主な PHPDoc タグには `@since`、`@see`、`@glo
 
 ほとんどの場面でタグは正しく使用されていますが、まだ誤用されている場合もあります。例えばインラインの `@link` タグは、別の関数やメソッドへのリンクで使用される場合がありますが、実際には既知のクラス、メソッド、関数へのリンクはコードリファレンスが自動で作成するため不要です。インラインでフックをリンクする際の正しいタグは `@see` です。上の「その他の説明」節も参照してください。
 
-
 <!--
-<table>
-<tbody>
-<tr>
-<th style="width: 10%">Tag</th>
-<th style="width: 20%">Usage</th>
-<th style="width: 70%">Description</th>
-</tr>
-<tr>
-<td><strong>@access</strong></td>
-<td>private</td>
-<td>Only used in limited circumstances, and only when private, such as for core-only functions or core classes implementing "private" APIs. Used directly below the <strong>@since</strong> line in block.</td>
-</tr>
-<tr>
-<td><strong>@deprecated</strong></td>
-<td>version x.x.x
-replacement function name</td>
-<td>What version of WordPress the function/method was deprecated. Use 3-digit version number. Should be accompanied by a matching <code>@see</code> tag.</td>
-</tr>
-<tr>
-<td><strong>@global</strong></td>
-<td>datatype $variable
-description</td>
-<td>Document global(s) used in the function/method. For boolean and integer types, use <code>bool</code> and <code>int</code>, respectively.</td>
-</tr>
-<tr>
-<td><strong>@internal</strong></td>
-<td>information string</td>
-<td>Typically used for adding notes for internal use only.</td>
-</tr>
-<tr>
-<td><strong>@ignore</strong></td>
-<td>(standalone)</td>
-<td>Used to skip parsing of the entire element.</td>
-</tr>
-<tr>
-<td><strong>@link</strong></td>
-<td>URL</td>
-<td>Link to additional information for the function/method.
-For an external script/library, links to source.
-Not to be used for related functions/methods; use <strong>@see</strong> instead.</td>
-</tr>
-<tr>
-<td><strong>@method</strong></td>
-<td>returntype
-description</td>
-<td>Shows a "magic" method found inside the class.</td>
-</tr>
-<tr>
-<td><strong>@package</strong></td>
-<td>packagename</td>
-<td>Specifies package that all functions, includes, and defines in the file belong to. Found in DocBlock at top of the file. For core (and bundled themes), this is always <strong>WordPress</strong>.</td>
-</tr>
-<tr>
-<td><strong>@param</strong></td>
-<td>datatype $variable
-description</td>
-<td>Function/method parameter of the format: parameter type, variable name, description, default behavior. For boolean and integer types, use <code>bool</code> and <code>int</code>, respectively.</td>
-</tr>
-<tr>
-<td><strong>@return</strong></td>
-<td>datatype description</td>
-<td>Document the return value of functions or methods. <code>@return void</code> should not be used outside of the default bundled themes. For boolean and integer types, use <code>bool</code> and <code>int</code>, respectively.</td>
-</tr>
-<tr>
-<td><strong>@see</strong></td>
-<td>elementname</td>
-<td>References another function/method/class the function/method relies on. Should only be used inline for "linking" hooks.</td>
-</tr>
-<tr>
-<td><strong>@since</strong></td>
-<td>version x.x.x</td>
-<td>Documents release version function/method was added. Use 3-digit version number – this is to aid with version searches, and for use when comparing versions in code. Exception is <code>@since MU (3.0.0)</code>.</td>
-</tr>
-<tr>
-<td><strong>@static</strong></td>
-<td>(standalone)</td>
-<td>Note: This tag has been used in the past, but should no longer be used.
-Just using the static keyword in your code is enough for PhpDocumentor on PHP5 to recognize static variables and methods, and PhpDocumentor will mark them as static.</td>
-</tr>
-<tr>
-<td><strong>@staticvar</strong></td>
-<td>datatype $variable
-description</td>
-<td>Note: This tag has been used in the past, but should no longer be used.
-Document a static variable's use in a function/method. For boolean and integer types, use <code>bool</code> and <code>int</code>, respectively.</td>
-</tr>
-<tr>
-<td><strong>@subpackage</strong></td>
-<td>subpackagename</td>
-<td>For page-level DocBlock, specifies the Component that all functions and defines in file belong to. For class-level DocBlock, specifies the subpackage/component the class belongs to.</td>
-</tr>
-<tr>
-<td><strong>@todo</strong></td>
-<td>information string</td>
-<td>Documents planned changes to an element that have not been implemented.</td>
-</tr>
-<tr>
-<td><strong>@type</strong></td>
-<td>datatype description for an argument array value</td>
-<td>Used to denote argument array value types. See the <strong>Hooks</strong> or <strong>Parameters That Are Arrays</strong> sections for example syntax.</td>
-</tr>
-<tr>
-<td><strong>@uses</strong></td>
-<td>class::methodname()
-class::$variablename
-functionname()</td>
-<td><strong>Note:</strong> This tag has been used in the past, but should no longer be used.
-References a key function/method used. May include a short description.</td>
-</tr>
-<tr>
-<td><strong>@var</strong></td>
-<td>datatype description</td>
-<td>Data type for a class variable and short description. Callbacks are marked <strong>callback</strong>.</td>
-</tr>
-</tbody>
-</table>
+| Tag               | Usage                                                       | Description                                                                                                                                                                                                                                    |
+|-------------------|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`@access`**     | private                                                     | Only used in limited circumstances, and only when private, such as for core-only functions or core classes implementing "private" APIs. Used directly below the `@since` line in block.                                                        |
+| **`@deprecated`** | version x.x.x Use _replacement function name_ instead       | What version of WordPress the function/method was deprecated. Use 3-digit version number. Should be accompanied by a matching `@see` tag.                                                                                                      |
+| **`@global`**     | datatype $variable description                              | Document global(s) used in the function/method. For boolean and integer types, use `bool` and `int`, respectively.                                                                                                                             |
+| **`@internal`**   | information string                                          | Typically used for adding notes for internal use only.                                                                                                                                                                                         |
+| **`@ignore`**     | (standalone)                                                | Used to skip parsing of the entire element.                                                                                                                                                                                                    |
+| **`@link`**       | URL                                                         | Link to additional information for the function/method. For an external script/library, links to source. Not to be used for related functions/methods; use `@see` instead.                                                                     |
+| **`@method`**     | returntype description                                      | Shows a "magic" method found inside the class.                                                                                                                                                                                                 |
+| **`@package`**    | packagename                                                 | Specifies package that all functions, includes, and defines in the file belong to. Found in DocBlock at top of the file. For core (and bundled themes), this is always **WordPress**.                                                          |
+| **`@param`**      | datatype $variable description                              | Function/method parameter of the format: parameter type, variable name, description, default behavior. For boolean and integer types, use `bool` and `int`, respectively.                                                                      |
+| **`@return`**     | datatype description                                        | Document the return value of functions or methods. `@return void` should not be used outside of the default bundled themes. For boolean and integer types, use `bool` and `int`, respectively.                                                 |
+| **`@see`**        | elementname                                                 | References another function/method/class the function/method relies on. Should only be used inline for "linking" hooks.                                                                                                                        |
+| **`@since`**      | version x.x.x                                               | Documents release version function/method was added. Use 3-digit version number - this is to aid with version searches, and for use when comparing versions in code. Exception is `@since MU (3.0.0)`.                                         |
+| **`@static`**     | (standalone)                                                | Note: This tag has been used in the past, but should no longer be used. Just using the static keyword in your code is enough for phpDocumentor on PHP5+ to recognize static variables and methods, and PhpDocumentor will mark them as static. |
+| **`@staticvar`**  | datatype $variable description                              | Note: This tag has been used in the past, but should no longer be used. Document a static variable's use in a function/method. For boolean and integer types, use `bool` and `int`, respectively.                                              |
+| **`@subpackage`** | subpackagename                                              | For page-level DocBlock, specifies the Component that all functions and defines in file belong to. For class-level DocBlock, specifies the subpackage/component the class belongs to.                                                          |
+| **`@todo`**       | information string                                          | Documents planned changes to an element that have not been implemented.                                                                                                                                                                        |
+| **`@type`**       | datatype description for an argument array value            | Used to denote argument array value types. See the **Hooks** or **Parameters That Are Arrays** sections for example syntax.                                                                                                                    |
+| **`@uses`**       | class::methodname() / class::$variablename / functionname() | Note: This tag has been used in the past, but should no longer be used. References a key function/method used. May include a short description.                                                                                                |
+| **`@var`**        | datatype description                                        | Data type for a class variable and short description. Callbacks are marked callback.                                                                                           
 -->
 
 |タグ |用法 |説明 |
@@ -973,17 +888,17 @@ References a key function/method used. May include a short description.</td>
 |**@var** |データ型 説明 |クラス変数のデータ型と短い説明。コールバックには「**callback**」を付ける。|
 
 <!-- 
-[info] PHPDoc tags work with some text editors/IDEs to display more information about a piece of code. It is useful to developers using those editors to understand what the purpose is, and where they would use it in their code. PhpStorm and Netbeans already support PHPDoc.
+[info]
+PHPDoc tags work with some text editors/IDEs to display more information about a piece of code. It is useful to developers using those editors to understand what the purpose is, and where they would use it in their code. PhpStorm and Netbeans already support PHPDoc.
  -->
 ヒント: テキストエディターや IDE の中には PHPDoc タグを解釈し、コードに関する詳細な情報を表示するものもあります。開発者は各要素の目的が何か、コードのどこで使用するかを容易に理解できます。PhpStorm と Netbeans は PHPDoc をサポートしています。
 
 <!--
 The following text editors/IDEs have extensions/bundles you can install that will help you auto-create DocBlocks:
-<ul>
- 	<li>Notepad++: <a href="http://sourceforge.net/projects/nppdocit/">DocIt for Notepad++</a> (Windows)</li>
- 	<li>TextMate: <a href="https://github.com/textmate/php.tmbundle">php.tmbundle</a> (Mac)</li>
- 	<li>SublimeText: <a href="https://packagecontrol.io/search/phpdoc">sublime packages</a> (Windows, Mac, Linux)</li>
-</ul>
+
+- Notepad++: [DocIt for Notepad++](http://sourceforge.net/projects/nppdocit/) (Windows)
+- TextMate: [php.tmbundle](https://github.com/textmate/php.tmbundle) (Mac)
+- SublimeText: [sublime packages](https://packagecontrol.io/search/phpdoc) (Windows, Mac, Linux)
 -->
 次のテキストエディターや IDE では DocBlock の自動作成を支援するエクステンションや部品をインストールできます。
 
@@ -992,10 +907,12 @@ The following text editors/IDEs have extensions/bundles you can install that wil
 - SublimeText: [sublime packages](https://packagecontrol.io/search/phpdoc) (Windows, Mac, Linux)
 
 <!--
-Note: Even with help generating DocBlocks, most code editors don't do a very thorough job – it's likely you'll need to manually fill in certain areas of any generated DocBlocks.
+Note: Even with help generating DocBlocks, most code editors don't do a very thorough job - it's likely you'll need to manually fill in certain areas of any generated DocBlocks.
 [/info]
-<h3>Deprecated Tags</h3>
-<blockquote><strong>Preface:</strong> For the time being, and for the sake of consistency, WordPress Core will continue to use <code>@subpackage</code> tags – both when writing new DocBlocks, and editing old ones.
+
+### Deprecated Tags
+
+> **Preface:** For the time being, and for the sake of consistency, WordPress Core will continue to use `@subpackage` tags - both when writing new DocBlocks, and editing old ones.
 -->
 注意: DocBlock 生成エクステンション等を使用しても、大部分のコードエディターの出力は完全ではありません。生成された DocBlock を手動で調整する必要があります。
 
@@ -1004,13 +921,16 @@ Note: Even with help generating DocBlocks, most code editors don't do a very tho
 **はじめに**: WordPress コアは新しい DocBlock の記述でも、古いタグの編集でも、しばらくは過去との一貫性のため `@subpackage` タグを使用します。
 
 <!--
-Only when the new – external – PSR-5 recommendations are finalized, will across-the-board changes be considered, such as deprecating certain tags.</blockquote>
-As proposed in the <a href="https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md">new PSR-5</a> recommendations, the following PHPDoc tag should be deprecated:
-<ul>
- 	<li><code>@subpackage</code> (in favor of a unified package tag: <code>@package Package\Subpackage</code>)</li>
-</ul>
-<h3>Other Tags</h3>
-<strong>@package Tag in Plugins and Themes (bundled themes excluded)</strong>
+>
+> Only when the new - external - PSR-5 recommendations are finalized, will across-the-board changes be considered, such as deprecating certain tags.
+
+As proposed in the [new PSR-5](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md) recommendations, the following PHPDoc tag should be deprecated:
+
+- `@subpackage` (in favor of a unified package tag: `@package Package\Subpackage`)
+
+### Other Tags
+
+**`@package` Tag in Plugins and Themes (bundled themes excluded)**
 -->
 外部で策定中の新しい PSR-5 recommendations 完成後に、タグを非推奨にする等の全体的な変更が検討される予定です。
 
@@ -1023,39 +943,38 @@ As proposed in the <a href="https://github.com/phpDocumentor/fig-standards/blob/
 **プラグインやテーマでの @package タグ (同梱されるテーマは除く)**
 
 <!--
-Third-party plugin and theme authors <strong>must not</strong> use <code>@package WordPress</code> in their plugins or themes. The <code>@package</code> name for plugins should be the plugin name; for themes, it should be the theme name, spaced with underscores: <code>Twenty_Fifteen</code>.
+Third-party plugin and theme authors **must not** use `@package WordPress` in their plugins or themes. The `@package` name for plugins should be the plugin name; for themes, it should be the theme name, spaced with underscores: `Twenty_Fifteen`.
 -->
 サードパーティのプラグイン作成者やテーマ作成者は、自身のプラグインやテーマに「`@package WordPress`」を使わないでください。プラグインの `@package` 名はプラグイン名です。テーマであればテーマ名です。このときスペースは下線で置き換えてください。例: `Twenty_Fifteen`
 
 <!--
-<strong>@author Tag</strong>
+**`@author` Tag**
 -->
 **@author タグ**
 
 <!--
-It is WordPress' policy not to use the <code>@author</code> tag, except in the case of maintaining it in external libraries. We do not want to imply any sort of "ownership" over code that might discourage contribution.
+It is WordPress' policy not to use the `@author` tag, except in the case of maintaining it in external libraries. We do not want to imply any sort of "ownership" over code that might discourage contribution.
 -->
 外部ライブラリでメンテナンスされている場合を除き、 WordPress のポリシーとして @author タグは使用しません。コードに対しては貢献の妨げになるような、いかなる「所有」的なものも含めません。
 
 <!--
-<strong>@copyright and @license Tags</strong>
+**`@copyright` and `@license` Tags**
 -->
 **@copyright タグと @license タグ**
 
 <!--
-The <code>@copyright</code> and <code>@license</code> tags are used in external libraries and scripts, and should not be used in WordPress core files.
-<ul>
- 	<li><code>@copyright</code> is used to specify external script copyrights.</li>
- 	<li><code>@license</code> is used to specify external script licenses.</li>
-</ul>
-<h2>Resources</h2>
-<ul>
- 	<li><a href="http://en.wikipedia.org/wiki/PHPDoc">Wikipedia</a></li>
- 	<li><a href="http://pear.php.net/manual/en/standards.sample.php">PEAR Standards</a></li>
- 	<li><a href="http://www.phpdoc.org/">phpDocumentor</a></li>
- 	<li><a href="http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html">phpDocumentor Tutorial Tags</a></li>
- 	<li><a href="https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md">Draft PSR-5 recommendations</a></li>
-</ul>
+The `@copyright` and `@license` tags are used in external libraries and scripts, and should not be used in WordPress core files.
+
+- `@copyright` is used to specify external script copyrights.
+- `@license` is used to specify external script licenses.
+
+## Resources
+
+- [Wikipedia on PHPDoc](http://en.wikipedia.org/wiki/PHPDoc)
+- [PEAR Standards](http://pear.php.net/manual/en/standards.sample.php)
+- [phpDocumentor](http://www.phpdoc.org/)
+- [phpDocumentor Tutorial Tags](http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html)
+- [Draft PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md)
 -->
 `@copyright` タグと `@license` タグは外部ライブラリやスクリプトに使用されます。WordPress コアファイルには使用しません。
 

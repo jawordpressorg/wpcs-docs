@@ -4,7 +4,7 @@
 # アクセシビリティコーディング規約
 
 <!--
-Code integrated into the WordPress ecosystem - including WordPress core, WordPress.org websites, and official plugins, is expected to conform to the Web Content Accessibility Guidelines (WCAG), version 2.1, at level AA. 
+Code integrated into the WordPress ecosystem - including WordPress core, WordPress.org websites, and official plugins, is expected to conform to the Web Content Accessibility Guidelines (WCAG), version 2.1, at level AA.
 -->
 WordPressのエコシステム (WordPressコア、WordPress.org サイト、公式プラグインを含む) に統合されるコードは、Web Content Accessibility Guidelines (WCAG) version 2.1 レベル AA に適合することが求められます。
 
@@ -28,6 +28,11 @@ Normative Documents:
 -->
 基本的な文書:
 
+<!-- 
+- [W3C WCAG 2.1](https://www.w3.org/TR/WCAG21)
+- [W3C ATAG 2.0](https://www.w3.org/TR/ATAG20/)
+- [W3C WAI ARIA 1.1](https://www.w3.org/TR/wai-aria/)
+ -->
 - [W3C WCAG 2.1](https://www.w3.org/TR/WCAG21) / [日本語訳](https://waic.jp/docs/WCAG21/)
 - [W3C ATAG 2.0](https://www.w3.org/TR/ATAG20/) / [日本語訳](https://waic.jp/docs/ATAG20/)
 - [W3C WAI ARIA 1.1](https://www.w3.org/TR/wai-aria/) / [日本語訳](https://momdo.github.io/wai-aria-1.1/) 
@@ -39,13 +44,20 @@ Informative Documents:
 -->
 情報的な文書:
 
+<!-- 
+- [W3C Understanding WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [W3C Using ARIA](https://www.w3.org/TR/using-aria/)
+- [W3C WAI-ARIA Authoring Practices 1.1 (accessible design patterns)](https://www.w3.org/TR/wai-aria-practices-1.1/)
+- [W3C Introduction to ATAG](https://www.w3.org/WAI/standards-guidelines/atag)
+ -->
 - [W3C Understanding WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/) / [日本語訳](https://waic.jp/docs/WCAG21/Understanding/)
 - [W3C Using ARIA](https://www.w3.org/TR/using-aria/) 
 - [W3C WAI-ARIA Authoring Practices 1.1 (accessible design patterns)](https://www.w3.org/TR/wai-aria-practices-1.1/) / [日本語訳](https://waic.jp/docs/2019/NOTE-wai-aria-practices-1.1-20190207/) 
 - [W3C Introduction to ATAG](https://www.w3.org/WAI/standards-guidelines/atag)
 
 <!--
-## About WCAG A, AA, and AAA Conformance Levels 
+## About WCAG A, AA, and AAA Conformance Levels
+
 The WordPress commitment is to conform to all WCAG 2.1 Level A and Level AA guidelines. Conformance to level AAA success criteria is encouraged where relevant, as is exceeding the accessibility of any of these guidelines.
 -->
 ## WCAG A, AA, AAA 適合レベル
@@ -63,7 +75,7 @@ WordPress のコミットメントは、すべての WCAG 2.1レベル A およ�
 **レベル AA** 達成基準は、一般的に対処がやや複雑で、より少数の人々にしか影響を与えないかもしれないが、それでも 共通のニーズである懸念事項を扱います。
 
 <!--
-**Level AAA** success criteria are mostly targeted at very specific needs and may be quite difficult to implement effectively. 
+**Level AAA** success criteria are mostly targeted at very specific needs and may be quite difficult to implement effectively.
 -->
 **レベル AAA** 達成基準は、ほとんどが非常に特殊なニーズを対象としており、効果的な実装はかなり難しいと思われます。
 
@@ -73,8 +85,10 @@ WordPress のコミットメントは、すべての WCAG 2.1レベル A およ�
 [W3C Quick Reference to WCAG 2.1 Level A and Level AA Requirements](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&currentsidebar=%23col_overview&levels=aaa) / [WCAG 2.0 版の日本語訳](https://waic.jp/docs/WCAG20/quickref/)
 
 <!--
-## Applying WCAG Conformance Levels 
+## Applying WCAG Conformance Levels
+
 WCAG 2.1 consists of 4 layers:
+
 - Principles
 - Guidance
 - Success criteria
@@ -90,9 +104,11 @@ WCAG 2.1 は4つのレイヤーからなります。
 
 <!--
 ### Principles
+
 When applying WCAG 2.1, the guidance and success criteria are organized around 4 principles. These principles place emphasis on how people interact with content and must be:
-- **Perceivable** - interacting with the content using the medium that they are familiar with. For example, providing text alternatives for those who are blind.  
-- **Operable** - finding and using content is accessible. For example, being able to use a keyboard or a screen reader.  
+
+- **Perceivable** - interacting with the content using the medium that they are familiar with. For example, providing text alternatives for those who are blind.
+- **Operable** - finding and using content is accessible. For example, being able to use a keyboard or a screen reader.
 - **Understandable** - content uses clear language and is understandable. For example, use meaningful labels, explain all abbreviations.
 - **Robust** - content can be interpreted in a range of ways. For example, assistive technologies are able to interpret and parse content.
 -->
@@ -109,6 +125,7 @@ WCAG2.1を適用する場合、ガイダンスと達成基準は4つの原則を
 
 <!--
 ### Guidance
+
 Each principle is supported by a list of guidelines to ensure that content is more accessible and presentable across the different devices that meet a user’s disability. The guidelines are listed below, the full detail can be found in the WCAG 2.1.
 -->
 ### ガイダンス
@@ -117,6 +134,7 @@ Each principle is supported by a list of guidelines to ensure that content is mo
 
 <!--
 #### Principle: Perceivable
+
 **Guideline 1.1 Text Alternatives**
 Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.
 -->
@@ -148,6 +166,7 @@ Make it easier for users to see and hear content including separating foreground
 
 <!--
 #### Principle: Operable
+
 **Guideline 2.1 Keyboard Accessible**
 Make all functionality available from a keyboard.
 -->
@@ -185,6 +204,7 @@ Make it easier for users to operate functionality through various inputs beyond 
 
 <!--
 #### Principle: Understandable
+
 **Guideline 3.1 Readable**
 Make text content readable and understandable.
 -->
@@ -208,6 +228,7 @@ Help users avoid and correct mistakes.
 
 <!--
 #### Principle: Robust
+
 **Guideline 4.1 Compatible**
 Maximize compatibility with current and future user agents, including assistive technologies.
 -->
@@ -217,6 +238,7 @@ Maximize compatibility with current and future user agents, including assistive 
 
 <!--
 ### Success Criteria
+
 Each guidance has a [specific list requirements that must be met for your content to be accessible](https://www.w3.org/WAI/WCAG21/quickref/). These tests can be carried out using automated software and or human testers. You can find more information on how to meet the success criteria in [Understanding Levels of Conformance](https://www.w3.org/WAI/WCAG21/Understanding/conformance#levels). Whilst these criteria are important, usability testing is still important and should be carried out alongside any accessibility testing.
 -->
 ### 達成基準
@@ -226,10 +248,13 @@ Each guidance has a [specific list requirements that must be met for your conten
 
 <!--
 ### Techniques: Sufficient, Advisory, and Failures
+
 Techniques (code examples, resources, and tests) for guidance and success criteria that can help in making content more accessible, are divided into three categories:
+
 - Sufficient - required and help meet the success criteria
 - Advisory - suggestions and go beyond what is required
 - Failures - cause problems and fail to meet the success criteria
+
 For more information on techniques, visit [Understanding Techniques for WCAG Success Criteria](https://www.w3.org/WAI/WCAG21/Understanding/understanding-techniques).
 -->
 ### 達成方法集: 十分な達成方法、参考達成方法、失敗例
@@ -245,18 +270,19 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 
 <!--
 ## Authoritative Resources
+
 - [WebAIM: Web Accessibility In Mind](https://webaim.org/) (see Articles and Resources)
 - [Government Digital Service](https://gds.blog.gov.uk)
-- [Accessibility in government](https://accessibility.blog.gov.uk/) 
+- [Accessibility in government](https://accessibility.blog.gov.uk/)
 - [Blog | TPG – The Accessibility Experts](https://developer.paciellogroup.com/blog/)
 - [Web Accessibility Blog (Deque)](https://www.deque.com/blog/)
 - [Tink - Léonie Watson](https://tink.uk) (Léonie Watson)
 - [Adrian Roselli](https://adrianroselli.com)
 - [Scott O'Hara](https://www.scottohara.me)
 - [Joe Dolson](https://www.joedolson.com/blog)
-- [Sarah Higley](https://sarahmhigley.com/) 
-- [Marco's Accessibility Blog](https://www.marcozehe.de/) 
-- [Karl Groves](https://karlgroves.com/) 
+- [Sarah Higley](https://sarahmhigley.com/)
+- [Marco's Accessibility Blog](https://www.marcozehe.de/)
+- [Karl Groves](https://karlgroves.com/)
 - [Inclusive Components](https://inclusive-components.design) (Heydon Pickering)
 - [Accessibility London (London, United Kingdom)](https://www.meetup.com/London-Accessibility-Meetup/) (London accessibility meetup: they live stream meetups on youtube)
 - [24 Accessibility](https://www.24a11y.com/)
@@ -283,15 +309,16 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [ウェブアクセシビリティ基盤委員会](https://waic.jp/) ... 「ウェブアクセシビリティ基盤委員会（Web Accessibility Infrastructure Committee）は、日本におけるウェブアクセシビリティの公的規格であるJIS X 8341-3の理解と普及を促進するとともに、JIS X 8341-3を利用してウェブアクセシビリティを高めていくために必要な基盤を構築するために、さまざまな活動を行っています。」
 
 <!--
-### Technical and / or specific topics:
+### Technical and / or specific topics
+
 - [Accessibility Support](https://a11ysupport.io/) (Will your code work with assistive technologies?)
-- [Accessibility APIs: A Key To Web Accessibility](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) (by Léonie Watson)  
-- [How accessibility trees inform assistive tech](https://hacks.mozilla.org/2019/06/how-accessibility-trees-inform-assistive-tech/) (by Hidde de Vries) 
+- [Accessibility APIs: A Key To Web Accessibility](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) (by Léonie Watson)
+- [How accessibility trees inform assistive tech](https://hacks.mozilla.org/2019/06/how-accessibility-trees-inform-assistive-tech/) (by Hidde de Vries)
 - [What is this thing and what does it do?](https://www.youtube.com/watch?v=YLihNhn_MO4 ) (presentation by Karl Groves)
 - [The Browser Accessibility Tree](https://developer.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) (by Steve Faulkner)
-- [Brief history of browser accessibility support](https://www.paciellogroup.com/blog/2011/10/brief-history-of-browser-accessibility-support/) (by Steve Faulkner) 
+- [Brief history of browser accessibility support](https://www.paciellogroup.com/blog/2011/10/brief-history-of-browser-accessibility-support/) (by Steve Faulkner)
 - [ARIA Landmarks Example: General Principles](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/)
-- [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html) 
+- [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html)
 -->
 ### 技術や特定のトピック:
 

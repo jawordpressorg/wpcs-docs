@@ -112,9 +112,9 @@ Whitespace can easily accumulate at the end of a line – avoid this, as trailin
 スペースは行末に簡単に紛れ込むため注意してください。JSHint では行末のスペースはエラーです。コーディング中にスペースを見つける方法としては、テキストエディタでスペース文字を表示する方法があります。
 
 <!-- 
-### Objects
+### Object Declarations
  -->
-### オブジェクト
+### オブジェクト定義
 
 <!-- 
 Object declarations can be made on a single line if they are short (remember the line length guidelines). When an object declaration is too long to fit on one line, there must be one property per line. Property names only need to be quoted if they are reserved words or contain special characters:
@@ -136,11 +136,11 @@ var arr = [
 	4,
 	15,
 ];
- 
+
 // Acceptable for small objects and arrays
 var obj = { ready: 9, when: 4, 'you are': 15 };
 var arr = [ 9, 4, 15 ];
- 
+
 // Bad
 var obj = { ready: 9,
 	when: 4, 'you are': 15 };
@@ -183,17 +183,17 @@ Always include extra spaces around elements and arguments:
 
 ```javascript
 array = [ a, b ];
- 
+
 foo( arg );
- 
+
 foo( 'string', object );
- 
+
 foo( options, object[ property ] );
- 
+
 foo( node, 'property', 2 );
- 
+
 prop = object[ 'default' ];
- 
+
 firstArrayElement = arr[ 0 ];
 ```
 <!-- 
@@ -585,7 +585,7 @@ window.wp = window.wp || {};
 ## 命名規則
 
 <!-- 
-Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the [WordPress PHP coding standards](https://make.wordpress.org/core/handbook/coding-standards/php/#naming-conventions).
+Variable and function names should be full words, using camel case with a lowercase first letter. This is an area where this standard differs from the [WordPress PHP coding standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/#naming-conventions).
 
 Names should be descriptive, but not excessively so. Exceptions are allowed for iterators, such as the use of `i` to represent the index in a loop.
  -->
@@ -615,10 +615,10 @@ If an abbreviation or an acronym occurs at the start of a variable name, it must
 ```javascript
 // "Id" is an abbreviation of "Identifier":
 const userId = 1;
- 
+
 // "DOM" is an acronym of "Document Object Model":
 const currentDOMDocument = window.document;
- 
+
 // Acronyms and abbreviations at the start of a variable name are consistent
 // with camelcase rules covering the first letter of a variable or class.
 const domDocument = window.document;
@@ -662,7 +662,7 @@ class Earth {
 		return Earth.humans;
 	}
 }
- 
+
 Earth.humans = [];
 ```
 <!-- 
@@ -696,10 +696,10 @@ Comments come before the code to which they refer, and should always be preceded
 <!-- 
 ```javascript
 someStatement();
- 
+
 // Explanation of something complex on the next line
 $( 'p' ).doSomething();
- 
+
 // This is a comment that is long enough to warrant being stretched
 // over the span of multiple lines.
 ```
@@ -764,10 +764,11 @@ These are the preferred ways of checking the type of an object:
 - Element: `object.nodeType` or `_.isElement( object )`
 - null: `object === null`
 - null or undefined: `object == null`
-- undefined: <ul>- Global Variables: `typeof variable === 'undefined'`
-- Local Variables: `variable === undefined`
-- Properties: `object.prop === undefined`
-- Any of the above: `_.isUndefined( object )` </li></ul>
+- undefined:
+    - Global Variables: `typeof variable === 'undefined'`
+    - Local Variables: `variable === undefined`
+    - Properties: `object.prop === undefined`
+    - Any of the above: `_.isUndefined( object )`
  -->
 - 文字列: `typeof object === 'string'`
 - 数: `typeof object === 'number'`

@@ -13,17 +13,16 @@ Within core stylesheets, inconsistencies will often be found. We are working on 
 コアのスタイルシートの中にはコーディングスタイルに合致しないものがいくつかあります。WordPress ではこれらに対処するため、CSS コーディング規約に従ったパッチやコミットになるよう努めています。なお、本ガイドの適用範囲を超える詳細情報、および UI やフロントエンド開発への貢献については、別のガイドラインを作成予定です。
 
 <!-- 
-<h2>Structure</h2>
+## Structure
  -->
 ## 構造
 
 <!-- 
 There are plenty of different methods for structuring a stylesheet. With the CSS in core, it is important to retain a high degree of legibility. This enables subsequent contributors to have a clear understanding of the flow of the document.
-<ul>
- 	<li>Use tabs, not spaces, to indent each property.</li>
- 	<li>Add two blank lines between sections and one blank line between blocks in a section.</li>
- 	<li>Each selector should be on its own line, ending in either a comma or an opening curly brace. Property-value pairs should be on their own line, with one tab of indentation and an ending semicolon. The closing brace should be flush left, using the same level of indentation as the opening selector.</li>
-</ul>
+
+- Use tabs, not spaces, to indent each property.
+- Add two blank lines between sections and one blank line between blocks in a section.
+- Each selector should be on its own line, ending in either a comma or an opening curly brace. Property-value pairs should be on their own line, with one tab of indentation and an ending semicolon. The closing brace should be flush left, using the same level of indentation as the opening selector.
  -->
 スタイルシートの構造化については多くの方法があります。このうちコアの CSS では読みやすさが何よりも重要です。読みやすい CSS であれば、他のコントリビューターもドキュメントの流れをクリアに理解できます。
 
@@ -59,18 +58,17 @@ Incorrect:
 #selector-1 { background: #fff; color: #000; }
 ```
 <!-- 
-<h2>Selectors</h2>
+## Selectors
  -->
 ## セレクタ
 
 <!-- 
 With specificity, comes great responsibility. Broad selectors allow us to be efficient, yet can have adverse consequences if not tested. Location-specific selectors can save us time, but will quickly lead to a cluttered stylesheet. Exercise your best judgement to create selectors that find the right balance between contributing to the overall style and layout of the DOM.
-<ul>
- 	<li>Similar to the <a href="https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/#naming-conventions">WordPress PHP Coding Standards</a> for file names, use lowercase and separate words with hyphens when naming selectors. Avoid camelcase and underscores.</li>
- 	<li>Use human readable selectors that describe what element(s) they style.</li>
- 	<li>Attribute selectors should use double quotes around values</li>
- 	<li>Refrain from using over-qualified selectors, <code>div.container</code> can simply be stated as <code>.container</code></li>
-</ul>
+
+- Similar to the [WordPress PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/#naming-conventions) for file names, use lowercase and separate words with hyphens when naming selectors. Avoid camelcase and underscores.
+- Use human readable selectors that describe what element(s) they style.
+- Attribute selectors should use double quotes around values.
+- Refrain from using over-qualified selectors, `div.container` can simply be stated as `.container`.
  -->
 セレクタの詳細度には、責任が伴います。スコープの広いセレクタを使用すれば効率的ですが、テストが十分でないと逆の結果になるでしょう。局所的なセレクタを使用すると時間の節約にはなりますが、すぐに混乱したスタイルシートが生まれるでしょう。最大限の判断力を駆使し、スタイル全体への貢献と DOM のレイアウトとの間で正しいバランスを取ったセレクタを作成してください。
 
@@ -78,7 +76,6 @@ With specificity, comes great responsibility. Broad selectors allow us to be eff
 - 対象の要素を表した、人間が読んで分かるセレクタ名を使用してください。
 - 属性セレクタは、値の前後にダブルクオートを使用してください。
 - 過剰に修飾したセレクタを使用しないでください。例えば「div.container」は単純に「.container」と書けます。
-
 
 <!-- 
 Correct:
@@ -146,18 +143,18 @@ input[type=text] { /* [type="text"] とすべき */
 ```
 
 <!-- 
-<h2>Properties</h2>
+## Properties
  -->
 ## プロパティ
 
 <!-- 
 Similar to selectors, properties that are too specific will hinder the flexibility of the design. Less is more. Make sure you are not repeating styling or introducing fixed dimensions (when a fluid solution is more acceptable).
-<ul>
- 	<li>Properties should be followed by a colon and a space.</li>
- 	<li>All properties and values should be lowercase, except for font names and vendor-specific properties.</li>
- 	<li>Use hex code for colors, or rgba() if opacity is needed. Avoid RGB format and uppercase, and shorten values when possible: <code>#fff</code> instead of <code>#FFFFFF</code>.</li>
- 	<li>Use shorthand (except when overriding styles) for background, border, font, list-style, margin, and padding values as much as possible. (For a shorthand reference, see <a href="https://codex.wordpress.org/CSS_Shorthand">CSS Shorthand</a>.)</li>
-</ul>
+
+- Properties should be followed by a colon and a space.
+- All properties and values should be lowercase, except for font names and vendor-specific properties.
+- Use hex code for colors, or `rgba()` if opacity is needed. Avoid RGB format and uppercase, and shorten values when possible: `#fff` instead of `#FFFFFF`.
+- Use shorthand, except when overriding styles, for `background`, `border`, `font`, `list-style`, `margin`, and `padding` values as much as possible. For a shorthand reference, see [CSS Shorthand](https://codex.wordpress.org/CSS_Shorthand).
+
  -->
 セレクタと同様プロパティも細かすぎるとデザインの柔軟性を損ないます。少ないに越したことはありません。またスタイルを繰り返したり、固定のサイズを指定しないでください。相対値で指定する、流動的なソリューションを推奨します。
 
@@ -167,6 +164,7 @@ Similar to selectors, properties that are too specific will hinder the flexibili
 - スタイルを上書きする場合を除き、可能な限りショートハンド (短縮形) を使用してください。「background」「border」「font」「list-style」「margin」「padding」。ショートハンドの詳細については「[CSS Shorthand](https://codex.wordpress.org/CSS_Shorthand)」を参照してください。
 
 <!-- 
+
 Correct:
  -->
 正しい:
@@ -194,29 +192,29 @@ Incorrect:
 }
 ```
 <!-- 
-<h3>Property Ordering</h3>
+### Property Ordering
  -->
 ### プロパティの順序
 
 <!-- 
-<blockquote>"Group like properties together, especially if you have a lot of them."
--- Nacin</blockquote>
+> "Group like properties together, especially if you have a lot of them." 
+> -- Nacin
  -->
-<blockquote>"プロパティは、特に数が多い場合、グループにしてください。"
--- Nacin</blockquote>
+> "プロパティは、特に数が多い場合、グループにしてください。"
+> -- Nacin
 
 <!-- 
-Above all else, choose something that is meaningful to you and semantic in some way. Random ordering is chaos, not poetry. In WordPress Core, our choice is logical or grouped ordering, wherein properties are grouped by meaning and ordered specifically within those groups. The properties within groups are also strategically ordered to create transitions between sections, such as background directly before color. The baseline for ordering is:
-<ul>
- 	<li>Display</li>
- 	<li>Positioning</li>
- 	<li>Box model</li>
- 	<li>Colors and Typography</li>
- 	<li>Other</li>
-</ul>
+Above all else, choose something that is meaningful to you and semantic in some way. Random ordering is chaos, not poetry. In WordPress Core, our choice is logical or grouped ordering, wherein properties are grouped by meaning and ordered specifically within those groups. The properties within groups are also strategically ordered to create transitions between sections, such as `background` directly before `color`. The baseline for ordering is:
+
+- Display
+- Positioning
+- Box model
+- Colors and Typography
+- Other
+
 Things that are not yet used in core itself, such as CSS3 animations, may not have a prescribed place above but likely would fit into one of the above in a logical manner. Just as CSS is evolving, so our standards will evolve with it.
 
-Top/Right/Bottom/Left (TRBL/trouble) should be the order for any relevant properties (e.g. margin), much as the order goes in values. Corner specifiers (e.g. border-radius-*-*) should be top-left, top-right, bottom-right, bottom-left. This is derived from how shorthand values would be ordered.
+Top/Right/Bottom/Left (TRBL/trouble) should be the order for any relevant properties (e.g. `margin`), much as the order goes in values. Corner specifiers (e.g. `border-radius-*-*`) should be ordered as top-left, top-right, bottom-right, bottom-left. This is derived from how shorthand values would be ordered.
  -->
 最低限、何らかの意味のある方法を使用してグループ化してください。ランダムな順番はカオスであり、詩的ではありません。WordPress コアの中では、論理的にグループ化した順序を採用しています。プロパティは意味でグループ化され、グループ内で順番に並べられます。グループ内のプロパティもセクション間で流れができるよう並べられます。たとえば background は color の直前です。順序の基準は以下のとおりです。
 
@@ -228,7 +226,7 @@ Top/Right/Bottom/Left (TRBL/trouble) should be the order for any relevant proper
 
 コア内部で未使用の、例えば CSS3 animation などは上の順序に規定されていませんが、論理的な方法でどこかには挿入できるはずです。CSS が進化するように、この規約も進化します。
 
-「margin」 などの関連するプロパティ、対応する値の順序についてはTop/Right/Bottom/Left の順序 (TRBL「トラブル」と覚える) を使用してください。「border-radius-*-*」などの四隅の指定の順番は「top-left」「top-right」「bottom-right」「bottom-left」です。これはショートハンドの指定順から来ています。
+「margin」 などの関連するプロパティ、対応する値の順序についてはTop/Right/Bottom/Left の順序 (TRBL「トラブル」と覚える) を使用してください。「border-radius-*-*」などの四隅の指定の順番は「top-left」「top-right」「bottom-right」「bottom-left」の順番です。これはショートハンドの指定順から来ています。
 
 <!-- 
 Example:
@@ -265,14 +263,14 @@ Example:
 }
 ```
 <!-- 
-<h3>Vendor Prefixes</h3>
+### Vendor Prefixes
  -->
 ### ベンダープレフィックス
 
 <!-- 
-Updated on 2/13/2014, after <a href="https://core.trac.wordpress.org/changeset/27174">[27174]</a>:
+Updated on 2014-02-13, after [[27174](https://core.trac.wordpress.org/changeset/27174)]:
 
-We use <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a pre-commit tool to easily manage necessary browser prefixes, thus making the majority of this section moot. For those interested in following that output without using Grunt, vendor prefixes should go longest (-webkit-) to shortest (unprefixed). All other spacing remains as per the rest of standards.
+We use [Autoprefixer](https://github.com/postcss/autoprefixer) as a pre-commit tool to easily manage necessary browser prefixes, thus making the majority of this section moot. For those interested in following that output without using Grunt, vendor prefixes should go longest (-webkit-) to shortest (unprefixed). All other spacing remains as per the rest of standards.
  -->
 2014年2月13日、[27174](https://core.trac.wordpress.org/changeset/27174) 後に更新。
 
@@ -286,24 +284,23 @@ We use <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> as a p
 }
 ```
 <!-- 
-<h2>Values</h2>
+## Values
  -->
 ## 値
 
 <!-- 
 There are numerous ways to input values for properties. Follow the guidelines below to help us retain a high degree of consistency.
-<ul>
- 	<li>Space before the value, after the colon.</li>
- 	<li>Do not pad parentheses with spaces.</li>
- 	<li>Always end in a semicolon.</li>
- 	<li>Use double quotes rather than single quotes, and only when needed, such as when a font name has a space or for the values of the <code>content</code> property.</li>
- 	<li>Font weights should be defined using numeric values (e.g. <code>400</code> instead of <code>normal</code>, <code>700</code> rather than <code>bold</code>).</li>
- 	<li>0 values should not have units unless necessary, such as with transition-duration.</li>
- 	<li>Line height should also be unit-less, unless necessary to be defined as a specific pixel value. This is more than just a style convention, but is worth mentioning here. More information: <a href="http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/">http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/</a></li>
- 	<li>Use a leading zero for decimal values, including in rgba().</li>
- 	<li>Multiple comma-separated values for one property should be separated by either a space or a newline. For better readability newlines should be used for lengthier multi-part values such as those for shorthand properties like box-shadow and text-shadow, including before the first value. Values should then be indented one level in from the property.</li>
- 	<li>Lists of values within a value, like within rgba(), should be separated by a space.</li>
-</ul>
+
+- Space before the value, after the colon.
+- Do not pad parentheses with spaces.
+- Always end in a semicolon.
+- Use double quotes rather than single quotes, and only when needed, such as when a font name has a space or for the values of the `content` property.
+- Font weights should be defined using numeric values (e.g. `400` instead of `normal`, `700` rather than `bold`).
+- 0 values should not have units unless necessary, such as with `transition-duration`.
+- Line height should also be unit-less, unless necessary to be defined as a specific pixel value. This is more than just a style convention, but is worth mentioning here. More information: <https://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/>.
+- Use a leading zero for decimal values, including in `rgba()`.
+- Multiple comma-separated values for one property should be separated by either a space or a newline. For better readability newlines should be used for lengthier multi-part values such as those for shorthand properties like `box-shadow` and `text-shadow`, including before the first value. Values should then be indented one level in from the property.
+- Lists of values within a value, like within `rgba()`, should be separated by a space.
  -->
 プロパティへの値の入力には多くの方法があります。一貫性を高く保つため次のガイドに従ってください。
 
@@ -316,6 +313,7 @@ There are numerous ways to input values for properties. Follow the guidelines be
 - 特定のピクセル値が必要でなければ、行の高さにも単位は付けません。これには単なるスタイルのルールを越えた意味があります。詳細: http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
 - rgba() の中も含め、小数値には先頭の「0」を付けます。
 - 1つのプロパティに複数の値をコンマ区切りで指定する場合、rgba() の中も含め、スペースまたは改行を挿入します。ただし box-shadow や text-shadow のショートハンドプロパティのような非常に長い複数パーツについては、改行を使用します。2番目以降の値は、それぞれ前の値から改行し、セレクタおよび続くスペースの分をインデントし、前の値と同じレベルにします。
+- `rgba()`の中のように、値の中の値のリストは、スペースで区切ってください。
 
 <!-- 
 Correct:
@@ -426,20 +424,17 @@ Incorrect:
 }
 ```
 <!-- 
-<h2>Media Queries</h2>
+## Media Queries
  -->
 ## メディアクエリ
 
 <!-- 
 Media queries allow us to gracefully degrade the DOM for different screen sizes. If you are adding any, be sure to test above and below the break-point you are targeting.
-<ul>
- 	<li>It is generally advisable to keep media queries grouped by media at the bottom of the stylesheet.
-<ul>
- 	<li>An exception is made for the wp-admin.css file in core, as it is very large and each section essentially represents a stylesheet of its own. Media queries are therefore added at the bottom of sections as applicable.</li>
-</ul>
-</li>
- 	<li>Rule sets for media queries should be indented one level in.</li>
-</ul>
+
+- It is generally advisable to keep media queries grouped by media at the bottom of the stylesheet.
+    - An exception is made for the `wp-admin.css` file in core, as it is very large and each section essentially represents a stylesheet of its own. Media queries are therefore added at the bottom of sections as applicable.
+- Rule sets for media queries should be indented one level in.
+
  -->
 メディアクエリを使用すると異なる画面サイズごとに DOM を分解できます。メディアクエリを追加する場合は対象のブレークポイントの前後で正しく動作することをテスト指定ください。
 
@@ -466,16 +461,14 @@ Example:
 ```
 
 <!-- 
-<h2>Commenting</h2>
+## Commenting
  -->
 ## コメント
 
 <!-- 
-<ul>
- 	<li>Comment, and comment liberally. If there are concerns about file size, utilize minified files and the SCRIPT_DEBUG constant. Long comments should manually break the line length at 80 characters.</li>
- 	<li>A table of contents should be utilized for longer stylesheets, especially those that are highly sectioned. Using an index number (1.0, 1.1, 2.0, etc.) aids in searching and jumping to a location.</li>
- 	<li>Comments should be formatted much as PHPDoc is. The <a href="http://web.archive.org/web/20070601200419/http://cssdoc.net/">CSSDoc</a> standard is not necessarily widely accepted or used but some aspects of it may be adopted over time. Section/subsection headers should have newlines before and after. Inline comments should not have empty newlines separating the comment from the item to which it relates.</li>
-</ul>
+- Comment, and comment liberally. If there are concerns about file size, utilize minified files and the `SCRIPT_DEBUG` constant. Long comments should manually break the line length at 80 characters.
+- A table of contents should be utilized for longer stylesheets, especially those that are highly sectioned. Using an index number (`1.0`, `1.1`, `2.0`, etc.) aids in searching and jumping to a location.
+- Comments should be formatted much as PHPDoc is. The [CSSDoc](https://web.archive.org/web/20070601200419/http://cssdoc.net/) standard is not necessarily widely accepted or used but some aspects of it may be adopted over time. Section/subsection headers should have newlines before and after. Inline comments should not have empty newlines separating the comment from the item to which it relates.
  -->
 - コメントを書いてください。大量に書いてください。ファイルサイズが気になるならミニファイと SCRIPT_DEBUG 定数を使用します。長いコメントは80文字で改行します。
 - 巨大なスタイルシート、特に複数のセクションがあるものには目次をつけます。見出し番号 (1.0、1.1、2.0等) を付けると検索しやすくなります。
@@ -532,7 +525,7 @@ For inline:
 }
 ```
 <!-- 
-<h2>Best Practices</h2>
+## Best Practices
  -->
 ## ベストプラクティス
 
@@ -542,13 +535,11 @@ Stylesheets tend to grow in length and complexity, and as they grow the chance o
 スタイルシートは長く、複雑になりがちで、長くなればなるほど、冗長になる可能性が高くなります。以下のベストプラクティスに従うことで、本質を外さず、柔軟に CSS を管理できます。
 
 <!-- 
-<ul>
- 	<li>If you are attempting to fix an issue, attempt to remove code before adding more.</li>
- 	<li>Magic Numbers are unlucky. These are numbers that are used as quick fixes on a one-off basis. Example: <code>.box { margin-top: 37px }</code>.</li>
- 	<li>DOM will change over time, target the element you want to use as opposed to "finding it" through its parents. Example: Use <code>.highlight</code> on the element as opposed to <code>.highlight a</code> (where the selector is on the parent)</li>
- 	<li>Know when to use the height property. It should be used when you are including outside elements (such as images). Otherwise use line-height for more flexibility.</li>
- 	<li>Do not restate default property &amp; value combinations (for instance <code>display: block;</code> on block-level elements).</li>
-</ul>
+- If you are attempting to fix an issue, attempt to remove code before adding more.
+- Magic Numbers are unlucky. These are numbers that are used as quick fixes on a one-off basis. Example: `.box { margin-top: 37px }`.
+- DOM will change over time, target the element you want to use as opposed to "finding it" through its parents. Example: Use `.highlight` on the element as opposed to `.highlight a` (where the selector is on the parent)
+- Know when to use the `height` property. It should be used when you are including outside elements (such as images). Otherwise use `line-height` for more flexibility.
+- Do not restate default property and value combinations (for instance `display: block;` on block-level elements).
  -->
 - 問題を修正する場合、追加する前に削除することを考えます。
 - マジックナンバーは不幸です。マジックナンバーとはその場限りの修正用の数字のことです。例: `.box { margin-top: 37px }`
@@ -556,24 +547,19 @@ Stylesheets tend to grow in length and complexity, and as they grow the chance o
 - height プロパティをいつ使用すべきかを熟知してください。すなわち画像のような外部の要素を含める場合に使用します。それ以外であれば line-height の方がより柔軟です。
 - デフォルトのプロパティと値のペアを再宣言しないでください。たとえばブロックレベル要素の `display: block;`。
 
-<!-- 
-<h3>WP Admin CSS</h3>
- -->
 ### WP Admin CSS
 
 <!-- 
-Check out the <a href="https://wordpress.github.io/css-audit/public/wp-admin">WP Admin CSS Audit</a>, a report generated to document the health of the WP Admin CSS code. Read more in <a href="https://github.com/WordPress/css-audit/blob/trunk/README.md">the repository's README</a>.
+Check out the [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/wp-admin), a report generated to document the health of the WP Admin CSS code. Read more in [the repository's README](https://github.com/WordPress/css-audit/blob/trunk/README.md).
  -->
 [WP Admin CSS Audit](https://wordpress.github.io/css-audit/public/wp-admin) を確認してください。これは WP Admin CSS コードの健康状態を文書化するために生成されたレポートです。詳細については[リポジトリの README](https://github.com/WordPress/css-audit/blob/trunk/README.md) を参照してください。
 
 <!-- 
-<h2>Related Links</h2>
+## Related Links
  -->
 ## 関連リンク
 <!-- 
-<ul>
- 	<li>Principles of writing consistent, idiomatic CSS: <a href="https://github.com/necolas/idiomatic-css">https://github.com/necolas/idiomatic-css</a></li>
-</ul>
+- Principles of writing consistent, idiomatic CSS: [https://github.com/necolas/idiomatic-css](https://github.com/necolas/idiomatic-css).
  -->
 - Principles of writing consistent, idiomatic CSS: https://github.com/necolas/idiomatic-css
 
