@@ -577,6 +577,92 @@ $a = foo(
     sprintf( __( 'The best pet is a %s.' ), 'cat' )
 );
 ```
+<!-- 
+## Declare Statements, Namespace, and Import Statements
+ -->
+## 文、名前空間、インポート文の宣言
+
+<!-- 
+### Namespace declarations
+ -->
+### 名前空間の宣言
+
+<!-- 
+Each part of a namespace name should consist of capitalized words separated by underscores.
+
+Namespace declarations should have exactly one blank line before the declaration and at least one blank line after.
+ -->
+名前空間の名前は、先頭が大文字の単語と、アンダースコアの区切りから構成してください。
+
+名前空間の宣言は、宣言の前に正確に1行の空白行を入れ、宣言の後に少なくとも1行の空白行を入れてください。
+
+<!-- 
+```php
+namespace Prefix\Admin\Domain_URL\Sub_Domain\Event; // Correct.
+```
+ -->
+```php
+namespace Prefix\Admin\Domain_URL\Sub_Domain\Event; // 正しい
+```
+
+<!-- 
+There should be only one namespace declaration per file, and it should be at the top of the file. Namespace declarations using curly brace syntax are not allowed. Explicit global namespace declaration (namespace declaration without name) are also not allowed.
+ -->
+名前空間の宣言は1ファイルにつき1つだけとし、ファイルの先頭に記述してください。中括弧を使用した名前空間宣言は使用できません。明示的なグローバル名前空間宣言 (名前のない名前空間宣言) も使用できません。
+
+<!-- 
+```php
+// Incorrect: namespace declaration using curly brace syntax.
+namespace Foo {
+    // Code.
+}
+
+// Incorrect: namespace declaration for the global namespace.
+namespace {
+    // Code.
+}
+```
+ -->
+```php
+// 間違い: 中括弧構文を使用した名前空間宣言
+
+namespace Foo {
+    // コード
+}
+
+// 間違い: グローバル名前空間での名前空間宣言
+namespace {
+    // コード
+}
+```
+<!-- 
+_There is currently no timeline for introducing namespaces to WordPress Core._ 
+
+The use of namespaces in plugins and themes is strongly encouraged. It is a great way to prefix a lot of your code to prevent naming conflicts with other plugins, themes and/or WordPress Core.
+
+Please do make sure you use a unique and long enough namespace prefix to actually prevent conflicts. Generally speaking, using a namespace prefix along the lines of `Vendor\Project_Name` is a good idea.
+ -->
+_WordPress コアへの名前空間の導入時期は、現在、未定です。_
+
+プラグインやテーマでの名前空間の使用を強く推奨します。他のプラグインやテーマ、WordPress コアとの名前の衝突を防ぐために、できるだけ多くのコードに接頭辞を付けてください。
+
+ただし、競合を防ぐために、十分な長さのユニークな名前空間接頭辞を使用してください。一般には、`Vendor\Project_Name`のような、会社名とプロジェクト名の組み合わせの名前空間接頭辞を使用すると良いでしょう。
+
+<!-- 
+[warning]
+The `wp` and `WordPress` namespace prefixes are reserved for WordPress itself.
+[/warning]
+ -->
+**警告**: 名前空間接頭辞 `wp` と `WordPress` は WordPress 用に予約されています。 
+
+<!-- 
+[info]
+Namespacing has no effect on variables, constants declared with `define()` or non-PHP native constructs, like the hook names as used in WordPress.
+Those still need to be prefixed individually.
+[/info]
+ -->
+> 名前空間は、変数、`define()`で宣言された定数、WordPress で使用されるフック名などの非 PHP ネイティブな構成要素には影響しません。
+> これらには、従来どおり個別に接頭辞をつける必要があります。
 
 <!-- 
 ## Object-Oriented Programming

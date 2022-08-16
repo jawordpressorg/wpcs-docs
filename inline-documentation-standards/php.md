@@ -11,8 +11,9 @@ WordPress では PHPDoc をベースにしたカスタムのドキュメント�
 <!-- 
 In some special cases - such as WordPress' implementation of hash notations - standards are derived from the [draft PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md). This does not mean we are attempting to be "PSR-5 compliant" at this time, it simply means that we've adopted PSR-5 recommendations _in part_.
  -->
+<!-- 
 一部の規則、たとえば WordPress のハッシュ記法の実装などでは [ドラフト版 PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md) から規約を採用していますが、現時点で WordPress が 「PSR-5 互換」を目指しているわけではありません。単に「ある部分」で PSR-5 recommendations を採用したに過ぎません。
-
+ -->
 <!-- 
 ## What Should Be Documented
  -->
@@ -58,9 +59,9 @@ The following is a list of what should be documented in WordPress files:
 #### 文体
 
 <!-- 
-Summaries (formerly Short Descriptions) should be clear, simple, and brief. Avoid describing "why" an element exists, rather, focus on documenting "what" and "when" it does something.
+Summaries should be clear, simple, and brief. Avoid describing "why" an element exists, rather, focus on documenting "what" and "when" it does something.
  -->
-「Summary」(概要。以前の Short Description) を書く場合には、明確でシンプルな、短い文を心がけてください。ドキュメントする要素が「なぜ」存在するのかではなく、「いつ」「何を」実行するのかを記述してください。
+「Summary」を書く場合には、明確でシンプルな、短い文を心がけてください。ドキュメントする要素が「なぜ」存在するのかではなく、「いつ」「何を」実行するのかを記述してください。
 
 <!-- 
 A function, hook, class, or method is a _third-person singular_ element, meaning that _third-person singular verbs_ should be used to describe what each does.
@@ -165,9 +166,12 @@ WordPress' inline documentation standards for PHP are specifically tailored for 
 
 <!--
 DocBlocks should directly precede the hook, action, function, method, or class line. There should not be any opening/closing tags or other things between the DocBlock and the declarations to prevent the parser becoming confused.
+ -->
+DocBlock はフック、アクション、関数、メソッド、クラスの行の直前に記述してください。DocBlock とこれらの定義との間には開始タグ、終了タグを含め何も書かないでください。パーサーが混乱します。
 
-#### Summary (formerly Short Description)
+#### Summary
 
+<!--
 No HTML markup or Markdown of any kind should be used in the summary. If the text refers to an HTML element or tag, then it should be written as "image tag" or "img" element, not "`<img>`". For example:
 
 - Good: _Fires when printing the link tag in the header._
@@ -175,10 +179,6 @@ No HTML markup or Markdown of any kind should be used in the summary. If the tex
 
 Inline PHPDoc tags may be used.
 -->
-DocBlock はフック、アクション、関数、メソッド、クラスの行の直前に記述してください。DocBlock とこれらの定義との間には開始タグ、終了タグを含め何も書かないでください。パーサーが混乱します。
-
-#### Summary (旧称 Short Description)
-
 Summary では HTML、Markdown、その他のマークアップを使用しないでください。HTML 要素やタグに触れる場合は、「image tag」または「img element」と記述してください。「<img>」は使わないでください。
 
 - 正: Fires when printing the link tag in the header.
@@ -186,13 +186,11 @@ Summary では HTML、Markdown、その他のマークアップを使用しな�
 
 インライン PHPDoc タグは使用できます。
 
-<!--
-#### Description (formerly Long Description)
+#### Description
 
+<!--
 HTML markup should never be used outside of code examples, though Markdown can be used, as needed, in the description.
 -->
-#### Description (旧称 Long Description)
-
 コードの例以外では HTML マークアップを使用しないでください。Markdown は必要に応じて使用できます。
 
 <!--
@@ -293,6 +291,7 @@ If significant changes have been made to a function, hook, class, or method, add
 - Required arguments becoming optional.
 - Changing default/expected behaviors.
 - Functions or methods becoming wrappers for new APIs.
+- Parameters which have been renamed (once PHP 8.0 support has been announced).
 
 PHPDoc supports multiple `@since` versions in DocBlocks for this explicit reason. When adding changelog entries to the `@since` block, a version should be cited, and a description should be added in sentence case and form and end with a period:
 -->
@@ -302,6 +301,7 @@ PHPDoc supports multiple `@since` versions in DocBlocks for this explicit reason
 - 必須の引数がオプションになった
 - デフォルトや期待する振る舞いの変更
 - 関数やメソッドが新しい API のラッパーになった
+- 名前が変更されたパラメータ (いったん PHP 8.0 のサポートが発表された)
 
 以上の説明で明らかですが PHPDoc は DocBlock 内に複数の `@since` バージョンをサポートします。`@since` ブロックに変更履歴の行を追加する場合は、バージョンに続けて、大文字で始め、ピリオドで終わる完全な文として説明を追加してください。
 
@@ -844,10 +844,10 @@ WordPress で使用される主な PHPDoc タグには `@since`、`@see`、`@glo
 <!--
 | Tag               | Usage                                                       | Description                                                                                                                                                                                                                                    |
 |-------------------|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **`@access`**     | private                                                     | Only used in limited circumstances, and only when private, such as for core-only functions or core classes implementing "private" APIs. Used directly below the `@since` line in block.                                                        |
+| **`@access`**     | private                                                     | Only used in limited circumstances, like when visibility modifiers cannot be used in the code, and only when private, such as for core-only functions or core classes implementing "private" APIs. Used directly below the `@since` line in block.                                                        |
 | **`@deprecated`** | version x.x.x Use _replacement function name_ instead       | What version of WordPress the function/method was deprecated. Use 3-digit version number. Should be accompanied by a matching `@see` tag.                                                                                                      |
 | **`@global`**     | datatype $variable description                              | Document global(s) used in the function/method. For boolean and integer types, use `bool` and `int`, respectively.                                                                                                                             |
-| **`@internal`**   | information string                                          | Typically used for adding notes for internal use only.                                                                                                                                                                                         |
+| **`@internal`**   | information string                                          | Typically used wrapped in `{}` for adding notes for internal use only.                                                                                                                                                                                         |
 | **`@ignore`**     | (standalone)                                                | Used to skip parsing of the entire element.                                                                                                                                                                                                    |
 | **`@link`**       | URL                                                         | Link to additional information for the function/method. For an external script/library, links to source. Not to be used for related functions/methods; use `@see` instead.                                                                     |
 | **`@method`**     | returntype description                                      | Shows a "magic" method found inside the class.                                                                                                                                                                                                 |
@@ -867,10 +867,10 @@ WordPress で使用される主な PHPDoc タグには `@since`、`@see`、`@glo
 
 |タグ |用法 |説明 |
 |----|-----|-----|
-|**@access** |private |限られた条件で private に対してのみ使用される。たとえば “private” API を実装するコア専用関数やコアクラス。ブロックでは **@since** 直下で使用される。|
+|**@access** |private |コード内でアクセス修飾子が使えないなど、限られた条件下で、private に対してのみ使用される。たとえば “private” API を実装するコア専用関数やコアクラス。ブロックでは **@since** 直下で使用される。|
 |**@deprecated** |version x.x.x 代替の関数名 |関数やメソッドがどの WordPress バージョンで非推奨になったかを示す。3組の数字を使用。該当する **@see** タグを付ける。|
 |**@global** |型 global $変数名 説明 |関数やメソッドで使用されるグローバル変数をドキュメントする。boolean または integer 型の場合、それぞれ `bool` と `int` を使用する。|
-|**@internal** |説明文 |典型的な用法として内部利用のみであることを明記する。|
+|**@internal** |説明文 |典型的な用法として `{}` で囲まれ、内部利用のみであることを明記する。|
 |**@ignore** |(単体) |要素全体のパースをスキップする。|
 |**@link** |URL |関数やメソッドの追加情報へのリンク。 外部のスクリプトやライブラリーにリンクする場合は、ソースにリンクする。 関連する関数やメソッドには使用せず、代わりに **@see** を使用する。|
 |**@method** |戻り値の型 説明 |クラス内にある「マジック」メソッドを記述する。|
@@ -927,6 +927,8 @@ Note: Even with help generating DocBlocks, most code editors don't do a very tho
 As proposed in the [new PSR-5](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md) recommendations, the following PHPDoc tag should be deprecated:
 
 - `@subpackage` (in favor of a unified package tag: `@package Package\Subpackage`)
+- `@static` (no longer needed)
+- `@staticvar` (no longer needed)
 
 ### Other Tags
 
@@ -937,6 +939,8 @@ As proposed in the [new PSR-5](https://github.com/phpDocumentor/fig-standards/bl
 [新しい PSR-5](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md) recommendations の提案では、次の PHPDoc タグは非推奨になる予定です。
 
 - `@subpackage` (package タグへ統合の予定: `@package Package\Subpackage`)
+- `@static` (不要になった)
+- `@staticvar` (不要になった)
 
 ### その他のタグ
 
@@ -975,6 +979,7 @@ The `@copyright` and `@license` tags are used in external libraries and scripts,
 - [phpDocumentor](http://www.phpdoc.org/)
 - [phpDocumentor Tutorial Tags](http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html)
 - [Draft PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md)
+- [Draft PSR-19 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc-tags.md)
 -->
 `@copyright` タグと `@license` タグは外部ライブラリやスクリプトに使用されます。WordPress コアファイルには使用しません。
 
@@ -988,5 +993,6 @@ The `@copyright` and `@license` tags are used in external libraries and scripts,
 - [phpDocumentor](http://www.phpdoc.org/)
 - [phpDocumentor Tutorial Tags](http://manual.phpdoc.org/HTMLSmartyConverter/HandS/phpDocumentor/tutorial_tags.pkg.html)
 - [ドラフト版 PSR-5 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc.md)
+- [ドラフト版 PSR-19 recommendations](https://github.com/phpDocumentor/fig-standards/blob/master/proposed/phpdoc-tags.md)
 
 [原文](https://github.com/WordPress/wpcs-docs/blob/master/inline-documentation-standards/php.md)
