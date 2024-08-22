@@ -117,11 +117,14 @@ Whitespace can easily accumulate at the end of a line – avoid this, as trailin
 ### オブジェクト定義
 
 <!-- 
-Object declarations can be made on a single line if they are short (remember the line length guidelines). When an object declaration is too long to fit on one line, there must be one property per line. Property names only need to be quoted if they are reserved words or contain special characters:
+Object declarations can be made on a single line if they are short (remember the line length guidelines). When an object declaration is too long to fit on one line, there must be one property per line and each line ended by a comma. Property names only need to be quoted if they are reserved words or contain special characters:
  -->
-オブジェクト定義は、短い場合には1行で書いても構いません。ただし最大長の制限は忘れないでください。オブジェクト定義が長く1行に収まらない場合は、1行ごとに1つのプロパティを定義する形で分割してください。プロパティ名は予約語、または特殊文字を含む場合のみクォートしてください。
+オブジェクト定義は、短い場合には1行で書いても構いません。ただし最大長の制限は忘れないでください。オブジェクト定義が長く1行に収まらない場合は、1行ごとに1つのプロパティを配置し、末尾はコンマで終了してください。プロパティ名は予約語、または特殊文字を含む場合のみクォートしてください。
 
-オブジェクトや配列は、短い場合には1行で定義しても構いません。ただし最大長の制限は忘れないでください。オブジェクトや配列が長く1行に収まらない場合は、1行ごとに1つのメンバーを定義し、行末はカンマとしてください。
+<!-- 
+Arrays can be declared on a single line if they are short (remember the line length guidelines). When an array is too long to fit on one line, each member must be placed on its own line and each line ended by a comma.
+ -->
+配列は、短い場合には1行で定義しても構いません。ただし最大長の制限は忘れないでください。配列が長く1行に収まらない場合は、1行ごとに1つのメンバーを配置し、末尾はコンマで終了してください。
 
 <!-- 
 ```javascript

@@ -361,10 +361,10 @@ Functions and class methods should be formatted as follows:
 - **`@since x.x.x`**: Should always be 3-digit (e.g. `@since 3.9.0`). Exception is `@since MU (3.0.0)`.
 - **`@access`**: Only used for core-only functions or classes implementing "private" core APIs. If the element is private it will be output with a message stating its intention for internal use.
 - **`@see`**: Reference to a function, method, or class that is heavily-relied on within. See the note above about inline `@see` tags for expected formatting.
-- **`@link`**: URL that provides more information. This should never been used to reference another function, hook, class, or method, see `@see`.
+- **`@link`**: URL that provides more information. This should never be used to reference another function, hook, class, or method, see `@see`.
 - **`@global`**: List PHP globals that are used within the function or method, with an optional description of the global. If multiple globals are listed, they should be aligned by type, variable, and description, with each other as a group.
 - **`@param`**: Note if the parameter is _Optional_ before the description, and include a period at the end. The description should mention accepted values as well as the default. For example: _Optional. This value does something. Accepts 'post', 'term', or empty. Default empty._
-- **`@return`**: Should contain all possible return types, and a description for each. Use a period at the end. Note: `@return void` should not be used outside of the default bundled themes.
+- **`@return`**: Should contain all possible return types and a description for each. Use a period at the end. Note: `@return void` should not be used outside the default bundled themes and the PHP compatibility shims included in WordPress Core.
 -->
 ### 1. 関数およびクラスのメソッド #1. 関数およびクラスのメソッド
 
@@ -379,7 +379,7 @@ Functions and class methods should be formatted as follows:
 - **@link**: 追加の情報用の URL。別の関数、フック、クラス、メソッドへの参照の場合には使わないでください。`@see` 参照。
 - **@global**: 関数またはメソッド内で使用される PHP グローバル変数のリスト。オプションでグローバル変数の説明も記述できます。複数のグローバル変数がある場合、型、変数、説明ごとに並べてグループ分けしてください。
 - **@param**: パラメータがオプションであれば説明の前に「Optional」と付けてください。最後はピリオドです。説明には指定可能な値の範囲、デフォルト値も含めてください。例: Optional. This value does something. Accepts ‘post’, ‘term’, or empty. Default empty.
-- **@return**: すべての戻り値の型とその説明を記述してください。最後はピリオです。注意: WordPress 本体に同梱されるテーマ以外では、`@return` void は使用しないでください。
+- **@return**: すべての戻り値の型とその説明を記述してください。最後はピリオです。注意: デフォルトの同梱テーマや、WordPress コアに含まれる PHP 互換 shim 以外では、`@return` void は使用しないでください。
 
 ```php
 /**
@@ -405,13 +405,13 @@ Functions and class methods should be formatted as follows:
 
 Parameters that are an array of arguments should be documented in the "originating" function only, and cross-referenced via an `@see` tag in corresponding DocBlocks.
 
-Array values should be documented using WordPress' flavor of hash notation style similar to how [Hooks](http://make.wordpress.org/core/handbook/inline-documentation-standards/php-documentation-standards/#4-hooks-actions-and-filters) can be documented, each array value beginning with the `@type` tag, and taking the form of:
+Array values should be documented using WordPress' flavor of hash notation style similar to how [Hooks](https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/#4-hooks-actions-and-filters) can be documented, each array value beginning with the `@type` tag, and taking the form of:
 -->
 #### 1.1 配列パラメータ
 
 引数の配列をパラメータに取る場合には、最初の送信を行う関数でのみドキュメントし、関連する DocBlock 内では `@see` タグを使用して相互参照してください。
 
-配列値のドキュメントでは、[フック](http://make.wordpress.org/core/handbook/inline-documentation-standards/php-documentation-standards/#4-hooks-actions-and-filters)のドキュメントと同じ WordPress 流のハッシュ記法スタイルを使用してください。各配列の値は `@type` タグで始め、次の形式をとります。
+配列値のドキュメントでは、[フック](https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/#4-hooks-actions-and-filters)のドキュメントと同じ WordPress 流のハッシュ記法スタイルを使用してください。各配列の値は `@type` タグで始め、次の形式をとります。
 
 <!-- 
 ```php

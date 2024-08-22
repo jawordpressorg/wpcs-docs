@@ -57,5 +57,14 @@ WordPress is committed to meeting the <a href="https://www.w3.org/TR/WCAG20/">We
  -->
 WordPress はすべての新規コード、修正コードにおいて「[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG20/)」の level AA 達成をコミットしています。パッチやプラグインの作成時に注意すべき一般的なアクセシビリティの問題について[簡単なガイド](https://ja.wordpress.org/team/handbook/coding-standards/wordpress-coding-standards/accessibility/)を作成しましたので参照してください。
 
-[原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards.md)
+<!-- 
+<h2>Where do the coding standards _not_ apply?</h2>
+ -->
+## コーディング規約が _適用されない_ のはどこですか ?
 
+<!-- 
+Third-party libraries are not subject to these standards, even when integrated with the primary project. This includes instances like WordPress core, where multiple third-party libraries are incorporated into its codebase.
+ -->
+サードパーティライブラリは、メインのプロジェクトと統合される場合であっても、このコーディング規約の対象にはなりません。これにはWordPress コアのような、コードベースに複数のサードパーティライブラリが組み込まれている場合も該当します。
+
+[原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards.md)

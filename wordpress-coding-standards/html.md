@@ -97,9 +97,26 @@ Incorrect:
 ```
 
 <!-- 
-In HTML, attributes do not all have to have values, and attribute values do not always have to be quoted. While all of the examples above are valid HTML, _failing to quote attributes can lead to security vulnerabilities_. Always quote attributes.
+In HTML, attributes do not all have to have values, and attribute values do not always have to be quoted. While all of the examples above are valid HTML, _failing to quote attributes can lead to security vulnerabilities_. Always quote attributes. Omitting the value on boolean attributes is allowed. The values `true` and `false` are not valid on boolean attributes ([HTML5 source](https://www.w3.org/TR/2011/WD-html5-20110405/common-microsyntaxes.html#boolean-attributes)).
  -->
-HTML ではすべての属性が値を持つとは限らず、また属性値をクオートで囲む必要もありません。上のすべての例は妥当な HTML ですが、クオートで属性を囲まなければセキュリティ上の脆弱性となります。常に属性はクオートで囲んでください。
+HTML ではすべての属性が値を持つとは限らず、また属性値をクオートで囲む必要もありません。上のすべての例は妥当な HTML ですが、クオートで属性を囲まなければセキュリティ上の脆弱性となります。常に属性はクオートで囲んでください。boolean 属性では値の省略が許されます。真偽値 `true` と `false` は boolean 属性では無効です ([HTML5 ソース](https://www.w3.org/TR/2011/WD-html5-20110405/common-microsyntaxes.html#boolean-attributes))。
+
+<!-- 
+Correct:
+ -->
+正しい:
+
+```html
+<input type="text" name="email" disabled />
+```
+<!-- 
+Incorrect:
+ -->
+間違い:
+
+```html
+<input type="text" name="email" disabled="true" />
+```
 
 <!-- 
 ### Indentation
@@ -156,8 +173,8 @@ Incorrect:
 
 <!-- 
 - HTML code standards adapted from [Fellowship Tech Code Standards](https://developer.fellowshipone.com/patterns/code.php) ([CC license](https://creativecommons.org/licenses/by-nc-sa/3.0/http://creativecommons.org/licenses/by-nc-sa/3.0/)).
+- HTML code standards adapted from [Fellowship Tech Code Standards](https://developer.fellowshipone.com/patterns/code.php) ([CC license](https://creativecommons.org/licenses/by-nc-sa/3.0/)).
  -->
-- HTML コーディング規約は [Fellowship Tech Code Standards](https://developer.fellowshipone.com/patterns/code.php) ([CC license](https://creativecommons.org/licenses/by-nc-sa/3.0/http://creativecommons.org/licenses/by-nc-sa/3.0/)) を基にしています。
-
+- HTML コーディング規約は [Fellowship Tech Code Standards](https://developer.fellowshipone.com/patterns/code.php) ([CC license](https://creativecommons.org/licenses/by-nc-sa/3.0/)) を基にしています。
 
 [原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards/html.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards/html.md)

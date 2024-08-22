@@ -8,9 +8,9 @@ These PHP coding standards are intended for the WordPress community as a whole. 
 
 While themes and plugins may choose to follow a different _coding style_, these **_coding standards_** are not just about _code style_, but also encompass established best practices regarding interoperability, translatability, and security in the WordPress ecosystem, so, even when using a different _code style_, we recommend you still adhere to the WordPress Coding Standards in regard to these best practices.
  -->
-PHP 標準コーディング規約は、WordPress コミュニティ全体を対象としています。WordPress コアでは必須、テーマやプラグインでも同様に使用を推奨します。
+PHP コーディング規約は、WordPress コミュニティ全体を対象としています。規約の遵守は WordPress コアでは必須、テーマやプラグインでも同様に使用を推奨します。
 
-テーマやプラグインは別のコーディングスタイルを選択できますが、この **コーディング標準** は、単にコーディングスタイルに関するものではなく、WordPress エコシステムの相互運用性、翻訳性、セキュリティに関する確立したベストプラクティスを包含するものであり、別のコーディングスタイルを使用する場合でも、このベストプラクティスに関して WordPress コーディング標準を遵守することを推奨します。
+テーマやプラグインは別の _コーディングスタイル_ を選択できますが、この **コーディング規約** は、単なる _コーディングスタイル_ ではなく、WordPress エコシステムの相互運用性、翻訳、セキュリティに関する確立したベストプラクティスを包含するものです。別の _コーディングスタイル_ を使用する場合でも、このベストプラクティスに関しては WordPress コーディング規約を遵守することを推奨します。
 
 <!-- 
 While not all code may fully comply with these standards (yet), all newly committed and/or updated code should fully comply with these coding standards.
@@ -22,9 +22,9 @@ Also see the [PHP Inline Documentation Standards](https://developer.wordpress.or
 また、[PHP インラインドキュメント規約](https://ja.wordpress.org/team/handbook/coding-standards/inline-documentation-standards/php/)も参照してください。
 
 <!-- 
-If you want to automatically check your code against this standard, you can use the official [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards) tooling, which is run using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/).
+If you want to automatically check your code against this standard, you can use the official [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards) tooling, which is run using [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer/).
  -->
-この規約への準拠を自動的にチェックしたい場合は、公式の [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards)ツールを使用してください。[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) を使用して実行されます。
+この規約への準拠を自動的にチェックしたい場合は、[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) を使用して実行する公式の [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards) ツールを使用してください。
 
 <!-- 
 Some parts of the WordPress code structure for PHP markup are inconsistent in their style. WordPress is working to gradually improve this by helping users maintain a consistent style so the code can become clean and easy to read at a glance.
@@ -147,6 +147,30 @@ Text that goes into HTML or XML attributes should be escaped so that single or d
 HTML や XML の属性に入るテキストはエスケープしてください。シングルクォートまたはダブルクォートが閉じていない属性値は、HTML として無効で、セキュリティ問題を引き起こす可能性があります。詳細については、プラグインハンドブックの [Data Validation](https://developer.wordpress.org/plugins/security/data-validation/) を参照してください。
 
 <!-- 
+### Writing include/require statements
+ -->
+### include 文、require 文の記述
+
+<!-- 
+Because `include[_once]` and `require[_once]` are language constructs, they do not need parentheses around the path, so those shouldn't be used. There should only be one space between the path and the include/require keywords.
+ -->
+`include[_once]` と `require[_once]` は言語構成要素のため、パスを括弧で囲む必要はありません。パスと include キーワード、require キーワードの間には、スペースを1つだけ挿入してください。
+
+<!-- 
+It is _strongly recommended_ to use `require[_once]` for unconditional includes. When using `include[_once]`, PHP will throw a warning when the file is not found but will continue execution, which will almost certainly lead to other errors/warnings/notices being thrown if your application depends on the file loaded, potentially leading to security leaks. For that reason, `require[_once]` is generally the better choice as it will throw a `Fatal Error` if the file cannot be found.
+ -->
+無条件のインクルードには `require[_once]` を使用することを _強く推奨_ します。`include[_once]` を使用すると、PHP はファイルが見つからなければ警告を投げますが、処理は続行します。アプリケーションが読み込むファイルに依存する場合、ほぼ間違いなく他のエラー、警告、通知がスローされ、潜在的にはセキュリティリークにつながります。そのため、一般には `require[_once]` の方が良い選択です。ファイルが見つからなければ `Fatal Error` がスローされます。
+
+```php
+// 正しい
+require_once ABSPATH . 'file-name.php';
+
+// 間違い
+include_once  ( ABSPATH . 'file-name.php' );
+require_once     __DIR__ . '/file-name.php';
+```
+
+<!-- 
 ## Naming
  -->
 ## 命名
@@ -162,16 +186,28 @@ Use lowercase letters in variable, action/filter, and function names (never `cam
 変数、アクション、関数の名前にはアルファベット小文字を使います。`camelCase` は使いません。単語はアンダースコアで区切ります。不必要に変数名を省略しないでください。コードは明確に、理解可能なものにしてください。
 
 ```php
-function some_name( $some_variable ) { [...] }
+function some_name( $some_variable ) {}
 ```
+
 <!-- 
-Class names should use capitalized words separated by underscores. Any acronyms should be all upper case.
+For function parameter names, it is _strongly recommended_ to avoid reserved keywords as names, as it leads to hard to read and confusing code when using the PHP 8.0 "named parameters in function calls" feature.
+Also keep in mind that renaming a function parameter should be considered a breaking change since PHP 8.0, so name function parameters with due care!
  -->
-クラス名は大文字で始まる単語をアンダースコアで区切ります。省略語はすべて大文字にします。
+関数の引数名には、予約キーワードを使わないことを _強く推奨_ します。これは PHP 8.0の「関数呼び出し内の名前付き引数」機能を使用する際に、読みづらく、混乱したコードになるためです。
+また、関数の引数名を変更することは PHP 8.0以降は破壊的な変更と見なされることに注意してください。
+
+<!-- 
+Class, trait, interface and enum names should use capitalized words separated by underscores. Any acronyms should be all upper case.
+ -->
+クラス名、トレイト名、インターフェース名、列挙体名は、大文字で始まる単語をアンダースコアで区切ります。省略語はすべて大文字にします。
 
 ```php
-class Walker_Category extends Walker { [...] }
-class WP_HTTP { [...] }
+class Walker_Category extends Walker {}
+class WP_HTTP {}
+
+interface Mailer_Interface {}
+trait Forbid_Dynamic_Properties {}
+enum Post_Status {}
 ```
 <!-- 
 Constants should be in all upper-case with underscores separating words:
@@ -200,13 +236,15 @@ class-wp-error.php
 ```
 
 <!-- 
-This file-naming standard is for all current and new files with classes. There is one exception to this rule for three legacy files: `class.wp-dependencies.php`, `class.wp-scripts.php`, `class.wp-styles.php`. Those files are prepended with `class.`, a dot after the word class instead of a hyphen.
+This file-naming standard is for all current and new files with classes, except test classes.
+For files containing test classes, the file name should reflect the class name exactly, as per PSR4. This is to ensure cross-version [compatibility with all supported PHPUnit versions](https://github.com/sebastianbergmann/phpunit/pull/4109).
+ -->
+このファイルの命名規則は、テスト用のクラスを除いて、クラスを含むすべての現行および新規のファイルに適用されます。テストクラスを含むファイルについては PSR4 に従ってファイル名にクラス名を正確に反映しなければなりません。これにより、[すべてのサポート PHPUnit バージョンにおけるバージョン間の互換性](https://github.com/sebastianbergmann/phpunit/pull/4109) が保証されます。
 
+<!-- 
 Files containing template tags in the `wp-includes` directory should have `-template` appended to the end of the name so that they are obvious.
  -->
-このファイル命名規則は、すべての現行のクラスファイル、将来のクラスファイルに適用されます。例外は 3つの古いファイル「class.wp-dependencies.php」「class.wp-scripts.php」「class.wp-styles.php」で、これらは接頭辞が `class.` のように、ハイフンの代わりにドットで始まります。
-
-`wp-includes` 内のテンプレートタグを含むファイルには、分かりやすさのため名前の末尾に `-template` を付けてくだださい。
+`wp-includes` ディレクトリ内のテンプレートタグを含むファイルには、分かりやすさのため名前の末尾に `-template` を付けてくだださい。
 
 ```php
 general-template.php
@@ -228,7 +266,7 @@ Variables used in hook tags should be wrapped in curly braces `{` and `}`, with 
 
 ダイナミックフックはタグ名に動的な値を含むフックです。例: `{$new_status}_{$post->post_type}` (publish_post)
 
-フックタグで使用される変数は中括弧(「{」と「}」)で囲み、完全なタグ名全体をダブルクオートで囲んでください。こうすると PHP は、挿入された文字列内で指定された変数の型を正しくパースできます。
+フックタグで使用される変数は中括弧(「{」と「}」)で囲み、完全なタグ名全体をダブルクォートで囲んでください。こうすると PHP は、挿入された文字列内で指定された変数の型を正しくパースできます。
 
 ```php
 do_action( "{$new_status}_{$post->post_type}", $post->ID, $post );
@@ -249,9 +287,9 @@ Where possible, dynamic values in tag names should also be as succinct and to th
 ### スペースの使い方
 
 <!-- 
-Always put spaces after commas, and on both sides of logical, comparison, string and assignment operators.
+Always put spaces after commas, and on both sides of logical, arithmetic, comparison, string and assignment operators.
  -->
-コンマの後ろや、論理演算子、比較演算子、文字列演算子、代入演算子の両側には、常にスペースを入れてください。
+コンマの後ろや、論理演算子、比較演算子、算術演算子、比較演算子、文字列演算子、代入演算子の両側には、常にスペース (空白文字) を入れてください。
 
 ```php
 SOME_CONST === 23;
@@ -260,12 +298,14 @@ foo() && bar();
 array( 1, 2, 3 );
 $baz . '-5';
 $term .= 'X';
+if ( $object instanceof Post_Type_Interface ) {}
+$result = 2 ** 3; // 8.
 ```
 
 <!-- 
 Put spaces on both sides of the opening and closing parentheses of control structure blocks.
  -->
-制御構造ブロックの開きかっこ、閉じかっこの両側にも入れてください。
+制御構造ブロックの開き括弧、閉じ括弧の両側にも入れてください。
 
 ```php
 foreach ( $foo as $bar ) { ...
@@ -361,6 +401,7 @@ switch ( $foo ) {
 <!-- 
 Similarly, there should be no space before the colon on return type declarations.
  -->
+<!-- 
 同様に、戻りの型の宣言のコロンの前にスペースを置かないでください。
 
 ```php
@@ -368,7 +409,7 @@ function sum( $a, $b ): float {
     return $a + $b;
 }
 ```
-
+ -->
 <!-- 
 Unless otherwise specified, parentheses should have spaces inside them.
  -->
@@ -378,6 +419,20 @@ Unless otherwise specified, parentheses should have spaces inside them.
 if ( $foo && ( $bar || $baz ) ) { ...
 
 my_function( ( $x - 1 ) * 5, $y );
+```
+
+<!-- 
+When using increment (`++`) or decrement (`--`) operators, there should be no spaces between the operator and the variable it applies to.
+ -->
+加算子(`++`)または減算子(`--`)を使用するとき、演算子と適用する変数の間にスペースは挿入できません。
+
+```php
+// 正しい
+for ( $i = 0; $i < 10; $i++ ) {}
+
+// 間違い
+for ( $i = 0; $i < 10; $i ++ ) {}
+++   $b; // 複数のスペース
 ```
 
 <!-- 
@@ -392,7 +447,7 @@ Exception: if you have a block of code that would be more readable if things are
  -->
 インデントは常に論理的な構造を反映してください。インデントには**本物のタブ**を使用します。**スペースは使わないでください**。大部分のクライアント環境で最大の柔軟性を得られます。
 
-例外: コードブロックの可読性のために必要であれば、スペースを使用してください。
+例外: コードブロックの可読性のために、必要であれば、スペースを使用してください。
 
 ```php
 [tab]$foo   = 'somevalue';
@@ -403,7 +458,7 @@ Exception: if you have a block of code that would be more readable if things are
 <!-- 
 For associative arrays, _each item_ should start on a new line when the array contains more than one item:
  -->
-連想配列で複数の要素を含む場合、_各項目_を、新しい行で始めてください。
+連想配列で複数の要素を含む場合、_各項目_ を、新しい行で始めてください。
 
 ```php
 $query = new WP_Query( array( 'ID' => 123 ) );
@@ -415,7 +470,7 @@ $args = array(
 [tab]'post_author' => 123,
 [tab]'post_status' => 'publish',
 );
- 
+
 $query = new WP_Query( $args );
 ```
 <!-- 
@@ -464,14 +519,19 @@ Remove trailing whitespace at the end of each line. Omitting the closing PHP tag
 各行末尾のスペースは削除してください。ファイル末尾の PHP 終了タグの除去は推奨です。終了タグを使用する場合には、その後にスペースがないことを確認してください。
 
 <!-- 
+There should be no trailing blank lines at the end of a function body.
+ -->
+関数本体の末尾の空白行は削除してください。
+
+<!-- 
 ## Formatting
  -->
-フォーマット
+## フォーマット
 
 <!-- 
 ### Brace Style
  -->
-### ブレース (波かっこ、中括弧) の形式
+### ブレース (波括弧、中括弧) の形式
 
 <!-- 
 Braces shall be used for all blocks in the style shown here:
@@ -495,7 +555,7 @@ If you have a really long block, consider whether it can be broken into two or m
 
 Braces should always be used, even when they are not required:
  -->
-その上で非常に長いブロックがあれば、複数の短いブロック、関数、メソッドに分割できないかを検討してください。分割することで複雑度を解消し、テストしやすくなり、可読性を向上します。
+その上で非常に長いブロックがあれば、複数の短いブロック、関数、メソッドに分割できないかを検討してください。分割することで複雑度を解消し、テストしやすくなり、可読性を向上できます。
 
 ブレースは必ず使用してください。省略可能な場合でも使用してください。
 
@@ -578,6 +638,170 @@ $a = foo(
 );
 ```
 <!-- 
+### Type declarations
+ -->
+### 型宣言
+
+<!-- 
+Type declarations must have exactly one space before and after the type. The nullability operator (`?`) is regarded as part of the type declaration and there should be no space between this operator and the actual type. Class/interface/enum name based type declarations should use the case of the class/interface/enum name as declared, while the keyword-based type declarations should be lowercased.
+ -->
+型宣言では型の前後に、正確に1つのスペースを挿入しなければなりません。nullabile な演算子 (`?`) は型宣言の一部とみなされ、この演算子と実際の型の間にスペースは挿入できません。クラス名、インターフェース名、列挙体名に基づく型宣言では、これらの名前の宣言と同じ大文字、小文字を使用する必要があります。一方、キーワードに基づく型宣言では、小文字を使用しなければなりません。
+
+<!-- 
+Return type declarations should have no space between the closing parenthesis of the function declaration and the colon starting a return type.
+ -->
+戻り値の型宣言では関数宣言の閉じ括弧と、戻り値の型を始めるコロンの間にスペースを挿入しないでください。
+
+<!-- 
+These rules apply to all structures allowing for type declarations: functions, closures, enums, catch conditions as well as the PHP 7.4 arrow functions and typed properties.
+ -->
+以上のルールは型宣言を許可するすべての構造に適用されます: 関数、クロージャ、列挙型、catch 条件、PHP 7.4のアロー関数、型付きプロパティ。
+
+```php
+// 正しい
+function foo( Class_Name $parameter, callable $callable, int $number_of_things = 0 ) {
+    // 何かを実行する
+}
+
+function bar(
+    Interface_Name&Concrete_Class $param_a,
+    string|int $param_b,
+    callable $param_c = 'default_callable'
+): User|false {
+    // 何かを実行する
+}
+
+// 間違い
+function baz(Class_Name $param_a, String$param_b,      CALLABLE     $param_c )   :   ?   iterable   {
+    // 何かを実行する
+}
+```
+
+<!-- 
+[info]
+Type declaration usage has the following restrictions based on the minimum required PHP version of an application, whether it is WordPress Core, a plugin or a theme:
+ -->
+型宣言の使用には、WordPress コア、プラグイン、テーマのいずれであっても、アプリケーションに最低限必要な PHP バージョンに基づく以下の制限があります：
+
+<!-- 
+- The scalar `bool`, `int`, `float`, and `string` type declarations cannot be used until the minimum PHP version is PHP 7.0 or higher.
+- Return type declarations cannot be used until the minimum PHP version is PHP 7.0 or higher.
+- Nullable type declarations cannot be used until the minimum PHP version is PHP 7.1 or higher.
+- The `iterable` and `void` type declarations cannot be used until the minimum PHP version is PHP 7.1 or higher. The `void` type can only be used as a return type.
+- The `object` type declaration cannot be used until the minimum PHP version is PHP 7.2 or higher.
+- Property type declarations cannot be used until the minimum PHP version is PHP 7.4 or higher.
+- `static` (return type only) cannot be used until the minimum PHP version is PHP 8.0 or higher.
+- `mixed` type cannot be used until the minimum PHP version is PHP 8.0 or higher. Take note that the `mixed` type includes `null`, so cannot be made nullable.
+- Union types cannot be used until the minimum PHP version is PHP 8.0 or higher.
+- Intersection types cannot be used until the minimum PHP version is PHP 8.1 or higher.
+- `never` (return type only) cannot be used until the minimum PHP version is PHP 8.1 or higher.
+- Disjunctive normal form types (combining union types and intersection types) cannot be used until the minimum PHP version is PHP 8.2 or higher.
+[/info]
+ -->
+- スカラー型 `bool`、`int`、`float`、`string` の型宣言は、サポートする最低バージョンが PHP 7.0 以降になるまでは使用できません。
+- 戻り値の型宣言は、サポートする最低バージョンが PHP 7.0 以降になるまでは使用できません。
+- Nullable 型の宣言は、サポートする最低バージョンが PHP 7.1 以降になるまでは使用できません。
+- `iterable` および `void` 型の宣言は、サポートする最低バージョンが PHP 7.1 以降になるまでは使用できません。`void` 型は戻り値としてのみ使用できます。
+- `object` 型の宣言は、サポートする最低バージョンが PHP 7.2 以降になるまでは使用できません。
+- プロパティの型宣言は、サポートする最低バージョンが PHP 7.4 以降になるまでは使用できません。
+- `static` 型 (戻り値の型のみ) は、サポートする最低バージョンが PHP 8.0 以降になるまでは使用できません。
+- `mixed` 型は、サポートする最低バージョンが PHP 8.0 以降になるまでは使用できません。注意: `mixed` 型には `null` が含まれるため、nullable にはできません。
+- union 型は、サポートする最低バージョンが PHP 8.0 以降になるまでは使用できません。
+- 交差型は、サポートする最低バージョンが PHP 8.1 以降になるまでは使用できません。
+- `never` 型 (戻り値の型のみ) は、サポートする最低バージョンが PHP 8.1 以降になるまでは使用できません。
+- 選言標準形 (論理和型と論理積型の組み合わせ) は、サポートする最低バージョンが PHP 8.2 以降になるまでは使用できません。
+
+<!-- 
+_Usage in WordPress Core_
+ -->
+_WordPress コアでの使用_
+
+<!-- 
+[warning]
+Adding type declarations to existing WordPress Core functions should be done with extreme care.
+[/warning]
+ -->
+> 警告: 既存のWordPress コアの関数への型宣言の追加は、細心の注意を払ってください。
+
+<!-- 
+The function signature of any function (method) which can be overloaded by plugins or themes should not be touched.
+This leaves, for now, only unconditionally declared functions in the global namespace, `private` class methods, and code new to Core, as candidates for adding type declarations.
+ -->
+プラグインやテーマで上書きされる可能性のある関数 (メソッド) のシグネチャは、触るべきではありません。
+現時点で型宣言を追加する余地があるものは、グローバル名前空間で無条件に宣言された関数、`private` クラスのメソッド、コアに新しく追加されたコードだけです。
+
+<!-- 
+Note: Using the `array` keyword in type declarations is **strongly discouraged** for now, as most often, it would be better to use `iterable` to allow for more flexibility in the implementation and that keyword is not yet available for use in WordPress Core until the minimum requirements are raised to PHP 7.1.
+ -->
+注意：型宣言で `array` キーワードを使用することは、現時点で **強く推奨されません** 。ほとんどの場合、`iterable` を使用した方が実装の柔軟性が高くなりますし、このキーワードは最低要件が PHP 7.1 に上がるまで WordPress コアでは使用できません。
+
+<!-- 
+### Magic constants
+ -->
+### マジック定数
+
+<!-- 
+The [PHP native `__*__` magic constants](https://www.php.net/manual/en/language.constants.magic.php), like `__CLASS__` and `__DIR__`, should be written in uppercase when used.
+ -->
+[PHP ネイティブの `__*__` マジック定数](https://www.php.net/manual/en/language.constants.magic.php)、例えば `__CLASS__` や `__DIR__` は大文字でなければなりません。
+
+<!-- 
+When using the `::class` constant for class name resolution, the `class` keyword should be in lowercase and there should be no spaces around the `::` operator.
+ -->
+クラス名の解決に `::class` 定数を使用する場合、`class` キーワードは小文字にし、`::` 演算子の前後にはスペースを入れないでください。
+
+```php
+// 正しい
+add_action( 'action_name', array( __CLASS__, 'method_name' ) );
+add_action( 'action_name', array( My_Class::class, 'method_name' ) );
+
+// 間違い
+require_once __dIr__ . '/relative-path/file-name.php';
+add_action( 'action_name', array( My_Class :: CLASS, 'method_name' ) );
+```
+
+<!-- 
+### Spread operator `...`
+ -->
+### スプレッド演算子 `...`
+
+<!-- 
+When using the spread operator, there should be one space or a new line with the appropriate indentation before the spread operator. There should be no spaces between the spread operator and the variable/function call it applies to. When combining the spread operator with the reference operator (`&`), there should be no spaces between them.
+ -->
+スプレッド演算子を使用する場合、スプレッド演算子の前にスペースを1つ空けるか、適切なインデントで改行しなければなりません。スプレッド演算子とそれが適用される変数、関数呼び出しの間にはスペースを挿入しないでください。スプレッド演算子と参照演算子 (`&`) を組み合わせる場合も、その間にスペースを挿入しないでください。
+
+```php
+// 正しい
+function foo( &...$spread ) {
+    bar( ...$spread );
+
+    bar(
+        array( ...$foo ),
+        ...array_values( $keyed_array )
+    );
+}
+
+// 間違い
+function fool( &   ... $spread ) {
+    bar(...
+             $spread );
+
+    bar(
+        [...  $foo ],... array_values( $keyed_array )
+    );
+}
+```
+
+<!-- 
+[info]
+The spread operator (or splat operator as it's known in other languages) can be used for packing arguments in function declarations (variadic functions) and unpacking them in function calls as of PHP 5.6. Since PHP 7.4, the spread operator is also used for unpacking numerically-indexed arrays, with string-keyed array unpacking available since PHP 8.1.
+When used in a function declaration, the spread operator can only be used with the last parameter.
+[/info]
+ -->
+> メモ: スプレッド演算子 (他の言語では splat 演算子として知られる) は、PHP 5.6以降で、関数宣言 (可変長引数関数) での引数のパックや関数呼び出しでの引数のアンパックに使用できます。PHP 7.4以降では、スプレッド演算子は数値添字付き配列のアンパックに、PHP 8.1以降では文字列キー付き配列のアンパックにも使用できます。
+> 関数宣言で使用する場合、スプレッド演算子は、最後のパラメータでのみ使用できます。
+
+<!-- 
 ## Declare Statements, Namespace, and Import Statements
  -->
 ## 文、名前空間、インポート文の宣言
@@ -610,22 +834,8 @@ There should be only one namespace declaration per file, and it should be at the
  -->
 名前空間の宣言は1ファイルにつき1つだけとし、ファイルの先頭に記述してください。中括弧を使用した名前空間宣言は使用できません。明示的なグローバル名前空間宣言 (名前のない名前空間宣言) も使用できません。
 
-<!-- 
-```php
-// Incorrect: namespace declaration using curly brace syntax.
-namespace Foo {
-    // Code.
-}
-
-// Incorrect: namespace declaration for the global namespace.
-namespace {
-    // Code.
-}
-```
- -->
 ```php
 // 間違い: 中括弧構文を使用した名前空間宣言
-
 namespace Foo {
     // コード
 }
@@ -635,8 +845,9 @@ namespace {
     // コード
 }
 ```
+
 <!-- 
-_There is currently no timeline for introducing namespaces to WordPress Core._ 
+_There is currently no timeline for introducing namespaces to WordPress Core._
 
 The use of namespaces in plugins and themes is strongly encouraged. It is a great way to prefix a lot of your code to prevent naming conflicts with other plugins, themes and/or WordPress Core.
 
@@ -665,13 +876,132 @@ Those still need to be prefixed individually.
 > これらには、従来どおり個別に接頭辞をつける必要があります。
 
 <!-- 
-## Object-Oriented Programming
+### Using import `use` statements
+ -->
+### インポートの `use` 文の使用
 
-### Only One Object Structure (Class/Interface/Trait) per File
+<!-- 
+Using import `use` statements allows you to refer to constants, functions, classes, interfaces, namespaces, enums and traits that live outside of the current namespace.
+ -->
+インポートの `use` 文を使用すると、現在の名前空間の外にある定数、関数、クラス、インターフェース、名前空間、列挙型、トレイトを参照できます。
+
+<!-- 
+Import `use` statements should be at the top of the file and follow the (optional) `namespace` declaration. They should follow a specific order based on the **type** of the import:
+ -->
+インポートの `use` 文はファイルの先頭に記述し、オプションで `namespace` 宣言の後に記述します。これらはインポートの **タイプ** に基づいた特定の順序に従う必要があります。
+
+<!-- 
+1. `use` statements for namespaces, classes, interfaces, traits and enums
+2. `use` statements for functions
+3. `use` statements for constants
+ -->
+1. `use` 文 - 名前空間、クラス、インターフェース、トレイト、列挙型
+2. `use` 文 - 関数
+3. `use` 文 - 定数
+
+<!-- 
+Aliases can be used to prevent name collisions (two classes in different namespaces using the same class name).
+When using aliases, make sure the aliases follow the WordPress naming convention and are unique.
+ -->
+エイリアスは使用できます。異なる名前空間の2つのクラスが同じクラス名を使用することで生じる、名前の衝突を防止できます。
+エイリアスを使用する場合は WordPress の命名規則に従い、一意であることを確認してください。
+
+<!-- 
+The following examples showcase the correct and incorrect usage of import `use` statements regarding things like spacing, groupings, leading backslashes, etc.
+ -->
+以下の例では、スペース、グループ化、先頭のバックスラッシュなど、インポートの `use` 文の正しい使い方と間違った使い方を紹介しています。
+
+<!-- 
+Correct:
+ -->
+正しい:
+
+```php
+namespace Project_Name\Feature;
+
+use Project_Name\Sub_Feature\Class_A;
+use Project_Name\Sub_Feature\Class_C as Aliased_Class_C;
+use Project_Name\Sub_Feature\{
+    Class_D,
+    Class_E as Aliased_Class_E,
+}
+
+use function Project_Name\Sub_Feature\function_a;
+use function Project_Name\Sub_Feature\function_b as aliased_function;
+
+use const Project_Name\Sub_Feature\CONSTANT_A;
+use const Project_Name\Sub_Feature\CONSTANT_D as ALIASED_CONSTANT;
+
+// 残りのコード
+```
+
+<!-- 
+Incorrect:
+ -->
+間違い:
+
+```php
+namespace Project_Name\Feature;
+
+use   const   Project_Name\Sub_Feature\CONSTANT_A; // use と const キーワードの後に余計なスペース
+use function Project_Name\Sub_Feature\function_a; // 定数インポートの後に関数インポート
+use \Project_Name\Sub_Feature\Class_C as aliased_class_c; // 先頭にバックスラッシュは使えない。エイリアスが命名規則に従っていない。
+use Project_Name\Sub_Feature\{Class_D, Class_E   as   Aliased_Class_E} // as キーワードの前後に余計なスペース。中括弧内部の誤ったスペース
+use Vendor\Package\{ function function_a, function function_b,
+     Class_C,
+        const CONSTANT_NAME}; // 1つの use 文中に異なるタイプのインポートが組み合わさっている。グループ use 文の中に誤ったスペース
+
+class Foo {
+    // コード
+}
+
+use const \Project_Name\Sub_Feature\CONSTANT_D as Aliased_constant; // クラス定義の後のインポート、先頭のバックスラッシュ、命名規則違反
+use function Project_Name\Sub_Feature\function_b as Aliased_Function; // クラス定義の後のインポート、命名規則違反
+
+// 残りのコード
+```
+
+<!-- 
+[alert]
+Import `use` statements have no effect on dynamic class, function or constant names.
+Group `use` statements are available from PHP 7.0, and trailing commas in group `use` statements are available from PHP 7.2.
+[/alert]
+ -->
+> 警告: インポートの `use` 文は動的なクラス、関数、定数名には影響しません。`use` 文のグループは PHP 7.0から使用可能です。グループの `use` 文の末尾にカンマをつけることは PHP 7.2から可能です。
+
+<!-- 
+[info]
+Note that, unless you have implemented [autoloading](https://www.php.net/manual/en/language.oop5.autoload.php), the `use` statement won't automatically load whatever is being imported. You'll either need to set up autoloading or load the file containing the class/function/constant using a `require/import` statement, for the imported constructs to be loaded when used.
+[/info]
+ -->
+> ヒント: [自動ロード](https://www.php.net/manual/en/language.oop5.autoload.php)を実装していない限り、`use` 文はインポートされるものを自動的にロードしないことに注意してください。インポートする構成要素を使用の際にロードするには、自動ロードをセットアップするか、`require/import` 文を使用してクラス、関数、定数を含むファイルをロードする必要があります。
+
+<!-- 
+**Note about WordPress Core usage**
+ -->
+**WordPress コアでの使用に関する注意**
+
+<!-- 
+While import `use` statements can already be used in WordPress Core, it is, for the moment, **strongly discouraged**.
+ -->
+WordPress コアではすでにインポートの `use` 文を使用できますが、現時点では**強く推奨されません**。
+
+<!-- 
+Import `use` statements are most useful when combined with namespaces and a class autoloading implementation.
+As neither of these are currently in place for WordPress Core and discussions about this are ongoing, holding off on adding import `use` statements to WordPress Core is the sensible choice for now.
+ -->
+インポートの `use` 文は、名前空間やクラスの自動ロード実装と組み合わせたときに最も有用です。
+現在、WordPress コアではこのどちらも実装されておらず、この件に関する議論が進行中です。このため WordPress コアではインポートの `use` 文の追加を控えることが、今のところ賢明な選択です。
+
+<!-- 
+## Object-Oriented Programming
  -->
 ## オブジェクト指向プログラミング
 
-### ファイルごとに、1つのオブジェクト構造 (クラス、インターフェース、トレイト)
+<!-- 
+### Only One Object Structure (Class/Interface/Trait/Enum) per File
+ -->
+### ファイルごとに、1つのオブジェクト構造 (クラス、インターフェース、トレイト、列挙型)
 
 <!-- 
 For instance, if we have a file called `class-example-class.php` it can only contain one class in that file.
@@ -681,9 +1011,9 @@ For instance, if we have a file called `class-example-class.php` it can only con
 <!-- 
 ```php
 // Incorrect: file class-example-class.php.
-class Example_Class { [...] }
+class Example_Class {}
 
-class Example_Class_Extended { [...] }
+class Example_Class_Extended {}
 ```
  -->
 ```php
@@ -701,12 +1031,12 @@ The second class should be in its own file called `class-example-class-extended.
 <!-- 
 ```php
 // Correct: file class-example-class.php.
-class Example_Class { [...] }
+class Example_Class {}
 ```
 
 ```php
 // Correct: file class-example-class-extended.php.
-class Example_Class_Extended { [...] }
+class Example_Class_Extended {}
 ```
  -->
 ```php
@@ -719,6 +1049,214 @@ class Example_Class { [...] }
 class Example_Class_Extended { [...] }
 ```
 
+<!-- 
+### Trait Use Statements
+ -->
+### トレイトの use 文
+
+<!-- 
+Trait `use` statements should be at the top of a class and should have exactly one blank line before the first `use` statement, and at least one blank line after the last statement. The only exception is when the class only contains trait `use` statements, in which case the blank line after may be omitted.
+ -->
+トレイトの `use` 文はクラスの先頭に記述し、最初の `use` 文の前には正確に1行の空白行を、最後の `use` 文の後には少なくとも1行の空白行を記述します。唯一の例外は、クラスがトレイトの `use` 文のみを含む場合で、その場合は後ろの空白行を省略できます。
+
+<!-- 
+The following code examples show the formatting requirements for trait `use` statements regarding things like spacing, grouping and indentation.
+ -->
+以下のコード例では、スペース、グループ化、インデントなどに関して、トレイトの `use` 文に必要な書式を示します。
+
+```php
+// 正しい
+class Foo {
+
+    use Bar_Trait;
+    use Foo_Trait,
+        Bazinga_Trait {
+        Bar_Trait::method_name insteadof Bar_Trait;
+        Bazinga_Trait::method_name as bazinga_method;
+    }
+    use Loopy_Trait {
+        eat as protected;
+    }
+
+    public $baz = true;
+
+    ...
+}
+
+// 間違い
+class Foo {
+    // トレイトの use 文の前に空白行がない、use キーワードの後に複数のスペース。
+    use       Bar_Trait;
+
+    /*
+     * トレイトのインポート時に複数のスペース、開き中括弧の後に開業なし。
+     * エイリアスは置換するメソッドと同じ行でなければならない。
+     */
+    use Foo_Trait,   Bazinga_Trait{Bar_Trait::method_name    insteadof     Foo_Trait; Bazinga_Trait::method_name
+        as     bazinga_method;
+            }; // 不正なインデントの中括弧
+    public $baz = true; // トレイトのインポートの後に空白行がない
+
+    ...
+}
+```
+
+<!-- 
+### Visibility should always be declared
+ -->
+### アクセス権 (Visibility) を常に宣言する
+
+<!-- 
+For all constructs that allow it (properties, methods, class constants since PHP 7.1), visibility should be explicitly declared.
+Using the `var` keyword for property declarations is not allowed.
+ -->
+アクセス権を宣言可能なすべての構成要素 (プロパティ、メソッド、PHP 7.1 以降のクラス定数) について、明示的にアクセス権を宣言しなければなりません。
+プロパティの宣言に `var` キーワードは使用できません。
+
+```php
+// 正しい
+class Foo {
+    public $foo;
+
+    protected function bar() {}
+}
+
+// 間違い
+class Foo {
+    var $foo;
+
+    function bar() {}
+}
+```
+
+<!-- 
+_Usage in WordPress Core_
+ -->
+_WordPress コアでの使用_
+
+<!-- 
+Visibility for class constants can not be used in WordPress Core until the minimum PHP version has been raised to PHP 7.1.
+ -->
+WordPress コアでは、サポートするPHP の最小バージョンが PHP 7.1に上がるまでは、クラス定数のアクセス権を使用できません。
+
+<!-- 
+### Visibility and modifier order
+ -->
+### アクセス権 (Visibility) と修飾子の順番
+
+<!-- 
+When using multiple modifiers for a _class declaration_, the order should be as follows:
+ -->
+複数の修飾子を _クラス宣言_ に使用する場合、次の順序に従ってください。
+
+<!-- 
+1. First the optional `abstract` or `final` modifier.
+2. Next, the optional `readonly` modifier.
+ -->
+1. まず、オプションの `abstract` または `final` 修飾子
+2. 次に、オプションの `readonly` 修飾子
+
+<!-- 
+When using multiple modifiers for a _constant declaration_ inside object-oriented structures, the order should be as follows:
+ -->
+複数の修飾子をオブジェクト指向構造体の内部の _定数宣言_ に使用する場合、次の順序に従ってください。
+
+<!-- 
+1. First the optional `final` modifier.
+2. Next, the visibility modifier.
+ -->
+1. まず、オプションの `final` 修飾子
+2. 次に、アクセス権修飾子
+
+<!-- 
+When using multiple modifiers for a _property declaration_, the order should be as follows:
+ -->
+複数の修飾子を _プロパティ宣言_ に使用する場合、次の順序に従ってください。
+
+<!-- 
+1. First a visibility modifier.
+2. Next, the optional `static` or `readonly` modifier (these keywords are mutually exclusive).
+3. Finally, the optional `type` declaration.
+ -->
+1. まず、アクセス権修飾子
+2. 次に、オプションの `static` または `readonly` 修飾子 (これらのキーワードは互いに排他的)
+3. 最後に、オプションの `type` 宣言
+
+<!-- 
+When using multiple modifiers for a _method declaration_, the order should be as follows:
+ -->
+複数の修飾子を _メソッド宣言_ に使用する場合、次の順序に従ってください。
+
+<!-- 
+1. First the optional `abstract` or `final` modifier.
+2. Then, a visibility modifier.
+3. Finally, the optional `static` modifier.
+ -->
+1. まず、オプションの `abstract` または `final` 修飾子
+2. 次に、アクセス権修飾子
+3. 最後に、オプションの `static` 修飾子
+
+```php
+// 正しい
+abstract readonly class Foo {
+    private const LABEL = 'Book';
+
+    public static $foo;
+
+    private readonly string $bar;
+
+    abstract protected static function bar();
+}
+
+// 間違い
+class Foo {
+    protected final const SLUG = 'book';
+
+    static public $foo;
+
+    static protected final function bar() {
+        // コード
+    };
+}
+```
+<!-- 
+[info]
+- Visibility for OO constants can be declared since PHP 7.1.
+- Typed properties are available since PHP 7.4.
+- Readonly properties are available since PHP 8.1.
+- `final` modifier for constants in object-oriented structures is available since PHP 8.1.
+- Readonly classes are available since PHP 8.2.
+[/info]
+ -->
+ヒント:
+- OO 定数のアクセス権は、PHP 7.1 以降で宣言できます。
+- 型付きプロパティは、PHP 7.4 以降で使用できます。
+- リードオンリープロパティは、PHP 8.1 以降で使用できます。
+- オブジェクト指向構造体内の定数の `final` 修飾子は、PHP 8.1 以降で使用できます。
+- リードオンリークラスは、PHP 8.2 以降で使用できます。
+
+<!-- 
+### Object Instantiation
+ -->
+### オブジェクトのインスタンス化
+
+<!-- 
+When instantiating a new object instance, parenthesis must always be used, even when not strictly necessary.
+There should be no space between the name of the class being instantiated and the opening parenthesis.
+ -->
+新しいオブジェクトインスタンスをインスタンス化するときは、厳密に必要でない場合でも、常に括弧を使用しなければなりません。
+インスタンス化されるクラス名と始まりの括弧の間にはスペースを入れないでください。
+
+```php
+// 正しい
+$foo = new Foo();
+$anonymous_class = new class( $parameter ) { ... };
+$instance = new static();
+
+// 間違い
+$foo = new Foo;
+$anonymous_class = new class ( $input ) { ... };
+```
 
 <!-- 
 ## Control Structures
@@ -757,7 +1295,7 @@ A little bizarre, it is, to read. Get used to it, you will.
 
 This applies to `==`, `!=`, `===`, and `!==`. Yoda conditions for `<`, `>`, `<=` or `>=` are significantly more difficult to read and are best avoided.
  -->
-上の例で1つ等号を忘れると (白状すると、熟練のコアメンバーでもやらかします)、パースエラーが発生します。定数 `true` に代入できないためです。もし条件式が `( $the_force = true )` であれば、代入は構文として正しく `1` を返し、結果 if 文は `true` と評価し、そして、しばらくバグと闘うことになるでしょう。
+上の例で1つ等号を忘れると、パースエラーが発生します (白状すると、熟練のコアメンバーでもやらかします)。定数 `true` に代入できないためです。もし条件式が `( $the_force = true )` であれば、代入は構文として正しく `1` を返し、結果 if 文は `true` と評価し、そして、しばらくバグと闘うことになるでしょう。
 
 ヨーダ記法は最初、奇妙に見えるかもしれませんが、そのうち慣れるはずです。
 
@@ -813,9 +1351,34 @@ While this operator does exist in Core, it is often used lazily instead of doing
 > PHP 8.0.0 より前のバージョンでは、 スクリプトの実行を停止させるような致命的な場合であっても @ 演算子でエラーメッセージを抑止することが可能でした。 たとえば、存在しなかったり、ミスタイプされていたり、 利用できない関数コールの前に @ 演算子を付けると、 原因を示すことなく、その場所でスクリプトは終了してしまっていました。
 
 <!-- 
+### Increment/decrement operators
+ -->
+### 加算子 / 減算子
+
+<!-- 
+Pre-increment/decrement should be favoured over post-increment/decrement for stand-alone statements.
+ -->
+スタンドアロンの文では、前置加算子、前置減算子が、後置加算子、後置減算子に優先します。
+
+<!-- 
+Pre-increment/decrement will increment/decrement and then return, while post-increment/decrement will return and then increment/decrement.
+Using the "pre" version is slightly more performant and can prevent future bugs when code gets moved around.
+ -->
+前置加算子、前置減算子は、インクリメント、デクリメントしてから値を戻します。一方、後置加算子、後置減算子は値を戻してから、インクリメント、デクリメントします。
+「前置」バージョンの方が若干パフォーマンスに優れ、また将来コードが移動したときのバグを防ぐことができます。
+
+```php
+// 正しい。前置減算子
+--$a;
+
+// 間違い。後置減算子
+$a--;
+```
+
+<!-- 
 ## Database
  -->
-データベース
+## データベース
 
 <!-- 
 ### Database Queries
@@ -847,7 +1410,7 @@ SQL 文が非常に複雑な場合は、複数行に分割し、インデント�
 
 データベースを更新する関数は、渡されたパラメータが SQL 用にエスケープされていないと仮定して処理してください。エスケープはできるだけクエリの直前に、可能であれば「`$wpdb->prepare()`」を使用して実行してください。
 
-「`$wpdb->prepare()`」は SQL クエリのエスケープ、クォート、整数へのキ ャストを処理するメソッドです。`sprintf()` 書式のサブセットを使用します。 例:
+「`$wpdb->prepare()`」は SQL クエリのエスケープ、クォート、整数へのキャストを処理するメソッドです。`sprintf()` 書式のサブセットを使用します。 例:
 
 <!-- 
 ```php
@@ -864,13 +1427,24 @@ $id = some_foo_number(); // integer を期待するデータ。ただし確証�
 $wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET post_title = %s WHERE ID = %d", $var, $id ) );
 ```
 
-<!-- 
-`%s` is used for string placeholders and `%d` is used for integer placeholders. Note that they are not 'quoted'! `$wpdb->prepare()` will take care of escaping and quoting for us. The benefit of this is that it is easy to see at a glance whether something has been escaped or not because it happens right when the query happens.
+<!--  
+The following placeholders can be used in the query string:
+ --> 
+クエリー文字列には次のプレースホルダーを使用できます:
 
+- %d (整数)
+- %f (浮動小数点数)
+- %s (文字列)
+- %i (識別子。例: テーブル名、フィールド名)
+
+<!-- 
+Note that these placeholders should not be 'quoted'! `$wpdb->prepare()` will take care of escaping and quoting for us. This makes it easy to see at a glance whether something has been escaped or not because it happens right when the query happens.
+ -->
+注意: これらのプレースホルダを「クォートで囲まない」でください。`wpdb->prepare()` がエスケープとクォートを実行します。これはクエリーが発生したときに実行されるため、エスケープされたかどうかが一目で分かります。
+
+<!--
 See [Data Validation](https://developer.wordpress.org/plugins/security/data-validation/) in the Plugin Handbook for further details.
  -->
-`%s` は文字列のプレースホルダーとして、`%d` は整数のプレースホルダーとして使用されます。注意: これらに「クォート」はありません。 「`$wpdb->prepare()`」がエスケープやクォートを実行します。この方法の良い点は、クエリーが発生するとすぐに起きるため、エスケープの有無が一目でわかる点です。
-
 詳細については、Plugin Handbook の「[Data Validation](https://developer.wordpress.org/plugins/security/data-validation/)」を参照してください。
 
 <!-- 
@@ -1074,7 +1648,7 @@ The `eval()` construct is _very dangerous_ and is impossible to secure. Addition
  -->
 `goto` 文は決して使わないでください。
 
-`eval()` 言語構造は **非常に危険** で、安全性を保つことが不可能です。また `create_function()` 関数は内部的に `eval()` を実行し、PHP 8.0 では両方とも削除されました。両方の関数を使わないでください。
+`eval()` 構成要素は **非常に危険** で、安全性を保つことが不可能です。また `create_function()` 関数は内部的に `eval()` を実行し、PHP 8.0 では両方とも削除されました。両方の関数を使わないでください。
 
 
 <!-- 
@@ -1169,5 +1743,20 @@ Joseph Scott が [何がそんなにひどいのかを書いています](https:
 - 2014/10/20: ブレースの更新 – 「制御構造に関する別の構文」の使用の許可、というか推奨。禁じられた「単一行のインライン制御構造」。
 - 2014/1/21: extract() 禁止を追加
  -->
+
+<!-- 
+### Shell commands
+ -->
+### シェルコマンド
+
+<!-- 
+Use of the [backtick operator](https://www.php.net/manual/en/language.operators.execution.php) is not allowed.
+ -->
+[バッククォート演算子](https://www.php.net/manual/en/language.operators.execution.php) (「`」)の使用は認められません。
+
+<!-- 
+Use of the backtick operator is identical to [`shell_exec()`](https://www.php.net/manual/en/function.shell-exec.php), and most hosts disable this function in the `php.ini` file for security reasons.
+ -->
+バッククォート演算子の使用は、[`shell_exec()`](https://www.php.net/manual/en/function.shell-exec.php) と同じです。セキュリティ上の理由からほとんどのホスティング環境では `php.ini` ファイルでこの関数が無効にされています。
 
 [原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards/php.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards/php.md)

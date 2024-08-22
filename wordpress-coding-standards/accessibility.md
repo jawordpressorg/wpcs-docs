@@ -270,11 +270,15 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 
 <!--
 ## Authoritative Resources
+ -->
+## 信頼できるリソース
 
+<!--
 - [WebAIM: Web Accessibility In Mind](https://webaim.org/) (see Articles and Resources)
-- [Government Digital Service](https://gds.blog.gov.uk)
-- [Accessibility in government](https://accessibility.blog.gov.uk/)
-- [Blog | TPG – The Accessibility Experts](https://developer.paciellogroup.com/blog/)
+- [UK Government Digital Service](https://gds.blog.gov.uk)
+- [Accessibility in Government Blog (UK)](https://accessibility.blog.gov.uk/)
+- [Create Accessible Software & Websites - Section 508 (US)](https://www.section508.gov/develop/software-websites/)
+- [Blog | TPGi](https://www.tpgi.com/blog/)
 - [Web Accessibility Blog (Deque)](https://www.deque.com/blog/)
 - [Tink - Léonie Watson](https://tink.uk) (Léonie Watson)
 - [Adrian Roselli](https://adrianroselli.com)
@@ -287,13 +291,15 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [Accessibility London (London, United Kingdom)](https://www.meetup.com/London-Accessibility-Meetup/) (London accessibility meetup: they live stream meetups on youtube)
 - [24 Accessibility](https://www.24a11y.com/)
 - [Mozilla Accessibility - Users first, no matter their abilities](https://blog.mozilla.org/accessibility/)
+- [WordPress Accessibility Meetup](https://www.meetup.com/wordpress-accessibility-meetup-group/)
+- [Equalize Digital Blog](https://equalizedigital.com/resources/)
+- [WordPress Accessibility Day Conference](https://wpaccessibility.day)
 -->
-## 信頼できるリソース
-
 - [WebAIM: Web Accessibility In Mind](https://webaim.org/) (Articles と Resources を参照)
-- [Government Digital Service](https://gds.blog.gov.uk)
-- [Accessibility in government](https://accessibility.blog.gov.uk/) 
-- [Blog | TPG – The Accessibility Experts](https://developer.paciellogroup.com/blog/)
+- [UK Government Digital Service](https://gds.blog.gov.uk)
+- [Accessibility in Government Blog (UK)](https://accessibility.blog.gov.uk/)
+- [Create Accessible Software & Websites - Section 508 (US)](https://www.section508.gov/develop/software-websites/)
+- [Blog | TPGi](https://www.tpgi.com/blog/)
 - [Web Accessibility Blog (Deque)](https://www.deque.com/blog/)
 - [Tink - Léonie Watson](https://tink.uk) (Léonie Watson)
 - [Adrian Roselli](https://adrianroselli.com)
@@ -306,32 +312,34 @@ For more information on techniques, visit [Understanding Techniques for WCAG Suc
 - [Accessibility London (London, United Kingdom)](https://www.meetup.com/London-Accessibility-Meetup/) (London accessibility meetup: YouTube でライブストリームミートアップを実施している)
 - [24 Accessibility](https://www.24a11y.com/)
 - [Mozilla Accessibility - Users first, no matter their abilities](https://blog.mozilla.org/accessibility/)
+- [WordPress Accessibility Meetup](https://www.meetup.com/wordpress-accessibility-meetup-group/)
+- [Equalize Digital Blog](https://equalizedigital.com/resources/)
+- [WordPress Accessibility Day Conference](https://wpaccessibility.day)
 - [ウェブアクセシビリティ基盤委員会](https://waic.jp/) ... 「ウェブアクセシビリティ基盤委員会（Web Accessibility Infrastructure Committee）は、日本におけるウェブアクセシビリティの公的規格であるJIS X 8341-3の理解と普及を促進するとともに、JIS X 8341-3を利用してウェブアクセシビリティを高めていくために必要な基盤を構築するために、さまざまな活動を行っています。」
 
 <!--
 ### Technical and / or specific topics
+ -->
+### 技術や特定のトピック:
 
+<!--
 - [Accessibility Support](https://a11ysupport.io/) (Will your code work with assistive technologies?)
 - [Accessibility APIs: A Key To Web Accessibility](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) (by Léonie Watson)
 - [How accessibility trees inform assistive tech](https://hacks.mozilla.org/2019/06/how-accessibility-trees-inform-assistive-tech/) (by Hidde de Vries)
 - [What is this thing and what does it do?](https://www.youtube.com/watch?v=YLihNhn_MO4 ) (presentation by Karl Groves)
-- [The Browser Accessibility Tree](https://developer.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) (by Steve Faulkner)
-- [Brief history of browser accessibility support](https://www.paciellogroup.com/blog/2011/10/brief-history-of-browser-accessibility-support/) (by Steve Faulkner)
+- [The Browser Accessibility Tree](https://www.tpgi.com/the-browser-accessibility-tree/) (by Steve Faulkner)
+- [Brief history of browser accessibility support](https://www.tpgi.com/brief-history-of-browser-accessibility-support/) (by Steve Faulkner)
 - [ARIA Landmarks Example: General Principles](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/)
 - [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html)
+- [Mozilla Developer Docs - Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 -->
-### 技術や特定のトピック:
-
 - [Accessibility Support](https://a11ysupport.io/) (コードが支援技術で動作するか?)
 - [Accessibility APIs: A Key To Web Accessibility](https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/) (by Léonie Watson)  
 - [How accessibility trees inform assistive tech](https://hacks.mozilla.org/2019/06/how-accessibility-trees-inform-assistive-tech/) (by Hidde de Vries) 
 - [What is this thing and what does it do?](https://www.youtube.com/watch?v=YLihNhn_MO4 ) (by Karl Groves プレゼンテーション)
-- [The Browser Accessibility Tree](https://developer.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) (by Steve Faulkner)
-- [Brief history of browser accessibility support](https://www.paciellogroup.com/blog/2011/10/brief-history-of-browser-accessibility-support/) (by Steve Faulkner) 
+- [The Browser Accessibility Tree](https://www.tpgi.com/the-browser-accessibility-tree/) (by Steve Faulkner)
+- [Brief history of browser accessibility support](https://www.tpgi.com/brief-history-of-browser-accessibility-support/) (by Steve Faulkner)
 - [ARIA Landmarks Example: General Principles](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/)
 - [ARIA Landmarks Example: HTML Sectioning Elements](https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html) 
 
-<!--
-[原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md)
--->
 [原文](https://github.com/WordPress/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md) / [日本語訳](https://github.com/jawordpressorg/wpcs-docs/blob/master/wordpress-coding-standards/accessibility.md)
